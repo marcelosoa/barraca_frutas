@@ -4,16 +4,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import InputTextComponent from '../../../components/InputText';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useNavigationState } from '@react-navigation/native';
+import Breadcrumbs from '../../../components/Breadcrumbs';
 
 export default function RegisterCPFSupplierScreen() {
   const navigation = useNavigation()
-  const routeName = navigation.getState()?.routeNames
 
-  function handleNextPage() {
-    navigation.navigate('Telefone')
-    console.log(routeName)
-  }
 
   return (
     <Container>
@@ -24,9 +20,16 @@ export default function RegisterCPFSupplierScreen() {
           color={'#930000'}
         />
       </ViewName>
-      <InputTextComponent
-        label='CPF'
-      />
+      {/* <InputTextComponent
+      icon={
+        <Ionicons 
+          name="chevron-forward-sharp"
+          size={20}
+        />
+        }
+        label={paths}
+      /> */}
+      <Breadcrumbs />
       <InputFormView>
         <InputFormComponent
           label='Digite o CPF do colaborador'
@@ -34,7 +37,7 @@ export default function RegisterCPFSupplierScreen() {
           placeholder='000.000.000-00'
         />
         <ButtonComponent
-          onPress={handleNextPage}
+          onPress={() => navigation.navigate('Telefone')}
           label='Próximo' />
       </InputFormView>
     </Container>

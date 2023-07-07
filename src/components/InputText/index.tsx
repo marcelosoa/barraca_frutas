@@ -3,14 +3,17 @@ import { Text, Container } from "./styled";
 
 interface InputProps {
   label: string
+  icon: React.ReactNode
+  prevPage?: string
 }
 
-export default function InputTextComponent({ label }: InputProps) {
+export default function InputTextComponent({ label, icon, prevPage }: InputProps) {
   return (
     <Container>
-      <Text>
-        {label}
-        </Text>
+       <>
+       {icon}
+        <Text>{label}</Text>
+        </>
     </Container>
   )
 }

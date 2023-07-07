@@ -5,13 +5,11 @@ import InputTextComponent from '../../../components/InputText';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import { useNavigation } from '@react-navigation/native';
+import Breadcrumbs from '../../../components/Breadcrumbs';
 
 export default function RegisterPhoneSupplierScreen() {
   const navigation = useNavigation()
 
-  function handleNextPage() {
-    navigation.navigate('FrutasFornecedor')
-  }
   return (
     <Container>
       <ViewName>
@@ -21,9 +19,7 @@ export default function RegisterPhoneSupplierScreen() {
           color={'#930000'}    
         />
       </ViewName>
-      <InputTextComponent 
-        label='Telefone'      
-      />
+      <Breadcrumbs />
       <InputFormView>
         <InputFormComponent 
           label='Digite o número de telefone do colaborador'
@@ -31,7 +27,7 @@ export default function RegisterPhoneSupplierScreen() {
           onChange={() => {}}        
         />
         <ButtonComponent
-          onPress={handleNextPage}
+          onPress={() => navigation.navigate('FrutasFornecedor')}
           label='Próximo'
         />
       </InputFormView>

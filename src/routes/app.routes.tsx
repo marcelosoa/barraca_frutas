@@ -31,7 +31,7 @@ export default function AppRoutes() {
       <Stack.Navigator screenOptions={{
         headerShown: false
       }}>
-        <Stack.Screen name="Home" component={HomeTabs} />
+        <Stack.Screen name="Inicio" component={HomeTabs} />
         <Stack.Screen name='Nome' component={RegisterNameSupplier} />
         <Stack.Screen name="CPF" component={RegisterCPFSupplierScreen} />
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />

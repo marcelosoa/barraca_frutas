@@ -4,13 +4,13 @@ import { Container, ViewName, InputFormView } from "./styled";
 import InputTextComponent from "../../../components/InputText";
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useNavigationState, useRoute } from "@react-navigation/native";
+import Breadcrumbs from "../../../components/Breadcrumbs";
 
 export default function RegisterNameSupplier() {
+
   const navigation = useNavigation()
-  function handleNextPage() {
-    navigation.navigate('CPF')
-  }
+
   return (
     <Container>
       <ViewName>
@@ -20,9 +20,16 @@ export default function RegisterNameSupplier() {
           color={"#930000"} 
         />
       </ViewName>
-      <InputTextComponent 
-        label="Nome" 
-      />
+      {/* <InputTextComponent
+      icon={
+        <Ionicons 
+          name="chevron-forward-sharp"
+          size={20}
+        />
+        }r
+        label='Nome'
+      /> */}
+      <Breadcrumbs />
       <InputFormView>
         <InputFormComponent 
           label="Digite o Nome do colaborador"
@@ -30,7 +37,7 @@ export default function RegisterNameSupplier() {
           placeholder="Nome"        
         />
         <ButtonComponent
-          onPress={handleNextPage}
+          onPress={() => navigation.navigate('CPF')}
           label="Próximo"        
         />
       </InputFormView>

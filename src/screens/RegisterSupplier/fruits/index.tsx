@@ -1,11 +1,15 @@
 import React from "react"
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Container, ViewName, InputFormView } from './styled'
-import InputTextComponent from "../../../components/InputText";
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { Container, ViewName, InputFormView, } from './styled'
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
+import Breadcrumbs from "../../../components/Breadcrumbs";
+
 
 export default function RegisterFruitSupplierScreen() {
+  const navigation = useNavigation()
+
   return (
     <Container>
       <ViewName>
@@ -15,14 +19,13 @@ export default function RegisterFruitSupplierScreen() {
           color={'#930000'}
         />
       </ViewName>
-      <InputTextComponent
-        label="Frutas"
-      />
+      <Breadcrumbs />
       <InputFormView>
         <InputFormComponent
           label="Escolha as frutas que esse fornecedor nos fornece"
         />
         <ButtonComponent 
+          onPress={() => navigation.navigate('Nome')}
           label="Cadastrar Fornecedor"
         />
       </InputFormView>
