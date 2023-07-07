@@ -1,40 +1,39 @@
 import React from 'react'
-import Ionicons from '@expo/vector-icons/Ionicons';
-import InputTextComponent from '../../components/InputText';
-import InputFormComponent from '../../components/InputForm'
-
 import { Container, ViewName, InputFormView } from './styled'
-import ButtonComponent from '../../components/Button';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import InputTextComponent from '../../../components/InputText';
+import InputFormComponent from '../../../components/InputForm';
+import ButtonComponent from '../../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 
-export default function RegisterSupplierScreen() {
+export default function RegisterCPFSupplierScreen() {
   const navigation = useNavigation()
 
   function handleNextPage() {
-    navigation.navigate('RegisterCPFSupplierScreen')
+    navigation.navigate('RegisterPhoneSupplierScreen')
   }
 
   return (
     <Container>
       <ViewName>
-        <Ionicons 
+      <Ionicons 
         name='close' 
         size={32} 
         color={'#930000'} 
         />
       </ViewName>
       <InputTextComponent 
-      label='Nome' 
+        label='CPF'
       />
       <InputFormView>
         <InputFormComponent 
-        label='Digite o nome do colaborador' 
-        onChange={() => { }} 
-        placeholder='Nome' />
+          label='Digite o CPF do colaborador'
+          onChange={() => {}}
+          placeholder='000.000.000-00'
+        />
         <ButtonComponent 
         onPress={handleNextPage}
-        label='Próximo'
-        />
+        label='Próximo' />
       </InputFormView>
     </Container>
   )

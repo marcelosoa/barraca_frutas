@@ -4,11 +4,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 interface ButtonProps {
   label: string
+  onPress?: () => void
 }
 
-export default function ButtonComponent ({ label }: ButtonProps) {
+export default function ButtonComponent ({ label, onPress }: ButtonProps) {
   return (
-    <Button>
+    <Button onPress={onPress}>
       <TextButton>
         {label}
         </TextButton>
