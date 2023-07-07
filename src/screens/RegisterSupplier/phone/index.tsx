@@ -4,8 +4,14 @@ import { Container, ViewName, InputFormView } from './styled'
 import InputTextComponent from '../../../components/InputText';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 export default function RegisterPhoneSupplierScreen() {
+  const navigation = useNavigation()
+
+  function handleNextPage() {
+    navigation.navigate('FrutasFornecedor')
+  }
   return (
     <Container>
       <ViewName>
@@ -24,7 +30,8 @@ export default function RegisterPhoneSupplierScreen() {
           placeholder='(00) 00000-0000'
           onChange={() => {}}        
         />
-        <ButtonComponent 
+        <ButtonComponent
+          onPress={handleNextPage}
           label='Próximo'
         />
       </InputFormView>

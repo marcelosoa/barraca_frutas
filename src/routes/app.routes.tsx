@@ -11,6 +11,8 @@ import FruitsScreen from "../screens/Fruits";
 import RegisterSupplierScreen from "../screens/RegisterSupplier";
 import RegisterCPFSupplierScreen from "../screens/RegisterSupplier/cpf";
 import RegisterPhoneSupplierScreen from "../screens/RegisterSupplier/phone";
+import RegisterNameSupplier from "../screens/RegisterSupplier/name";
+import RegisterFruitSupplierScreen from "../screens/RegisterSupplier/fruits";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,22 +48,29 @@ export default function AppRoutes() {
         }}
       />
       <Tab.Screen
-        name="RegisterSupplierScreen"
-        component={RegisterSupplierScreen}
+        name="Nome"
+        component={RegisterNameSupplier}
         options={{
           tabBarButton: () => null,
         }}
       />
       <Tab.Screen
-        name="RegisterCPFSupplierScreen"
+        name="CPF"
         component={RegisterCPFSupplierScreen}
         options={{
           tabBarButton: () => null,
         }}
       />
       <Tab.Screen
-        name="RegisterPhoneSupplierScreen"
+        name="Telefone"
         component={RegisterPhoneSupplierScreen}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="FrutasFornecedor"
+        component={RegisterFruitSupplierScreen}
         options={{
           tabBarButton: () => null,
         }}

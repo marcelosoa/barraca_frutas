@@ -8,32 +8,34 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function RegisterCPFSupplierScreen() {
   const navigation = useNavigation()
+  const routeName = navigation.getState()?.routeNames
 
   function handleNextPage() {
-    navigation.navigate('RegisterPhoneSupplierScreen')
+    navigation.navigate('Telefone')
+    console.log(routeName)
   }
 
   return (
     <Container>
       <ViewName>
-      <Ionicons 
-        name='close' 
-        size={32} 
-        color={'#930000'} 
+        <Ionicons
+          name='close'
+          size={32}
+          color={'#930000'}
         />
       </ViewName>
-      <InputTextComponent 
+      <InputTextComponent
         label='CPF'
       />
       <InputFormView>
-        <InputFormComponent 
+        <InputFormComponent
           label='Digite o CPF do colaborador'
-          onChange={() => {}}
+          onChange={() => { }}
           placeholder='000.000.000-00'
         />
-        <ButtonComponent 
-        onPress={handleNextPage}
-        label='Próximo' />
+        <ButtonComponent
+          onPress={handleNextPage}
+          label='Próximo' />
       </InputFormView>
     </Container>
   )

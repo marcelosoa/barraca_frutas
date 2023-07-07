@@ -11,7 +11,7 @@ export default function RegisterSupplierScreen() {
   const navigation = useNavigation()
 
   function handleNextPage() {
-    navigation.navigate('RegisterCPFSupplierScreen')
+    navigation.navigate('CPF')
   }
 
   return (

@@ -7,7 +7,7 @@ export default function SupplierScreen() {
   const navigation = useNavigation();
 
   function handleNextPage() {
-    navigation.navigate("RegisterSupplierScreen");
+    navigation.navigate("Nome");
   }
 
   return (
