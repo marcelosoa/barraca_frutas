@@ -4,7 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { Container, ViewName, InputFormView, } from './styled'
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
-import Breadcrumbs from "../../../components/Breadcrumbs";
+import RouterComponent from "../../../components/Router";
 
 
 export default function RegisterFruitSupplierScreen() {
@@ -19,7 +19,7 @@ export default function RegisterFruitSupplierScreen() {
           color={'#930000'}
         />
       </ViewName>
-      <Breadcrumbs />
+      <RouterComponent />
       <InputFormView>
         <InputFormComponent
           label="Escolha as frutas que esse fornecedor nos fornece"

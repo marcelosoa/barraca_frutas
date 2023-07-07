@@ -4,7 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import { useNavigation } from '@react-navigation/native';
-import BreadCrumbsComponent from '../../../components/Breadcrumbs';
+import RouterComponent from '../../../components/Router';
 
 export default function RegisterCPFSupplierScreen() {
   const navigation = useNavigation();
@@ -14,7 +14,7 @@ export default function RegisterCPFSupplierScreen() {
       <ViewName>
         <Ionicons name='close' size={32} color={'#930000'} />
       </ViewName>
-      <BreadCrumbsComponent />
+      <RouterComponent />
       <InputFormView>
         <InputFormComponent
           label='Digite o CPF do colaborador'

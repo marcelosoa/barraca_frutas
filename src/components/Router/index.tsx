@@ -9,18 +9,18 @@ type StackParamList = {
   Cadastro: undefined;
 };
 
-type BreadCrumbsProps = {
+type RouterComponentProps = {
   navigation: StackNavigationProp<StackParamList, any>;
 };
 
-export default function BreadCrumbsComponent ({ navigation }: BreadCrumbsProps) {
+export default function RouterComponent ({ navigation }: RouterComponentProps) {
   const state = useNavigationState((state) => state);
   const routes = state.routes;
   const index = state.index;
 
   const paths = routes.slice(0, index + 1).map((route) => route.name);
 
-  const handleBreadcrumbPress = (index: number) => {
+  const handleRoutePress = (index: number) => {
     if (index !== paths.length - 1) {
       navigation.navigate(routes[index].name as keyof StackParamList);
     } else {
@@ -33,7 +33,7 @@ export default function BreadCrumbsComponent ({ navigation }: BreadCrumbsProps) 
       {paths.map((path, index) => (
         <ButtonText
           key={index}
-          onPress={() => handleBreadcrumbPress(index)}
+          onPress={() => handleRoutePress(index)}
           style={{ marginRight: 5, flexDirection: 'row', alignItems: 'center' }}
         >
           <Text style={{ color: index === paths.length - 1 ? 'red' : 'black' }}>{path}</Text>

@@ -4,7 +4,7 @@ import { Container, ViewName, InputFormView } from './styled'
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import { useNavigation } from '@react-navigation/native';
-import Breadcrumbs from '../../../components/Breadcrumbs';
+import Breadcrumbs from '../../../components/Router';
 
 
 export default function RegisterPhoneSupplierScreen() {

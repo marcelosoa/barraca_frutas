@@ -1,11 +1,10 @@
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Container, ViewName, InputFormView } from "./styled";
-import InputTextComponent from "../../../components/InputText";
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
-import { useNavigation, useNavigationState, useRoute } from "@react-navigation/native";
-import Breadcrumbs from "../../../components/Breadcrumbs";
+import { useNavigation } from "@react-navigation/native";
+import RouterComponent from "../../../components/Router";
 
 export default function RegisterNameSupplier() {
 
@@ -20,16 +19,7 @@ export default function RegisterNameSupplier() {
           color={"#930000"} 
         />
       </ViewName>
-      {/* <InputTextComponent
-      icon={
-        <Ionicons 
-          name="chevron-forward-sharp"
-          size={20}
-        />
-        }r
-        label='Nome'
-      /> */}
-      <Breadcrumbs />
+      <RouterComponent />
       <InputFormView>
         <InputFormComponent 
           label="Digite o Nome do colaborador"
