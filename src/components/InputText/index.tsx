@@ -1,11 +1,14 @@
-import { Text } from "./styled";
+import React from 'react'
+import { Text, Container } from "./styled";
 
 interface InputProps {
   label: string
 }
 
-export default function InputTextComponent({label}: InputProps) {
+export default function InputTextComponent({ label }: InputProps) {
   return (
-    <Text>{label}</Text>
+    <Container>
+      <Text>{label}</Text>
+    </Container>
   )
 }

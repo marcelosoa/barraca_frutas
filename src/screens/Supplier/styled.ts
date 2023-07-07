@@ -1,18 +1,19 @@
 import styled from "styled-components/native";
 
-export const View = styled.View`
+export const Container = styled.SafeAreaView`
+  margin-top: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 16px;
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const ViewButton = styled.View`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+export const ViewText = styled.View`
+  width: 100%;
+  margin-bottom: 50px;
+`
 
 export const Text = styled.Text`
   font-size: 16px;
@@ -26,14 +27,11 @@ export const Button = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 328px;
-  height: 40px;
-  padding: 8px 16px;
-  justify-content: center;
-  gap: 8px;
-  flex-shrink: 0;
-  border-radius: 100px;
   background: ${({ theme }) => theme.colors.primary};
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 30px;
+  width: 100%;
 `;
 
 export const TextButton = styled.Text`

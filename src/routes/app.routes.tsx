@@ -2,8 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useTheme } from 'styled-components'
+import { NavigationContainer } from '@react-navigation/native'
 
-import RegisterSupplierScreen from '../screens/RegisterSupplier';
+import SupplierScreen from '../screens/Supplier';
+import RegisterSupplierScreen from '../screens/RegisterSupplier'
 import FruitsScreen from '../screens/Fruits';
 
 const { Navigator, Screen } = createBottomTabNavigator()

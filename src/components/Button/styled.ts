@@ -2,14 +2,13 @@ import styled from "styled-components/native";
 
 export const Button = styled.TouchableOpacity`
   display: flex;
-  width: 328px;
-  height: 40px;
-  padding: 8px 16px 8px 24px;
-  gap: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 100px;
+  padding: 6px;
+  flex-direction: row;
   align-items: center;
+  width: 100%;
   justify-content: center;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  border-radius: 30px;
 `;
 
 export const TextButton = styled.Text`

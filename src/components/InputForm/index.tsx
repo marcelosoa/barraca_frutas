@@ -1,11 +1,17 @@
-import { TextInput } from './styled'
+import React from "react";
+import { TextInput, Container, Label } from "./styled";
 
 interface InputProps {
-  placeholder: string
+  placeholder: string;
+  label: string
+  onChange: () => void
 }
 
-export default function InputFormComponent({placeholder}: InputProps) {
+export default function InputFormComponent({ placeholder, label, onChange }: InputProps) {
   return (
-    <TextInput placeholder={placeholder}/>
-  )
+    <Container>
+      <Label>{label}</Label>
+      <TextInput placeholder={placeholder} onTextInput={onChange} />
+    </Container>
+  );
 }

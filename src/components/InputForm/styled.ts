@@ -1,5 +1,24 @@
 import styled from 'styled-components/native'
 
-export const TextInput = styled.Text`
+export const Container = styled.View`
+  display: flex;
+  gap: 24px;
+  width: 100%;
+`
 
+export const Label = styled.Text`
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 1.25px;
+color: ${({ theme }) => theme.colors.dark_gray};
+`
+
+export const TextInput = styled.TextInput`
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+color: ${({ theme }) => theme.colors.dark_gray};
 `
