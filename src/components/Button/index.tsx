@@ -9,8 +9,14 @@ interface ButtonProps {
 export default function ButtonComponent ({ label }: ButtonProps) {
   return (
     <Button>
-      <TextButton>{label}</TextButton>
-      <Ionicons name='chevron-forward' size={32} color={'#DA0D1E'} />
+      <TextButton>
+        {label}
+        </TextButton>
+      <Ionicons 
+      name='chevron-forward' 
+      size={32} 
+      color={'#DA0D1E'} 
+      />
     </Button>
   )
 }

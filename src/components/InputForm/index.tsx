@@ -10,8 +10,13 @@ interface InputProps {
 export default function InputFormComponent({ placeholder, label, onChange }: InputProps) {
   return (
     <Container>
-      <Label>{label}</Label>
-      <TextInput placeholder={placeholder} onTextInput={onChange} />
+      <Label>
+        {label}
+        </Label>
+      <TextInput 
+      placeholder={placeholder} 
+      onTextInput={onChange} 
+      />
     </Container>
   );
 }

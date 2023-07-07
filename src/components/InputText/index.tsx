@@ -8,7 +8,9 @@ interface InputProps {
 export default function InputTextComponent({ label }: InputProps) {
   return (
     <Container>
-      <Text>{label}</Text>
+      <Text>
+        {label}
+        </Text>
     </Container>
   )
 }

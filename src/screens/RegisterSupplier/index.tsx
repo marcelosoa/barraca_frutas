@@ -10,12 +10,23 @@ export default function RegisterSupplierScreen() {
   return (
     <Container>
       <ViewName>
-        <Ionicons name='close' size={32} color={'#930000'} />
+        <Ionicons 
+        name='close' 
+        size={32} 
+        color={'#930000'} 
+        />
       </ViewName>
-      <InputTextComponent label='Nome' />
+      <InputTextComponent 
+      label='Nome' 
+      />
       <InputFormView>
-        <InputFormComponent label='Digite o nome do colaborador' onChange={() => { }} placeholder='Nome' />
-        <ButtonComponent label='Próximo'/>
+        <InputFormComponent 
+        label='Digite o nome do colaborador' 
+        onChange={() => { }} 
+        placeholder='Nome' />
+        <ButtonComponent 
+        label='Próximo'
+        />
       </InputFormView>
     </Container>
   )

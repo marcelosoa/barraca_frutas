@@ -2,10 +2,9 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useTheme } from 'styled-components'
-import { NavigationContainer } from '@react-navigation/native'
 
+// Screens
 import SupplierScreen from '../screens/Supplier';
-import RegisterSupplierScreen from '../screens/RegisterSupplier'
 import FruitsScreen from '../screens/Fruits';
 
 const { Navigator, Screen } = createBottomTabNavigator()
@@ -25,7 +24,7 @@ export default function AppRoutes() {
     >
       <Screen 
         name='Fornecedor'
-        component={RegisterSupplierScreen}
+        component={SupplierScreen}
         options={{
           tabBarIcon: (({size, color}) => 
           <Ionicons name='people-sharp'
