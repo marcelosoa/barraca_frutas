@@ -1,11 +1,11 @@
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Container, ViewName, InputFormView } from './styled'
-import InputTextComponent from '../../../components/InputText';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import Breadcrumbs from '../../../components/Breadcrumbs';
+
 
 export default function RegisterPhoneSupplierScreen() {
   const navigation = useNavigation()
@@ -27,7 +27,7 @@ export default function RegisterPhoneSupplierScreen() {
           onChange={() => {}}        
         />
         <ButtonComponent
-          onPress={() => navigation.navigate('FrutasFornecedor')}
+          onPress={() => navigation.navigate('Frutas')}
           label='Próximo'
         />
       </InputFormView>
