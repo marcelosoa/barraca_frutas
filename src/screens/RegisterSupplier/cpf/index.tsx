@@ -12,6 +12,11 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import isValidCPF from '../../../utils/validCPF/isValidCPF';
 // Hooks
 import useErrors from '../../../hooks/useErros';
+import { useDispatch, useSelector } from 'react-redux';
+import { SupplierPropsState } from '../../../interface/SupplierInterface';
+
+// Redux
+import { setCPF } from '../../../redux/reducers/suppliersReducer';
 
 type StackParamList = {
   Home: undefined;
@@ -23,20 +28,25 @@ type RouterComponentProps = {
 };
 
 export default function RegisterCPFSupplierScreen({ navigation }: RouterComponentProps) {
-  const [cpf, setCPF] = useState('');
+  const dispatch = useDispatch()
+  const [inputCPF, setInputCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
+  const { cpf } = useSelector(
+    (state: {supplier: SupplierPropsState}) => state.supplier
+  );
+
   const handleCPFNumberChange = (value: string) => {
-    setCPF(value)
+    setInputCPF(value)
     removeError('cpf')
   }
 
   const validateCPFNumber = () => {
-    const isValid = isValidCPF(cpf)
+    const isValid = isValidCPF(inputCPF)
     if (!isValid) {
-      console.log('caiu aqui')
       setError({field: 'cpf', message: 'Insira um CPF válido' })
     } else {
+      dispatch(setCPF(inputCPF))
       navigation.navigate("Telefone")
     }
   }
@@ -49,15 +59,16 @@ export default function RegisterCPFSupplierScreen({ navigation }: RouterComponen
       <RouterComponent navigation={navigation}/>
       <InputFormView>
         <InputFormComponent
-        errors={getErrorMessageByFieldName('cpf')}
+          errors={getErrorMessageByFieldName('cpf')}
           limitCaracter={11}
           label='Digite o CPF do colaborador'
-          onChange={handleCPFNumberChange}
+          onChange={(value: string) => handleCPFNumberChange(value)}
           placeholder='000.000.000-00'
+          value={inputCPF}
         />
         <ButtonComponent 
-        onPress={validateCPFNumber} 
-        label='Próximo' 
+          onPress={validateCPFNumber} 
+          label='Próximo' 
         />
       </InputFormView>
     </Container>
