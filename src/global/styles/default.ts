@@ -5,6 +5,7 @@ export default {
     light_gray: '#6C7072',
     primary: '#DA0D1E',
     primary_dark: '#930000',
+    shape: '#FFFFFF'
   },
   text: {
     primary: '#FFF',

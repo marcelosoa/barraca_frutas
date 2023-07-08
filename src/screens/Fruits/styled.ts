@@ -18,8 +18,8 @@ export const ViewText = styled.View`
 
 
 export const Text = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular };
   font-size: 16px;
-  font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.15px;
 `;
@@ -37,8 +37,8 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const TextButton = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium };
   font-size: 13px;
-  font-weight: normal;
   line-height: 16px;
   letter-spacing: 1.25px;
   color: ${({ theme }) => theme.text.primary};

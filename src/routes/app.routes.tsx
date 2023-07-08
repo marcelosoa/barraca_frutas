@@ -12,6 +12,7 @@ import RegisterPhoneSupplierScreen from "../screens/RegisterSupplier/phone";
 import RegisterNameSupplier from "../screens/RegisterSupplier/name";
 import RegisterFruitSupplierScreen from "../screens/RegisterSupplier/fruits";
 import { useTheme } from "styled-components";
+import RegisterFruitScreen from "../screens/RegisterFruits";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -22,8 +23,8 @@ function HomeTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme.colors.primary_dark,
-        headerTintColor: theme.colors.primary_dark,
+        tabBarActiveTintColor: theme.colors.primary,
+        headerTintColor: theme.colors.primary,
         tabBarStyle: {
           height: 88,
         },
@@ -68,6 +69,7 @@ export default function AppRoutes() {
         <Stack.Screen name="CPF" component={RegisterCPFSupplierScreen} />
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
         <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
+        <Stack.Screen name="RegistrarFrutas" component={RegisterFruitScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
