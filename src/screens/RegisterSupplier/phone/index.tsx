@@ -3,8 +3,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Container, ViewName, InputFormView } from './styled';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
-import { useNavigation } from '@react-navigation/native';
-import Breadcrumbs from '../../../components/Router';
+import RouterComponent from '../../../components/Router';
 import isValidPhone from '../../../utils/validPhone/IsValidPhone';
 import useErrors from '../../../hooks/useErros';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -42,7 +41,7 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
       <ViewName>
         <Ionicons name='close' size={32} color={'#930000'} />
       </ViewName>
-      <Breadcrumbs navigation={navigation}/>
+      <RouterComponent navigation={navigation}/>
       <InputFormView>
         <InputFormComponent
           errors={getErrorMessageByFieldName('phone')}

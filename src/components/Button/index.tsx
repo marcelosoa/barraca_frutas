@@ -7,7 +7,7 @@ interface ButtonProps {
   onPress?: () => void
 }
 
-export default function ButtonComponent ({ label, onPress }: ButtonProps) {
+export default function ButtonComponent ({ label, onPress}: ButtonProps) {
   return (
     <Button onPress={onPress}>
       <TextButton>

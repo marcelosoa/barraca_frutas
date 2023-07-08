@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components/native';
-import defaultTheme from './src/global/styles/default';
-// import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
+import defaultTheme from './src/global/default';
 import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen'; // Importe o expo-splash-screen
+import * as SplashScreen from 'expo-splash-screen';
 import AppRoutes from './src/routes/app.routes';
 
 export default function App() {

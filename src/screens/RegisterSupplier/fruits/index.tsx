@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useState, useEffect } from "react";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Container, ViewName, InputFormView, } from './styled'
+import { Container, ViewName, InputFormView } from './styled'
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
 import RouterComponent from "../../../components/Router";
 import { StackNavigationProp } from '@react-navigation/stack';
 import CheckBoxComponent from "../../../components/Checkbox";
+import LoaderComponent from "../../../components/Loader";
 
 type StackParamList = {
   Home: undefined;
@@ -17,6 +18,14 @@ type RouterComponentProps = {
 };
 
 export default function RegisterFruitSupplierScreen({ navigation }: RouterComponentProps) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
   const fruits: Option[] = [
     { id: 'banana', label: 'Banana' },
     { id: 'maca', label: 'Maçã' },
@@ -24,6 +33,10 @@ export default function RegisterFruitSupplierScreen({ navigation }: RouterCompon
     { id: 'abacaxi', label: 'Abacaxi' },
     { id: 'morango', label: 'Morango' },
   ];
+
+  if (isLoading) {
+    return <LoaderComponent />;
+  }
 
   return (
     <Container>
@@ -41,7 +54,7 @@ export default function RegisterFruitSupplierScreen({ navigation }: RouterCompon
         />
         <CheckBoxComponent options={fruits} onChange={() => alert('epa')} />
         <ButtonComponent 
-          onPress={() => navigation.navigate('Nome')}
+          onPress={() => navigation.navigate('Success')}
           label="Cadastrar Fornecedor"
         />
       </InputFormView>

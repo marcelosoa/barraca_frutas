@@ -13,6 +13,7 @@ import RegisterNameSupplier from "../screens/RegisterSupplier/name";
 import RegisterFruitSupplierScreen from "../screens/RegisterSupplier/fruits";
 import { useTheme } from "styled-components";
 import RegisterFruitScreen from "../screens/RegisterFruits";
+import RegisterSuccessScreen from "../screens/RegisterSupplier/sucess";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -70,6 +71,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
         <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="RegistrarFrutas" component={RegisterFruitScreen} />
+        <Stack.Screen name="Success" component={RegisterSuccessScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
