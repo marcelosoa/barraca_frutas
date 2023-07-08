@@ -1,14 +1,21 @@
 import React from "react"
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { useNavigation, useRoute } from '@react-navigation/native';
 import { Container, ViewName, InputFormView, } from './styled'
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
 import RouterComponent from "../../../components/Router";
+import { StackNavigationProp } from '@react-navigation/stack';
 
+type StackParamList = {
+  Home: undefined;
+  Cadastro: undefined;
+};
 
-export default function RegisterFruitSupplierScreen() {
-  const navigation = useNavigation()
+type RouterComponentProps = {
+  navigation: StackNavigationProp<StackParamList, any>;
+};
+
+export default function RegisterFruitSupplierScreen({navigation}: RouterComponentProps) {
 
   return (
     <Container>
@@ -19,7 +26,7 @@ export default function RegisterFruitSupplierScreen() {
           color={'#930000'}
         />
       </ViewName>
-      <RouterComponent />
+      <RouterComponent navigation={navigation}/>
       <InputFormView>
         <InputFormComponent
           label="Escolha as frutas que esse fornecedor nos fornece"

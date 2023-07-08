@@ -7,7 +7,8 @@ export default {
     primary_dark: '#930000',
   },
   text: {
-    primary: '#FFF'
+    primary: '#FFF',
+    black: '#212324'
   },
 
   fonts: {

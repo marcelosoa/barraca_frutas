@@ -7,13 +7,22 @@ import { useNavigation } from '@react-navigation/native';
 import Breadcrumbs from '../../../components/Router';
 import isValidPhone from '../../../utils/validPhone/IsValidPhone';
 import useErrors from '../../../hooks/useErros';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-export default function RegisterPhoneSupplierScreen() {
-  const navigation = useNavigation();
+type StackParamList = {
+  Home: undefined;
+  Cadastro: undefined;
+};
+
+type RouterComponentProps = {
+  navigation: StackNavigationProp<StackParamList, any>;
+};
+
+export default function RegisterPhoneSupplierScreen({ navigation }: RouterComponentProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handlePhoneNumberChange = (value) => {
+  const handlePhoneNumberChange = (value: string) => {
     setPhoneNumber(value);
     removeError('phone');
   };
@@ -33,7 +42,7 @@ export default function RegisterPhoneSupplierScreen() {
       <ViewName>
         <Ionicons name='close' size={32} color={'#930000'} />
       </ViewName>
-      <Breadcrumbs />
+      <Breadcrumbs navigation={navigation}/>
       <InputFormView>
         <InputFormComponent
           errors={getErrorMessageByFieldName('phone')}

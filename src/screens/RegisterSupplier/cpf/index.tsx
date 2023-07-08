@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
+// Style
 import { Container, ViewName, InputFormView } from './styled';
-import Ionicons from '@expo/vector-icons/Ionicons';
+// Props
+import { StackNavigationProp } from '@react-navigation/stack';
+// Components
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
-import { useNavigation } from '@react-navigation/native';
 import RouterComponent from '../../../components/Router';
+// Utils
+import Ionicons from '@expo/vector-icons/Ionicons';
 import isValidCPF from '../../../utils/validCPF/isValidCPF';
+// Hooks
 import useErrors from '../../../hooks/useErros';
 
-export default function RegisterCPFSupplierScreen() {
-  const navigation = useNavigation();
+type StackParamList = {
+  Home: undefined;
+  Cadastro: undefined;
+};
+
+type RouterComponentProps = {
+  navigation: StackNavigationProp<StackParamList, any>;
+};
+
+export default function RegisterCPFSupplierScreen({ navigation }: RouterComponentProps) {
   const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handleCPFNumberChange = (value) => {
+  const handleCPFNumberChange = (value: string) => {
     setCPF(value)
     removeError('cpf')
   }
@@ -24,7 +37,7 @@ export default function RegisterCPFSupplierScreen() {
       console.log('caiu aqui')
       setError({field: 'cpf', message: 'Insira um CPF válido' })
     } else {
-      navigation.navigate('Telefone')
+      navigation.navigate("Telefone")
     }
   }
 
@@ -33,7 +46,7 @@ export default function RegisterCPFSupplierScreen() {
       <ViewName>
         <Ionicons name='close' size={32} color={'#930000'} />
       </ViewName>
-      <RouterComponent />
+      <RouterComponent navigation={navigation}/>
       <InputFormView>
         <InputFormComponent
         errors={getErrorMessageByFieldName('cpf')}
