@@ -46,7 +46,7 @@ export default function RegisterCPFSupplierScreen({ navigation }: RouterComponen
     if (!isValid) {
       setError({field: 'cpf', message: 'Insira um CPF válido' })
     } else {
-      dispatch(setCPF(inputCPF))
+      dispatch(setCPF(cpf))
       navigation.navigate("Telefone")
     }
   }

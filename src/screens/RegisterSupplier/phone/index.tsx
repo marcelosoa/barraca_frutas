@@ -7,6 +7,9 @@ import RouterComponent from '../../../components/Router';
 import isValidPhone from '../../../utils/validPhone/IsValidPhone';
 import useErrors from '../../../hooks/useErros';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { setPhone } from '../../../redux/reducers/suppliersReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { SupplierPropsState } from '../../../interface/SupplierInterface';
 
 type StackParamList = {
   Home: undefined;
@@ -17,9 +20,14 @@ type RouterComponentProps = {
   navigation: StackNavigationProp<StackParamList, any>;
 };
 
-export default function RegisterPhoneSupplierScreen({ navigation }: RouterComponentProps) {
+export default function RegisterPhoneSupplierScreen({ navigation }: RouterComponentProps) { 
+  const dispatch = useDispatch()
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
+
+  const { phone } = useSelector(
+    (state: { supplier: SupplierPropsState }) => state.supplier
+  )
 
   const handlePhoneNumberChange = (value: string) => {
     setPhoneNumber(value);
@@ -29,9 +37,9 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
   const validatePhoneNumber = () => {
     const isValid = isValidPhone(phoneNumber);
     if (!isValid) {
-      console.log('caiu aqui')
       setError({ field: 'phone', message: 'Insira um telefone válido' });
     } else {
+      dispatch(setPhone(phone))
       navigation.navigate('Frutas');
     }
   };
@@ -48,7 +56,8 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
           limitCaracter={11}
           label='Digite o número de telefone do colaborador'
           placeholder='(00) 00000-0000'
-          onChange={handlePhoneNumberChange}
+          onChange={(value: string) => handlePhoneNumberChange(value)}
+          value={phoneNumber}
         />
         <ButtonComponent onPress={validatePhoneNumber} label='Próximo' />
       </InputFormView>
