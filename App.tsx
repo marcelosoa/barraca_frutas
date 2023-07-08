@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components/native';
 import defaultTheme from './src/global/default';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import AppRoutes from './src/routes/app.routes';
+import { Provider } from 'react-redux'
+import { store } from './src/redux/store';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,8 +33,10 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <AppRoutes />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={defaultTheme}>
+        <AppRoutes />
+      </ThemeProvider>
+    </Provider>
   );
 }

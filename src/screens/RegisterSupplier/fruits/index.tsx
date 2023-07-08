@@ -18,14 +18,6 @@ type RouterComponentProps = {
 };
 
 export default function RegisterFruitSupplierScreen({ navigation }: RouterComponentProps) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
-
   const fruits: Option[] = [
     { id: 'banana', label: 'Banana' },
     { id: 'maca', label: 'Maçã' },
@@ -33,10 +25,6 @@ export default function RegisterFruitSupplierScreen({ navigation }: RouterCompon
     { id: 'abacaxi', label: 'Abacaxi' },
     { id: 'morango', label: 'Morango' },
   ];
-
-  if (isLoading) {
-    return <LoaderComponent />;
-  }
 
   return (
     <Container>
@@ -52,7 +40,7 @@ export default function RegisterFruitSupplierScreen({ navigation }: RouterCompon
         <InputFormComponent
           label="Escolha as frutas que esse fornecedor nos fornece"
         />
-        <CheckBoxComponent options={fruits} onChange={() => alert('epa')} />
+        <CheckBoxComponent options={fruits} onChange={() => {}} />
         <ButtonComponent 
           onPress={() => navigation.navigate('Success')}
           label="Cadastrar Fornecedor"
