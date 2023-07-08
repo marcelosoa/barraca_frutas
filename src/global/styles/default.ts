@@ -9,7 +9,9 @@ export default {
   },
   text: {
     primary: '#FFF',
-    black: '#212324'
+    black: '#212324',
+    light_gray: '#6C7072'
+
   },
 
   fonts: {

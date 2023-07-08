@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Text, ViewName, FruitCards, FruitCardsInput } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import CardComponent from "../../components/Card";
 
 export default function RegisterFruitScreen() {
   return (
@@ -10,9 +11,7 @@ export default function RegisterFruitScreen() {
       </ViewName>
       <Text> Cadastrar Fruta </Text>
       <FruitCards>
-        <FruitCardsInput>
-          Nome da fruta
-        </FruitCardsInput>
+        <CardComponent placeholder="Nome da fruta"/>
       </FruitCards>
     </Container>
   );
