@@ -20,6 +20,7 @@ export const Text = styled.Text`
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.15px;
+  font-family: ${({ theme }) => theme.fonts.regular }
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -36,6 +37,7 @@ export const Button = styled.TouchableOpacity`
 
 export const TextButton = styled.Text`
   font-size: 13px;
+  font-family: ${({ theme }) => theme.fonts.medium };
   font-weight: normal;
   line-height: 16px;
   letter-spacing: 1.25px;

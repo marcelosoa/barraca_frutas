@@ -12,10 +12,10 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const TextButton = styled.Text`
-color: ${({ theme}) => theme.colors.primary};
-font-size: 13px;
-font-style: normal;
-font-weight: 500;
-line-height: 16px;
-letter-spacing: 1.25px;
+  color: ${({ theme}) => theme.colors.primary};
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 1.25px;
 `

@@ -11,6 +11,7 @@ export default {
   },
 
   fonts: {
-    regular: 'Poppins_500Regular',
+    regular: 'Poppins-Regular',
+    medium: 'Poppins-Medium'
   }
 }

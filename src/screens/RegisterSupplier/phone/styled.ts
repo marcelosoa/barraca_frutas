@@ -1,5 +1,9 @@
 import styled from 'styled-components/native'
 
+interface InputFormProps {
+  error?: string | undefined
+}
+
 export const Container = styled.SafeAreaView`
   padding: 24px 28px;
   display: flex;
@@ -15,7 +19,7 @@ export const ViewName = styled.View`
   padding: 24px 0; 
 `
 
-export const InputFormView = styled.View`
+export const InputFormView = styled.View<InputFormProps>`
   display: flex;
   flex-direction: column;
   flex: 1;

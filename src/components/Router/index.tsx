@@ -37,7 +37,7 @@ export default function RouterComponent ({ navigation }: RouterComponentProps) {
           style={{ marginRight: 5, flexDirection: 'row', alignItems: 'center' }}
         >
           <Text style={{ color: index === paths.length - 1 ? 'red' : 'black' }}>{path}</Text>
-          {index !== paths.length - 1 && <Ionicons name="chevron-forward" size={16} />}
+          {index !== paths.length - 1 && <Ionicons name="chevron-forward" size={24} />}
         </ButtonText>
       ))}
     </View>

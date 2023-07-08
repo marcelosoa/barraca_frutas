@@ -8,6 +8,7 @@ export const Container = styled.View`
 
 export const Label = styled.Text`
 font-size: 15px;
+font-family: ${({ theme }) => theme.fonts.regular};
 font-style: normal;
 font-weight: 500;
 line-height: 16px;
@@ -21,4 +22,8 @@ font-style: normal;
 font-weight: 400;
 line-height: 24px;
 color: ${({ theme }) => theme.colors.dark_gray};
+`
+
+export const ErrorText = styled.Text`
+  color: ${({ theme }) => theme.colors.primary};
 `
