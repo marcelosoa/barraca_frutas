@@ -29,19 +29,16 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
     (state: { supplier: SupplierPropsState }) => state.supplier
   )
 
-  const handlePhoneNumberChange = (value: string) => {
-    setPhoneNumber(value);
-    removeError('phone');
-  };
+  // const handlePhoneNumberChange = (value: string) => {
+  //   setPhoneNumber(value);
+  //   removeError('phone');
+  // };
 
   const validatePhoneNumber = () => {
-    const isValid = isValidPhone(phoneNumber);
-    if (!isValid) {
-      setError({ field: 'phone', message: 'Insira um telefone válido' });
-    } else {
-      dispatch(setPhone(phone))
+    // const isValid = isValidPhone(phoneNumber);
+    // if (!isValid) {
+    //   setError({ field: 'phone', message: 'Insira um telefone válido' });
       navigation.navigate('Frutas');
-    }
   };
 
   return (
@@ -56,10 +53,13 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
           limitCaracter={11}
           label='Digite o número de telefone do colaborador'
           placeholder='(00) 00000-0000'
-          onChange={(value: string) => handlePhoneNumberChange(value)}
-          value={phoneNumber}
+          onChange={(value: string) => dispatch(setPhone(value))}
+          value={phone}
         />
-        <ButtonComponent onPress={validatePhoneNumber} label='Próximo' />
+        <ButtonComponent 
+          onPress={validatePhoneNumber} 
+          label='Próximo' 
+        />
       </InputFormView>
     </Container>
   );

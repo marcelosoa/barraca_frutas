@@ -36,19 +36,18 @@ export default function RegisterCPFSupplierScreen({ navigation }: RouterComponen
     (state: {supplier: SupplierPropsState}) => state.supplier
   );
 
-  const handleCPFNumberChange = (value: string) => {
-    setInputCPF(value)
-    removeError('cpf')
-  }
+  // const handleCPFNumberChange = (value: string) => {
+  //   setInputCPF(value)
+  //   removeError('cpf')
+  // }
 
   const validateCPFNumber = () => {
-    const isValid = isValidCPF(inputCPF)
-    if (!isValid) {
-      setError({field: 'cpf', message: 'Insira um CPF válido' })
-    } else {
-      dispatch(setCPF(cpf))
+    // const isValid = isValidCPF(inputCPF)
+    // if (!isValid) {
+    //   setError({field: 'cpf', message: 'Insira um CPF válido' })
+    // } else {
+    //   dispatch(setCPF(cpf))
       navigation.navigate("Telefone")
-    }
   }
 
   return (
@@ -62,9 +61,9 @@ export default function RegisterCPFSupplierScreen({ navigation }: RouterComponen
           errors={getErrorMessageByFieldName('cpf')}
           limitCaracter={11}
           label='Digite o CPF do colaborador'
-          onChange={(value: string) => handleCPFNumberChange(value)}
+          onChange={(value: string) => dispatch(setCPF(value))}
           placeholder='000.000.000-00'
-          value={inputCPF}
+          value={cpf}
         />
         <ButtonComponent 
           onPress={validateCPFNumber} 

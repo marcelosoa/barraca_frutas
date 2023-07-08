@@ -16,7 +16,6 @@ export default function RegisterNameSupplier() {
     (state: { supplier: SupplierPropsState }) => state.supplier
   );
   const dispatch = useDispatch();
-  
   return (
     <Container>
       <ViewName>
