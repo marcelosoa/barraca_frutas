@@ -13,7 +13,11 @@ export default function InputFormComponent({ placeholder, label, onChange, limit
   return (
     <Container>
       <Label>{label}</Label>
-      <TextInput maxLength={limitCaracter} placeholder={placeholder} onChangeText={onChange} />
+      <TextInput 
+          maxLength={limitCaracter} 
+          placeholder={placeholder} 
+          onChangeText={onChange} 
+      />
       {errors && <ErrorText>{errors}</ErrorText>}
     </Container>
   );

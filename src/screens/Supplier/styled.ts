@@ -25,9 +25,9 @@ export const Text = styled.Text`
 
 export const Button = styled.TouchableOpacity`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
   background: ${({ theme }) => theme.colors.primary};
   gap: 8px;
   padding: 8px 16px;

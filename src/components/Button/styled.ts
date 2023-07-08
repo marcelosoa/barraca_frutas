@@ -13,6 +13,7 @@ export const Button = styled.TouchableOpacity`
 
 export const TextButton = styled.Text`
   color: ${({ theme}) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-size: 13px;
   font-style: normal;
   font-weight: 500;

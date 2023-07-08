@@ -13,7 +13,20 @@ export default function RegisterCPFSupplierScreen() {
   const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  
+  const handleCPFNumberChange = (value) => {
+    setCPF(value)
+    removeError('cpf')
+  }
+
+  const validateCPFNumber = () => {
+    const isValid = isValidCPF(cpf)
+    if (!isValid) {
+      console.log('caiu aqui')
+      setError({field: 'cpf', message: 'Insira um CPF válido' })
+    } else {
+      navigation.navigate('Telefone')
+    }
+  }
 
   return (
     <Container>
@@ -26,11 +39,11 @@ export default function RegisterCPFSupplierScreen() {
         errors={getErrorMessageByFieldName('cpf')}
           limitCaracter={11}
           label='Digite o CPF do colaborador'
-          onChange={() => {}}
+          onChange={handleCPFNumberChange}
           placeholder='000.000.000-00'
         />
         <ButtonComponent 
-        onPress={() => navigation.navigate('Telefone')} 
+        onPress={validateCPFNumber} 
         label='Próximo' 
         />
       </InputFormView>
