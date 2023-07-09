@@ -47,18 +47,16 @@ export const TextButton = styled.Text`
 export const ContainerSupplier = styled.SafeAreaView`
   display: flex;
   flex: 1;
-  padding: 48px;
+  padding-top: 48px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
   align-items: center;
   flex-direction: column;
+  gap: 24px;
 `
 
 export const SupplierCard = styled.View`
-  /* display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  border-radius: 8px;
-  color: ${({ theme }) => theme.colors.light_gray }; */
   width: 100%;
 `
 

@@ -1,17 +1,27 @@
 import React from "react";
-import { Container, Cards, CardsInput } from "./styled";
+import { Container, Text, View } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { StyleSheet } from 'react-native'
+import DropShadow from "react-native-drop-shadow";
 
 interface CardProps {
-  placeholder: string;
+  name: string,
+  cpf: string,
+  phone: string
 }
 
-export default function CardComponent({ placeholder }: CardProps) {
+export default function CardComponent({ name, cpf, phone }: CardProps) {
   return (
-    <Container>
-      <Cards>
-        <CardsInput placeholder={placeholder} underlineColorAndroid='transparent'/>
-      </Cards>
+      <Container>
+      <Text type="title">{name}</Text>
+      <View>
+        <Ionicons name="person-outline" size={32} />
+        <Text type="text">{cpf}</Text>
+      </View>
+      <View>
+        <Ionicons name="call-outline" size={32} />
+        <Text type="text">{phone}</Text>
+      </View>
     </Container>
   );
 }

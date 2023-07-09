@@ -9,7 +9,7 @@ interface SearchProps {
 export default function SearchComponent ({ label }: SearchProps) {
   return (
     <Container>
-      {/* <Ionicons size={26} name='search'/> */}
+      <Ionicons size={26} name='search'/>
       <SearchInput placeholder={label} />
     </Container>
   )

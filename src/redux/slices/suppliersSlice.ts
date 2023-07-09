@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface SupplierPropsState {
+  id: number;
   name: string;
   cpf: string;
   phone: string;
@@ -8,6 +9,7 @@ interface SupplierPropsState {
 }
 
 const initialState: SupplierPropsState = {
+  id: 0,
   name: '',
   cpf: '',
   phone: '',
@@ -19,7 +21,8 @@ const supplierSlice = createSlice({
   initialState,
   reducers: {
     setUserData: (state, action: PayloadAction<SupplierPropsState>) => {
-      const { name, cpf, phone, fruits } = action.payload;
+      const { id, name, cpf, phone, fruits } = action.payload;
+      state.id = id;
       state.name = name;
       state.cpf = cpf;
       state.phone = phone;

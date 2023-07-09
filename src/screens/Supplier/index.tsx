@@ -1,24 +1,50 @@
-import React from "react";
-import { Container, Text, Button, TextButton, ViewText } from "./styled";
+import React, { useEffect } from "react";
+import {
+  Container,
+  Text,
+  Button,
+  TextButton,
+  ViewText,
+  SupplierCard,
+  SupplierName,
+  ContainerSupplier
+} from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import SearchComponent from "../../components/InputSearch";
+import CardComponent from "../../components/Card";
+import ButtonComponent from "../../components/Button";
 
-export default function SupplierScreen() {
-  const navigation = useNavigation();
+type StackParamList = {
+  Home: undefined;
+  Cadastro: undefined;
+};
 
-  function handleNextPage() {
-    navigation.navigate("Nome");
-  }
+type RouterComponentProps = {
+  navigation: StackNavigationProp<StackParamList, any>;
+};
 
+export default function SupplierScreen({ navigation }: RouterComponentProps) {
+  const suppliers = useSelector((state: RootState) => state.supplier);
   return (
-    <Container>
-      <ViewText>
-        <Text> Cadastre seu primeiro fornecedor </Text>
-      </ViewText>
-      <Button onPress={handleNextPage}>
-        <Ionicons name="add" size={32} color={"#FFFFFF"} />
-        <TextButton>Cadastrar Fornecedor</TextButton>
-      </Button>
-    </Container>
+    <ContainerSupplier>
+      <SearchComponent label="Pesquisar Fornecedor" />
+      {suppliers && (
+        <CardComponent cpf="12366326726" name="Marcelo Soares" phone="21993794094"/>
+      )}
+    </ContainerSupplier>
   );
 }
+
+
+{/* <Container>
+        <ViewText>
+          <Text> Cadastre seu primeiro fornecedor </Text>
+        </ViewText>
+        <Button onPress={() => navigation.navigate("Nome")}>
+          <Ionicons name="add" size={32} color={"#FFFFFF"} />
+          <TextButton>Cadastrar Fornecedor</TextButton>
+        </Button>
+      </Container> */}
