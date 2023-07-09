@@ -45,6 +45,7 @@ export const TextButton = styled.Text`
 `;
 
 export const ContainerSupplier = styled.SafeAreaView`
+  background-color: ${({ theme }) => theme.colors.background};
   display: flex;
   flex: 1;
   padding-top: 48px;

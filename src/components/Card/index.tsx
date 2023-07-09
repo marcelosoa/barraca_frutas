@@ -1,18 +1,17 @@
 import React from "react";
 import { Container, Text, View } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet } from 'react-native'
-import DropShadow from "react-native-drop-shadow";
+import { StyleSheet } from "react-native";
 
 interface CardProps {
-  name: string,
-  cpf: string,
-  phone: string
+  name: string;
+  cpf: string;
+  phone: string;
 }
 
 export default function CardComponent({ name, cpf, phone }: CardProps) {
   return (
-      <Container>
+    <Container style={styled.inputCard}>
       <Text type="title">{name}</Text>
       <View>
         <Ionicons name="person-outline" size={32} />
@@ -25,3 +24,22 @@ export default function CardComponent({ name, cpf, phone }: CardProps) {
     </Container>
   );
 }
+
+const styled = StyleSheet.create({
+  inputCard: {
+    width: "100%",
+    flexDirection: "column",
+    display: "flex",
+    padding: 16,
+    elevation: 8,
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 6,
+  },
+});

@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { v4 as uuid } from 'uuid'
 interface Supplier {
-  id: uuidv4();
   name: string;
   cpf: string;
   phone: string;

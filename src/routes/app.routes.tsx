@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useTheme } from "styled-components";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 // Screens
@@ -11,7 +12,6 @@ import RegisterCPFSupplierScreen from "../screens/RegisterSupplier/cpf";
 import RegisterPhoneSupplierScreen from "../screens/RegisterSupplier/phone";
 import RegisterNameSupplier from "../screens/RegisterSupplier/name";
 import RegisterFruitSupplierScreen from "../screens/RegisterSupplier/fruits";
-import { useTheme } from "styled-components";
 import RegisterFruitScreen from "../screens/RegisterFruits";
 import RegisterSuccessScreen from "../screens/RegisterSupplier/sucess";
 

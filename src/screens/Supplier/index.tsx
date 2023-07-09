@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
-import ButtonComponent from "../../components/Button";
+import { StyleSheet } from 'react-native'
 
 type StackParamList = {
   Home: undefined;
@@ -60,21 +60,3 @@ export default function SupplierScreen({ navigation }: RouterComponentProps) {
     </>
   );
 }
-
-{
-  /* <Container>
-        <ViewText>
-          <Text> Cadastre seu primeiro fornecedor </Text>
-        </ViewText>
-        <Button onPress={() => navigation.navigate("Nome")}>
-          <Ionicons name="add" size={32} color={"#FFFFFF"} />
-          <TextButton>Cadastrar Fornecedor</TextButton>
-        </Button>
-      </Container>
- */
-}
-
-//   <ContainerSupplier>
-//   <SearchComponent label="Pesquisar Fornecedor" />
-//     <CardComponent cpf="12366326726" name="Marcelo Soares" phone="21993794094"/>
-// </ContainerSupplier>
