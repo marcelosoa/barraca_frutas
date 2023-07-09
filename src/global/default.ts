@@ -10,7 +10,8 @@ export default {
   text: {
     primary: '#FFF',
     black: '#212324',
-    light_gray: '#6C7072'
+    light_gray: '#6C7072',
+    text: '#363A3C'
 
   },
 

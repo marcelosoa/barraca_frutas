@@ -43,3 +43,29 @@ export const TextButton = styled.Text`
   letter-spacing: 1.25px;
   color: ${({ theme }) => theme.text.primary};
 `;
+
+export const ContainerSupplier = styled.SafeAreaView`
+  display: flex;
+  flex: 1;
+  padding: 48px;
+  align-items: center;
+  flex-direction: column;
+`
+
+export const SupplierCard = styled.View`
+  /* display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  color: ${({ theme }) => theme.colors.light_gray }; */
+  width: 100%;
+`
+
+export const SupplierName = styled.Text`
+  
+`
+
+export const NewSupplierButton = styled.TouchableOpacity `
+
+`
