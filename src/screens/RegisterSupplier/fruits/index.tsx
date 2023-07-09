@@ -9,6 +9,8 @@ import CheckBoxComponent from '../../../components/Checkbox';
 import { useDispatch, useSelector } from 'react-redux';
 import { SupplierPropsState } from '../../../interface/SupplierInterface';
 import { setFruits } from '../../../redux/reducers/suppliersReducer';
+import { saveState } from '../../../storage/Storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type StackParamList = {
   Home: undefined;
@@ -20,13 +22,13 @@ type RouterComponentProps = {
 };
 
 export default function RegisterFruitSupplierScreen({ navigation }: RouterComponentProps) {
-  const fruitsSelected: Option[] = [
-    { id: 'banana', label: 'Banana' },
-    { id: 'maca', label: 'Maçã' },
-    { id: 'laranja', label: 'Laranja' },
-    { id: 'abacaxi', label: 'Abacaxi' },
-    { id: 'morango', label: 'Morango' },
-  ];
+  // const fruitsSelected: Option[] = [
+  //   { id: 'banana', label: 'Banana' },
+  //   { id: 'maca', label: 'Maçã' },
+  //   { id: 'laranja', label: 'Laranja' },
+  //   { id: 'abacaxi', label: 'Abacaxi' },
+  //   { id: 'morango', label: 'Morango' },
+  // ];
 
   const dispatch = useDispatch();
 
@@ -34,10 +36,22 @@ export default function RegisterFruitSupplierScreen({ navigation }: RouterCompon
 
   const [selectedFruits, setSelectedFruits] = useState<string[]>([]);
 
-  const handleFruitChange = (selectedOptions: Option[]) => {
-    const selectedFruitIds = selectedOptions.map((option) => option.id);
-    setSelectedFruits(selectedFruitIds);
-    dispatch(setFruits(selectedFruitIds));
+  // const handleFruitChange = (selectedOptions: Option[]) => {
+  //   const selectedFruitIds = selectedOptions.map((option) => option.id);
+  //   setSelectedFruits(selectedFruitIds);
+  //   dispatch(setFruits(selectedFruitIds));
+  // };
+
+  const handleCadastroFornecedor = async () => {
+    const supplierData = { fruits: selectedFruits };
+    try {
+      await AsyncStorage.setItem('supplierData', JSON.stringify(supplierData));
+      dispatch(setFruits([])); // Reset the selected fruits state
+      setSelectedFruits([]); // Reset the selected fruits state
+      navigation.navigate('Success');
+    } catch (error) {
+      console.log('Error saving supplier data:', error);
+    }
   };
 
   return (
@@ -55,12 +69,8 @@ export default function RegisterFruitSupplierScreen({ navigation }: RouterCompon
           label="Escolha as frutas que esse fornecedor nos fornece"
           value={selectedFruits.join(', ')}
         />
-        {/* <CheckBoxComponent 
-          options={fruitsSelected} 
-          onChange={handleFruitChange} 
-        /> */}
         <ButtonComponent 
-          onPress={() => navigation.navigate('Success')}
+          onPress={handleCadastroFornecedor}
           label="Cadastrar Fornecedor"
         />
       </InputFormView>

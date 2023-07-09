@@ -27,14 +27,26 @@ type RouterComponentProps = {
 };
 
 export default function SupplierScreen({ navigation }: RouterComponentProps) {
+  
   const suppliers = useSelector((state: RootState) => state.supplier);
+  console.log(suppliers)
   return (
-    <ContainerSupplier>
+    <>
+    {suppliers ? <ContainerSupplier>
       <SearchComponent label="Pesquisar Fornecedor" />
       {suppliers && (
-        <CardComponent cpf="12366326726" name="Marcelo Soares" phone="21993794094"/>
+        <CardComponent cpf={suppliers.cpf} name={suppliers.name} phone={suppliers.phone}/>
       )}
-    </ContainerSupplier>
+    </ContainerSupplier> :<Container>
+        <ViewText>
+          <Text> Cadastre seu primeiro fornecedor </Text>
+        </ViewText>
+        <Button onPress={() => navigation.navigate("Nome")}>
+          <Ionicons name="add" size={32} color={"#FFFFFF"} />
+          <TextButton>Cadastrar Fornecedor</TextButton>
+        </Button>
+      </Container> }
+      </>
   );
 }
 
@@ -48,3 +60,11 @@ export default function SupplierScreen({ navigation }: RouterComponentProps) {
           <TextButton>Cadastrar Fornecedor</TextButton>
         </Button>
       </Container> */}
+
+
+    //   <ContainerSupplier>
+    //   <SearchComponent label="Pesquisar Fornecedor" />
+    //   {suppliers && (
+    //     <CardComponent cpf="12366326726" name="Marcelo Soares" phone="21993794094"/>
+    //   )}
+    // </ContainerSupplier>

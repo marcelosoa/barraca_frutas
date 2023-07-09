@@ -27,7 +27,7 @@ function HomeTabs() {
         tabBarActiveTintColor: theme.colors.primary,
         headerTintColor: theme.colors.primary,
         tabBarStyle: {
-          height: 88,
+          height: 76,
         },
         tabBarLabelStyle: {
           fontSize: 14,
