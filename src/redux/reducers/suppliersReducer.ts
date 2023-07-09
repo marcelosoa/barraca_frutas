@@ -1,37 +1,35 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface SupplierState {
+interface Supplier {
   name: string;
   cpf: string;
   phone: string;
   fruits: string[];
 }
+interface SuppliersState {
+  suppliers: Supplier[];
+}
 
-const initialState: SupplierState = {
-  name: "",
-  cpf: "",
-  phone: "",
-  fruits: [],
+const initialState: SuppliersState = {
+  suppliers: [],
 };
 
 const supplierSlice = createSlice({
   name: "supplier",
   initialState,
   reducers: {
-    setName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+    addSupplier: (state, action: PayloadAction<Supplier>) => {
+      state.suppliers.push(action.payload);
     },
-    setCPF: (state, action: PayloadAction<string>) => {
-      state.cpf = action.payload;
+    removeSupplier: (state, action: PayloadAction<number>) => {
+      state.suppliers.splice(action.payload, 1);
     },
-    setPhone: (state, action: PayloadAction<string>) => {
-      state.phone = action.payload;
-    },
-    setFruits: (state, action: PayloadAction<string[]>) => {
-      state.fruits = action.payload;
+    updateSupplier: (state, action: PayloadAction<{ index: number; supplier: Supplier }>) => {
+      const { index, supplier } = action.payload;
+      state.suppliers[index] = supplier;
     },
   },
 });
 
-export const { setName, setCPF, setPhone, setFruits } = supplierSlice.actions;
+export const { addSupplier, removeSupplier, updateSupplier } = supplierSlice.actions;
 export default supplierSlice.reducer;

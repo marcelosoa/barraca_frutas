@@ -7,7 +7,7 @@ import {
   ViewText,
   SupplierCard,
   SupplierName,
-  ContainerSupplier
+  ContainerSupplier,
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -27,31 +27,36 @@ type RouterComponentProps = {
 };
 
 export default function SupplierScreen({ navigation }: RouterComponentProps) {
-  
   const suppliers = useSelector((state: RootState) => state.supplier);
-  console.log(suppliers)
+  console.log(suppliers);
   return (
     <>
-    {suppliers ? <ContainerSupplier>
-      <SearchComponent label="Pesquisar Fornecedor" />
-      {suppliers && (
-        <CardComponent cpf={suppliers.cpf} name={suppliers.name} phone={suppliers.phone}/>
+      {suppliers ? (
+        <ContainerSupplier>
+          <SearchComponent label="Pesquisar Fornecedor" />
+          <CardComponent
+            cpf="123"
+            name="Marcelo"
+            phone="21993794094"
+          />
+        </ContainerSupplier>
+      ) : (
+        <Container>
+          <ViewText>
+            <Text> Cadastre seu primeiro fornecedor </Text>
+          </ViewText>
+          <Button onPress={() => navigation.navigate("Nome")}>
+            <Ionicons name="add" size={32} color={"#FFFFFF"} />
+            <TextButton>Cadastrar Fornecedor</TextButton>
+          </Button>
+        </Container>
       )}
-    </ContainerSupplier> :<Container>
-        <ViewText>
-          <Text> Cadastre seu primeiro fornecedor </Text>
-        </ViewText>
-        <Button onPress={() => navigation.navigate("Nome")}>
-          <Ionicons name="add" size={32} color={"#FFFFFF"} />
-          <TextButton>Cadastrar Fornecedor</TextButton>
-        </Button>
-      </Container> }
-      </>
+    </>
   );
 }
 
-
-{/* <Container>
+{
+  /* <Container>
         <ViewText>
           <Text> Cadastre seu primeiro fornecedor </Text>
         </ViewText>
@@ -59,12 +64,11 @@ export default function SupplierScreen({ navigation }: RouterComponentProps) {
           <Ionicons name="add" size={32} color={"#FFFFFF"} />
           <TextButton>Cadastrar Fornecedor</TextButton>
         </Button>
-      </Container> */}
+      </Container>
+ */
+}
 
-
-    //   <ContainerSupplier>
-    //   <SearchComponent label="Pesquisar Fornecedor" />
-    //   {suppliers && (
-    //     <CardComponent cpf="12366326726" name="Marcelo Soares" phone="21993794094"/>
-    //   )}
-    // </ContainerSupplier>
+//   <ContainerSupplier>
+//   <SearchComponent label="Pesquisar Fornecedor" />
+//     <CardComponent cpf="12366326726" name="Marcelo Soares" phone="21993794094"/>
+// </ContainerSupplier>
