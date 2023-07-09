@@ -8,6 +8,7 @@ import {
   SupplierCard,
   SupplierName,
   ContainerSupplier,
+  NewSupplierButton,
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -39,6 +40,11 @@ export default function SupplierScreen({ navigation }: RouterComponentProps) {
             name="Marcelo"
             phone="21993794094"
           />
+          <NewSupplierButton onPress={() => navigation.navigate('Nome')}>
+            <SupplierName>
+              +
+            </SupplierName>
+          </NewSupplierButton>
         </ContainerSupplier>
       ) : (
         <Container>

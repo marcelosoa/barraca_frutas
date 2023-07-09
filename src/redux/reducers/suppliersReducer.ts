@@ -1,16 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
+import { v4 as uuid } from 'uuid'
 interface Supplier {
+  id: uuidv4();
   name: string;
   cpf: string;
   phone: string;
-  fruits: string[];
 }
-interface SuppliersState {
+
+interface SupplierState {
   suppliers: Supplier[];
 }
 
-const initialState: SuppliersState = {
+const initialState: SupplierState = {
   suppliers: [],
 };
 
@@ -24,12 +25,8 @@ const supplierSlice = createSlice({
     removeSupplier: (state, action: PayloadAction<number>) => {
       state.suppliers.splice(action.payload, 1);
     },
-    updateSupplier: (state, action: PayloadAction<{ index: number; supplier: Supplier }>) => {
-      const { index, supplier } = action.payload;
-      state.suppliers[index] = supplier;
-    },
   },
 });
 
-export const { addSupplier, removeSupplier, updateSupplier } = supplierSlice.actions;
+export const { addSupplier, removeSupplier } = supplierSlice.actions;
 export default supplierSlice.reducer;

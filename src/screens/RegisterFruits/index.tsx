@@ -10,9 +10,9 @@ export default function RegisterFruitScreen() {
         <Ionicons name="close" size={32} />
       </ViewName>
       <Text> Cadastrar Fruta </Text>
-      <FruitCards>
+      {/* <FruitCards>
         <CardComponent placeholder="Nome da fruta"/>
-      </FruitCards>
+      </FruitCards> */}
     </Container>
   );
 }

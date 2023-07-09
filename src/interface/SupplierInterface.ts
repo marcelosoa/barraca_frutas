@@ -1,6 +1,10 @@
-export interface SupplierPropsState {
-  name: string;
-  cpf: string;
-  phone: string;
-  fruits: string[];
-}
+// export interface Supplier {
+//   id:
+//   name: string;
+//   cpf: string;
+//   phone: string;
+// }
+
+// export interface SupplierState {
+//   suppliers: Supplier[]
+// }

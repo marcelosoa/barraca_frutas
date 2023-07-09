@@ -6,15 +6,14 @@ import ButtonComponent from "../../../components/Button";
 import { useNavigation } from "@react-navigation/native";
 import RouterComponent from "../../../components/Router";
 import { useDispatch, useSelector } from "react-redux";
-import { SupplierPropsState } from "../../../interface/SupplierInterface";
-import { setName } from "../../../redux/reducers/suppliersReducer";
 
 export default function RegisterNameSupplier() {
   const navigation = useNavigation();
 
-  const { name } = useSelector(
-    (state: { supplier: SupplierPropsState }) => state.supplier
+  const { addSupplier } = useSelector(
+    (state: { supplier: Supplier }) => state.supplier
   );
+  
   const dispatch = useDispatch();
   return (
     <Container>
@@ -27,7 +26,7 @@ export default function RegisterNameSupplier() {
           label="Digite o Nome do colaborador"
           onChange={(value: string) => dispatch(setName(value))}
           placeholder="Nome"
-          value={name}
+          value={addSupplier}
         />
         <ButtonComponent
           onPress={() => navigation.navigate("CPF")}
