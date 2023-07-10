@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Container, ContainerView, Button, Text } from './styled'
 
 interface Option {
   id: string;
@@ -24,11 +24,10 @@ export default function CheckBoxComponent({ options = [], onChange }: CheckBoxPr
   }
 
   return (
-    <View style={styles.container}>
+    <Container>
       {options.map((option) => (
-        <View key={option.id} style={styles.optionContainer}>
-          <TouchableOpacity
-            style={styles.touchable}
+        <ContainerView key={option.id}>
+          <Button
             onPress={() => handleToggleSelected(option)}
           >
             <MaterialCommunityIcons
@@ -36,35 +35,12 @@ export default function CheckBoxComponent({ options = [], onChange }: CheckBoxPr
                 ? 'checkbox-marked-outline'
                 : 'checkbox-blank-outline'}
               size={24}
-              color={selected.some((item) => item.id === option.id) ? 'black' : 'gray'}
+              color={selected.some((item) => item.id === option.id) ? 'red' : 'black'}
             />
-          </TouchableOpacity>
-          <Text style={styles.opText}>{option.label}</Text>
-        </View>
+          </Button>
+          <Text>{option.label}</Text>
+        </ContainerView>
       ))}
-    </View>
+    </Container>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    marginLeft: 12,
-  },
-  optionContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  opText: {
-    marginLeft: 12,
-    color: '#555',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  touchable: {
-    height: 20,
-    width: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
