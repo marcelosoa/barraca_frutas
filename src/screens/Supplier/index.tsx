@@ -5,7 +5,6 @@ import {
   Button,
   TextButton,
   ViewText,
-  SupplierCard,
   SupplierName,
   ContainerSupplier,
   NewSupplierButton,
@@ -16,7 +15,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
-import { StyleSheet } from 'react-native'
 
 type StackParamList = {
   Home: undefined;
@@ -28,24 +26,26 @@ type RouterComponentProps = {
 };
 
 export default function SupplierScreen({ navigation }: RouterComponentProps) {
+  
   const suppliers = useSelector((state: RootState) => state.supplier);
-  console.log(suppliers);
   return (
     <>
       {suppliers ? (
+        <>
         <ContainerSupplier>
           <SearchComponent label="Pesquisar Fornecedor" />
           <CardComponent
-            cpf="123"
+            cpf="000.000.000-00"
             name="Marcelo"
-            phone="21993794094"
+            phone="(00) 00000-0000"
           />
-          <NewSupplierButton onPress={() => navigation.navigate('Nome')}>
-            <SupplierName>
-              +
-            </SupplierName>
-          </NewSupplierButton>
         </ContainerSupplier>
+        <NewSupplierButton onPress={() => navigation.navigate('Nome')}>
+        <SupplierName>
+          <Ionicons name="add" size={32}/>
+        </SupplierName>
+      </NewSupplierButton>
+      </>
       ) : (
         <Container>
           <ViewText>

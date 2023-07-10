@@ -12,8 +12,8 @@ export const Container = styled.View`
 `
 
 export const SearchInput = styled.TextInput`
-  font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: 12px;
+  font-family: ${({ theme }) => theme.fonts.medium };
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;

@@ -56,15 +56,12 @@ export const ContainerSupplier = styled.SafeAreaView`
   flex-direction: column;
   gap: 24px;
 `
-
-export const SupplierCard = styled.View`
-  width: 100%;
-`
-
-export const SupplierName = styled.Text`
-  
-`
-
 export const NewSupplierButton = styled.TouchableOpacity `
-
 `
+export const SupplierName = styled.Text`
+  background-color: ${({ theme }) => theme.colors.primary };
+  color: ${({ theme }) => theme.colors.background };
+  padding: 16px;
+  border-radius: 24px;
+`
+

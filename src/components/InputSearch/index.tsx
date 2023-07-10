@@ -18,7 +18,6 @@ export default function SearchComponent ({ label }: SearchProps) {
 
 const styled = StyleSheet.create({
   inputSearch: {
-    elevation: 0,
     backgroundColor: "#fff",
     borderRadius: 8,
     shadowColor: "black",
