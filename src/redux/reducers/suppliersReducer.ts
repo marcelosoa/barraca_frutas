@@ -32,7 +32,7 @@ const supplierSlice = createSlice({
         supplier => supplier.id !== action.payload
       );
     },
-    addName: (state, action: PayloadAction<{ id: string, name: string }>) => {
+    addName: (state, action: PayloadAction<Supplier>) => {
       state.suppliers = state.suppliers.map(supplier => {
         if (supplier.id === action.payload.id) {
           return {
@@ -43,7 +43,7 @@ const supplierSlice = createSlice({
         return supplier;
       });
     },
-    addCPF: (state, action: PayloadAction<{ id: string, cpf: string }>) => {
+    addCPF: (state, action: PayloadAction<Supplier>) => {
       state.suppliers = state.suppliers.map(supplier => {
         if (supplier.id === action.payload.id) {
           return {
@@ -54,7 +54,7 @@ const supplierSlice = createSlice({
         return supplier;
       });
     },
-    addNumber: (state, action: PayloadAction<{ id: string, phone: string }>) => {
+    addNumber: (state, action: PayloadAction<Supplier>) => {
       state.suppliers = state.suppliers.map(supplier => {
         if (supplier.id === action.payload.id) {
           return {

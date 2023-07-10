@@ -5,8 +5,9 @@ import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
 import { useNavigation } from "@react-navigation/native";
 import RouterComponent from "../../../components/Router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addName } from '../../../redux/reducers/suppliersReducer'
+import { RootState } from "../../../redux/store";
 
 export default function RegisterNameSupplier() {
   const navigation = useNavigation();
@@ -33,7 +34,9 @@ export default function RegisterNameSupplier() {
           value={name}
         />
         <ButtonComponent
-          onPress={() => navigation.navigate("CPF")}
+          onPress={() => navigation.navigate("CPF", {
+            name: name
+          })}
           label="Próximo"
         />
       </InputFormView>

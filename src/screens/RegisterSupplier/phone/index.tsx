@@ -9,17 +9,26 @@ import useErrors from '../../../hooks/useErros';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { addNumber } from '../../../redux/reducers/suppliersReducer';
 import { useDispatch, useSelector } from 'react-redux';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 
-type StackParamList = {
+type RootStackParamList = {
   Home: undefined;
-  Cadastro: undefined;
+  Profile: { userId: string };
 };
 
-type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
-};
+type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
-export default function RegisterPhoneSupplierScreen({ navigation }: RouterComponentProps) { 
+type Props = {
+  route: HomeScreenRouteProp;
+  navigation: HomeScreenNavigationProp
+}
+
+
+export default function RegisterPhoneSupplierScreen({ navigation, route }: Props) { 
+  const { cpf, name } = route.params
+  console.log(cpf)
+
   const dispatch = useDispatch()
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
@@ -45,7 +54,11 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
           value={phoneNumber}
         />
         <ButtonComponent 
-          onPress={() => navigation.navigate('Frutas')} 
+          onPress={() => navigation.navigate('Frutas', {
+            name: name,
+            cpf: cpf,
+            phone: phoneNumber
+          })} 
           label='Próximo' 
         />
       </InputFormView>

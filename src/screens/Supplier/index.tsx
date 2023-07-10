@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Container,
   Text,
@@ -28,7 +28,6 @@ type RouterComponentProps = {
 
 export default function SupplierScreen({ navigation }: RouterComponentProps) {
   const suppliers = useSelector((state: RootState) => state.supplier);
-  console.log(suppliers)
 
   return (
     <>

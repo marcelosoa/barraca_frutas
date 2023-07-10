@@ -12,21 +12,27 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import isValidCPF from '../../../utils/validCPF/isValidCPF';
 // Hooks
 import useErrors from '../../../hooks/useErros';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // Redux
 import { addCPF } from '../../../redux/reducers/suppliersReducer';
+import { RouteProp } from '@react-navigation/native';
 
-type StackParamList = {
+type RootStackParamList = {
   Home: undefined;
-  Cadastro: undefined;
+  Profile: { userId: string };
 };
 
-type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
-};
+type RouterProps = RouteProp<RootStackParamList, 'Home'>;
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
-export default function RegisterCPFSupplierScreen({ navigation }: RouterComponentProps) {
+type Props = {
+  route: RouterProps;
+  navigation: HomeScreenNavigationProp
+}
+
+export default function RegisterCPFSupplierScreen({ navigation, route }: Props) {
+  const { name } = route.params;
   const dispatch = useDispatch();
   const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
@@ -52,7 +58,10 @@ export default function RegisterCPFSupplierScreen({ navigation }: RouterComponen
           value={cpf}
         />
         <ButtonComponent 
-          onPress={() => navigation.navigate('Telefone')} 
+          onPress={() => navigation.navigate('Telefone', {
+            name: name,
+            cpf: cpf
+          })} 
           label='Próximo' 
         />
       </InputFormView>

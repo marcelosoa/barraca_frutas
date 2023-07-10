@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Container, ViewName, InputFormView } from './styled';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import RouterComponent from '../../../components/Router';
 import { StackNavigationProp } from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useDispatch, useSelector } from 'react-redux';
-import { Supplier, SupplierState } from '../../../interface/SupplierInterface';
-import { addName, addSupplier } from '../../../redux/reducers/suppliersReducer';
-import { v4 as uuidv4 } from 'uuid';
-import { RootState } from '../../../redux/store';
+import { useDispatch } from 'react-redux';
+import { Supplier } from '../../../interface/SupplierInterface';
+import { addSupplier } from '../../../redux/reducers/suppliersReducer';
+import { useNavigation } from '@react-navigation/native';
 
 type StackParamList = {
   Home: undefined;
@@ -21,15 +19,20 @@ type RouterComponentProps = {
   navigation: StackNavigationProp<StackParamList, any>;
 };
 
-export default function RegisterFruitSupplierScreen({ navigation }: RouterComponentProps) {
+export default function RegisterFruitSupplierScreen({ route }) {
+  const navigation = useNavigation()
   const dispatch = useDispatch();
-
+  const { name, cpf, phone } = route.params;
+  console.log(name)
+  console.log(cpf)
+  console.log(phone)
+  
   const handleSaveDatas = () => {
     const newSupplier: Supplier = {
       id: 0,
-      name: 'Emilio',
-      cpf: '12366326726',
-      phone: '21993794094'
+      name: name,
+      cpf: cpf,
+      phone: phone
     };
     dispatch(addSupplier(newSupplier));
     navigation.navigate('Success');
