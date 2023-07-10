@@ -1,60 +1,35 @@
 import styled from 'styled-components/native'
 
-interface ContainerProps {
-  danger: boolean
-}
 
-export const Overlay = styled.View`
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(7px);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+export const ViewModal = styled.View`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-`
-
-export const Container = styled.View<ContainerProps>`
-  width: 100%;
-  max-width: 450px;
-  background: #fff;
-  border-radius: 4px;
+  border-radius: 8px;
+  background-color:  ${({ theme }) => theme.colors.shape };
+  gap: 16px;
   padding: 24px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
-  width: 450px;
-
-  h1 {
-    font-size: 22px;
-    color: ${({ theme, danger }) => (
-    danger ? theme.colors.danger.main : theme.colors.grey[900]
-  )};
-  }
-
-  p {
-    margin-top: 8px;
-  }
-`;
-
-export const Text = styled.Text`
-
+  flex-direction: column;
 `
 
-export const Footer = styled.View`
-  margin-top: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+export const ModalText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular };
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  gap: 16px;
+`
 
-  .cancel-button {
-    background: transparent;
-    border: none;
-    font-size: 16;
-    margin-right: 8px;
-    color: ${({ theme }) => theme.colors.grey[200]};
-  }
-`;
-
-export const CancelButton = styled.TouchableOpacity``
+export const ContentModal = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular };
+  color: ${({ theme }) => theme.colors.dark_gray};
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  width: 100%;
+  gap: 16px;
+  flex-wrap: wrap;
+`

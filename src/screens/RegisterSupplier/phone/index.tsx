@@ -27,7 +27,6 @@ type Props = {
 
 export default function RegisterPhoneSupplierScreen({ navigation, route }: Props) { 
   const { cpf, name } = route.params
-  console.log(cpf)
 
   const dispatch = useDispatch()
   const [phoneNumber, setPhoneNumber] = useState('');

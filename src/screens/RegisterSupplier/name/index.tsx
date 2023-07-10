@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Container, ViewName, InputFormView } from "./styled";
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
 import { useNavigation } from "@react-navigation/native";
 import RouterComponent from "../../../components/Router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addName } from '../../../redux/reducers/suppliersReducer'
-import { RootState } from "../../../redux/store";
+import ModalComponent from "../../../components/Modal";
 
 export default function RegisterNameSupplier() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -20,10 +22,26 @@ export default function RegisterNameSupplier() {
     dispatch(addName(value));
   };
 
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
   return (
     <Container>
       <ViewName>
-        <Ionicons name="close" size={32} color={"#930000"} />
+        <Ionicons
+          name="close"
+          size={32}
+          color={"#930000"}
+          onPress={handleOpenModal}
+        />
+        {isModalVisible && (
+          <ModalComponent
+            isVisible={isModalVisible}
+            text="Cancelar Cadastro"
+            contentText="Tem certeza que quer cancelar o cadastro do colaborador? Você perderá todas as informações inseridas até aqui"
+          />
+        )}
       </ViewName>
       <RouterComponent />
       <InputFormView>
@@ -34,13 +52,12 @@ export default function RegisterNameSupplier() {
           value={name}
         />
         <ButtonComponent
-          onPress={() => navigation.navigate("CPF", {
-            name: name
-          })}
+          onPress={() => navigation.navigate("CPF", { name: name })}
           label="Próximo"
         />
       </InputFormView>
     </Container>
   );
 }
+
 

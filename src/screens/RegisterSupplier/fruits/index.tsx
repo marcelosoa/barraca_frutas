@@ -23,9 +23,6 @@ export default function RegisterFruitSupplierScreen({ route }) {
   const navigation = useNavigation()
   const dispatch = useDispatch();
   const { name, cpf, phone } = route.params;
-  console.log(name)
-  console.log(cpf)
-  console.log(phone)
   
   const handleSaveDatas = () => {
     const newSupplier: Supplier = {
