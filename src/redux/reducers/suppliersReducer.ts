@@ -6,6 +6,7 @@ interface Supplier {
   name: string;
   cpf: string;
   phone: string;
+  fruits: string[]
 }
 
 interface SupplierState {
