@@ -20,7 +20,7 @@ export const Text = styled.Text<TextProps>`
           overflow: hidden;
           color: ${({ theme }) => theme.text.black};
 
-          font-family: ${({ theme }) => theme.fonts.regular};
+          font-family: ${({ theme }) => theme.fonts.medium};
           font-size: 16px;
           font-style: normal;
           font-weight: 400;
@@ -31,8 +31,8 @@ export const Text = styled.Text<TextProps>`
           overflow: hidden;
           color: ${({ theme }) => theme.text.light_gray};
 
-          font-family: ${({ theme }) => theme.fonts.regular};
-          font-size: 13px;
+          font-family: ${({ theme }) => theme.fonts.medium};
+          font-size: 15px;
           font-style: normal;
           font-weight: 500;
           line-height: 24px;

@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const Label = styled.Text`
 font-size: 15px;
-font-family: ${({ theme }) => theme.fonts.regular};
+font-family: ${({ theme }) => theme.fonts.medium};
 font-style: normal;
 font-weight: 400;
 line-height: 24px;
