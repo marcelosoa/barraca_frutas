@@ -4,8 +4,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
 
 interface CardProps {
-  name: string;
   cpf: string;
+  name: string;
   phone: string;
 }
 

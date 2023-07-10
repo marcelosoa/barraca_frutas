@@ -20,13 +20,14 @@ import CardComponent from "../../components/Card";
 type StackParamList = {
   Nome: undefined;
   Cadastro: undefined;
+  Supplier: undefined
 };
 
 type RouterComponentProps = {
   navigation: StackNavigationProp<StackParamList, any>;
 };
 
-export default function SupplierScreen({ navigation }: RouterComponentProps) {
+export default function SuppliersScreen({ navigation }: RouterComponentProps) {
   const suppliers = useSelector((state: RootState) => state.supplier);
 
   return (
@@ -35,7 +36,7 @@ export default function SupplierScreen({ navigation }: RouterComponentProps) {
         <>
           <ContainerSupplier>
             <SearchComponent label="Pesquisar Fornecedor" />
-            <ContentContainer>
+            <ContentContainer onPress={() => navigation.navigate('Supplier')}>
             {suppliers.suppliers.map((supplier) => (
               <CardComponent
                 key={supplier.id}

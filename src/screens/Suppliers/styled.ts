@@ -56,7 +56,7 @@ export const ContainerSupplier = styled.ScrollView`
   gap: 16px;
 `
 
-export const ContentContainer = styled.View`
+export const ContentContainer = styled.TouchableOpacity`
   display: flex;
   align-items: center;
   flex-direction: column;

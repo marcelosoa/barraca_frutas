@@ -6,7 +6,6 @@ import { useTheme } from "styled-components";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 // Screens
-import SupplierScreen from "../screens/Supplier";
 import FruitsScreen from "../screens/Fruits";
 import RegisterCPFSupplierScreen from "../screens/RegisterSupplier/cpf";
 import RegisterPhoneSupplierScreen from "../screens/RegisterSupplier/phone";
@@ -14,6 +13,8 @@ import RegisterNameSupplier from "../screens/RegisterSupplier/name";
 import RegisterFruitSupplierScreen from "../screens/RegisterSupplier/fruits";
 import RegisterFruitScreen from "../screens/RegisterFruits";
 import RegisterSuccessScreen from "../screens/RegisterSupplier/sucess";
+import SuppliersScreen from "../screens/Suppliers";
+import SupplierScreen from "../screens/Suppliers/supplier";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -37,7 +38,7 @@ function HomeTabs() {
     >
       <Tab.Screen
         name="Fornecedor"
-        component={SupplierScreen}
+        component={SuppliersScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="people-sharp" size={45} color={color} />
@@ -72,6 +73,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="RegistrarFrutas" component={RegisterFruitScreen} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
+        <Stack.Screen name="Supplier" component={SupplierScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
