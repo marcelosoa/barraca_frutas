@@ -25,7 +25,7 @@ export const ModalText = styled.Text`
 export const ContentModal = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular };
   color: ${({ theme }) => theme.colors.dark_gray};
-  font-size: 24px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 30px;

@@ -3,6 +3,13 @@ import {
   Container,
   TextSupplier,
   ViewContent,
+  SupplierView,
+  SupplierName,
+  SupplierContentView,
+  SupplierInfosText,
+  SupplierFruits,
+  SupplierText,
+  SupplierFruitsContent
 } from "./styled";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
@@ -21,15 +28,34 @@ type RouterComponentProps = {
 };
 
 
-export default function SupplierScreen({ navigation }: RouterComponentProps ) {
+export default function SupplierScreen({ navigation }: RouterComponentProps) {
   const suppliers = useSelector((state: RootState) => state.supplier);
 
   return (
     <Container>
       <ViewContent>
         <TextSupplier>Fornecedor</TextSupplier>
-        <Ionicons name="close" size={32} onPress={() => navigation.navigate('Fornecedor')}/>
+        <Ionicons name="close" size={32} onPress={() => navigation.navigate('Fornecedor')} />
       </ViewContent>
+      <SupplierView>
+        {suppliers.suppliers.map((supplier) => (
+          <SupplierContentView key={supplier.id}>
+            <SupplierName>{supplier.name}</SupplierName>
+            <SupplierInfosText>
+              <Ionicons name="person-outline" size={24} />
+              {supplier.cpf}
+            </SupplierInfosText>
+            <SupplierInfosText>
+              <Ionicons name="call-outline" size={24} />
+              {supplier.phone}
+            </SupplierInfosText>
+            <SupplierFruits>
+              <SupplierText>Frutas</SupplierText>
+              <SupplierFruitsContent></SupplierFruitsContent>
+            </SupplierFruits>
+          </SupplierContentView>
+        ))}
+      </SupplierView>
     </Container>
   );
 }
