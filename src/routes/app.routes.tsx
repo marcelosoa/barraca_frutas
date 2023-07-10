@@ -70,7 +70,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Nome" component={RegisterNameSupplier} />
         <Stack.Screen name="CPF" component={RegisterCPFSupplierScreen} />
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
-        <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
+        <Stack.Screen name="FrutasScreen" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="RegistrarFrutas" component={RegisterFruitScreen} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
         <Stack.Screen name="Supplier" component={SupplierScreen} />

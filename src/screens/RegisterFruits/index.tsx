@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Container, Text, ViewContent, TextInput, FruitView, Button, TextButton } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RegisterFruitScreen() {
-  const [selectedLanguage, setSelectedLanguage] = useState();
+  const navigation = useNavigation()
+
   return (
     <Container>
       <ViewContent>
         <Text>Cadastrar Fruta</Text>
-        <Ionicons name="close" size={32} />
+        <Ionicons name="close" size={32} onPress={() => navigation.navigate('Frutas')}/>
       </ViewContent>
       <FruitView>
         <Ionicons name="nutrition-outline" size={32} />

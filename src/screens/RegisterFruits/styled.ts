@@ -31,14 +31,21 @@ export const Text = styled.Text`
 export const FruitView = styled.View`
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
   padding: 16px 8px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.shape};
 `
 
 export const TextInput = styled.TextInput<TextInputProps>`
-  
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  width: 100%;
+  color: ${({ theme }) => theme.colors.light_gray}
 `
 
 export const Button = styled.TouchableOpacity`
@@ -48,12 +55,12 @@ export const Button = styled.TouchableOpacity`
 `
 
 export const TextButton = styled.Text`
-text-align: center;
-font-family: ${({ theme }) => theme.fonts.regular};
-color: ${({ theme }) => theme.colors.shape };
-font-size: 13px;
-font-style: normal;
-font-weight: 500;
-line-height: 16px;
-letter-spacing: 1.25px;
+  text-align: center;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.shape };
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 1.25px;
 `
