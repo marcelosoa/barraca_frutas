@@ -23,10 +23,6 @@ export default function CheckBoxComponent({ options = [], onChange }: CheckBoxPr
     setSelected(updatedSelected);
   }
 
-  React.useEffect(() => {
-    onChange(selected);
-  }, [selected, onChange]);
-
   return (
     <View style={styles.container}>
       {options.map((option) => (

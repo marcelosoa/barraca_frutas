@@ -53,14 +53,14 @@ export const ContainerSupplier = styled.ScrollView`
   padding-right: 16px;
   padding-bottom: 16px;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 `
 
 export const ContentContainer = styled.View`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 `
 
 export const NewSupplierButton = styled.TouchableOpacity `

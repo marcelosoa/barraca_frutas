@@ -27,17 +27,18 @@ export default function CardComponent({ name, cpf, phone }: CardProps) {
 
 const styled = StyleSheet.create({
   inputCard: {
+    marginTop: 24,
     width: "100%",
     flexDirection: "column",
     display: "flex",
     padding: 16,
-    elevation: 8,
+    elevation: 2,
     backgroundColor: "#fff",
     borderRadius: 8,
     shadowColor: "black",
     shadowOffset: {
       width: 0,
-      height: 5,
+       height: 5,
     },
     shadowOpacity: 0.8,
     shadowRadius: 6,

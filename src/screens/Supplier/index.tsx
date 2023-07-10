@@ -18,7 +18,7 @@ import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
 
 type StackParamList = {
-  Home: undefined;
+  Nome: undefined;
   Cadastro: undefined;
 };
 
