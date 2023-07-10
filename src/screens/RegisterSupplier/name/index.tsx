@@ -1,20 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Container, ViewName, InputFormView } from "./styled";
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
 import { useNavigation } from "@react-navigation/native";
 import RouterComponent from "../../../components/Router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addName } from '../../../redux/reducers/suppliersReducer'
 
 export default function RegisterNameSupplier() {
   const navigation = useNavigation();
-
-  const { addSupplier } = useSelector(
-    (state: { supplier: Supplier }) => state.supplier
-  );
-  
   const dispatch = useDispatch();
+
+  const [name, setName] = useState('');
+
+  const handleNameChange = (value) => {
+    setName(value);
+    dispatch(addName(value));
+  };
+
   return (
     <Container>
       <ViewName>
@@ -24,9 +28,9 @@ export default function RegisterNameSupplier() {
       <InputFormView>
         <InputFormComponent
           label="Digite o Nome do colaborador"
-          onChange={(value: string) => dispatch(setName(value))}
+          onChange={handleNameChange}
           placeholder="Nome"
-          value={addSupplier}
+          value={name}
         />
         <ButtonComponent
           onPress={() => navigation.navigate("CPF")}
@@ -36,3 +40,4 @@ export default function RegisterNameSupplier() {
     </Container>
   );
 }
+

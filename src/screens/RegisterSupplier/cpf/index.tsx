@@ -13,10 +13,9 @@ import isValidCPF from '../../../utils/validCPF/isValidCPF';
 // Hooks
 import useErrors from '../../../hooks/useErros';
 import { useDispatch, useSelector } from 'react-redux';
-import { SupplierPropsState } from '../../../interface/SupplierInterface';
 
 // Redux
-import { setCPF } from '../../../redux/reducers/suppliersReducer';
+import { addCPF } from '../../../redux/reducers/suppliersReducer';
 
 type StackParamList = {
   Home: undefined;
@@ -28,27 +27,14 @@ type RouterComponentProps = {
 };
 
 export default function RegisterCPFSupplierScreen({ navigation }: RouterComponentProps) {
-  const dispatch = useDispatch()
-  const [inputCPF, setInputCPF] = useState('');
+  const dispatch = useDispatch();
+  const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const { cpf } = useSelector(
-    (state: {supplier: SupplierPropsState}) => state.supplier
-  );
-
-  // const handleCPFNumberChange = (value: string) => {
-  //   setInputCPF(value)
-  //   removeError('cpf')
-  // }
-
-  const validateCPFNumber = () => {
-    // const isValid = isValidCPF(inputCPF)
-    // if (!isValid) {
-    //   setError({field: 'cpf', message: 'Insira um CPF válido' })
-    // } else {
-    //   dispatch(setCPF(cpf))
-      navigation.navigate("Telefone")
-  }
+  const handleNameChange = (value) => {
+    setCPF(value);
+    dispatch(addCPF(value));
+  };
 
   return (
     <Container>
@@ -61,12 +47,12 @@ export default function RegisterCPFSupplierScreen({ navigation }: RouterComponen
           errors={getErrorMessageByFieldName('cpf')}
           limitCaracter={11}
           label='Digite o CPF do colaborador'
-          onChange={(value: string) => dispatch(setCPF(value))}
+          onChange={handleNameChange}
           placeholder='000.000.000-00'
           value={cpf}
         />
         <ButtonComponent 
-          onPress={validateCPFNumber} 
+          onPress={() => navigation.navigate('Telefone')} 
           label='Próximo' 
         />
       </InputFormView>

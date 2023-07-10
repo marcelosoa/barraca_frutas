@@ -7,9 +7,8 @@ import RouterComponent from '../../../components/Router';
 import isValidPhone from '../../../utils/validPhone/IsValidPhone';
 import useErrors from '../../../hooks/useErros';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { setPhone } from '../../../redux/reducers/suppliersReducer';
+import { addNumber } from '../../../redux/reducers/suppliersReducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { SupplierPropsState } from '../../../interface/SupplierInterface';
 
 type StackParamList = {
   Home: undefined;
@@ -25,20 +24,9 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const { phone } = useSelector(
-    (state: { supplier: SupplierPropsState }) => state.supplier
-  )
-
-  // const handlePhoneNumberChange = (value: string) => {
-  //   setPhoneNumber(value);
-  //   removeError('phone');
-  // };
-
-  const validatePhoneNumber = () => {
-    // const isValid = isValidPhone(phoneNumber);
-    // if (!isValid) {
-    //   setError({ field: 'phone', message: 'Insira um telefone válido' });
-      navigation.navigate('Frutas');
+  const handleNameChange = (value) => {
+    setPhoneNumber(value);
+    dispatch(addNumber(value));
   };
 
   return (
@@ -53,11 +41,11 @@ export default function RegisterPhoneSupplierScreen({ navigation }: RouterCompon
           limitCaracter={11}
           label='Digite o número de telefone do colaborador'
           placeholder='(00) 00000-0000'
-          onChange={(value: string) => dispatch(setPhone(value))}
-          value={phone}
+          onChange={handleNameChange}
+          value={phoneNumber}
         />
         <ButtonComponent 
-          onPress={validatePhoneNumber} 
+          onPress={() => navigation.navigate('Frutas')} 
           label='Próximo' 
         />
       </InputFormView>

@@ -44,7 +44,7 @@ export const TextButton = styled.Text`
   color: ${({ theme }) => theme.text.primary};
 `;
 
-export const ContainerSupplier = styled.SafeAreaView`
+export const ContainerSupplier = styled.ScrollView`
   background-color: ${({ theme }) => theme.colors.background};
   display: flex;
   flex: 1;
@@ -52,10 +52,17 @@ export const ContainerSupplier = styled.SafeAreaView`
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 16px;
+  flex-direction: column;
+  gap: 24px;
+`
+
+export const ContentContainer = styled.View`
+  display: flex;
   align-items: center;
   flex-direction: column;
   gap: 24px;
 `
+
 export const NewSupplierButton = styled.TouchableOpacity `
 `
 export const SupplierName = styled.Text`
