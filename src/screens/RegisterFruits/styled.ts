@@ -1,17 +1,24 @@
 import styled from 'styled-components/native';
 
+interface TextInputProps {
+  placeholder: string
+}
+
+
 export const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.background };
+  padding: 16px;
   display: flex;
   flex: 1;
   gap: 44px;
-  padding: 24px 28px;
 `;
 
-export const ViewName = styled.View`
+export const ViewContent = styled.View`
   width: 100%;
   display: flex;
-  padding: 16px 0;
+  flex-direction: row;
+  align-items: center;
+  padding: 48px 0; 
+  justify-content: space-between;
 `;
 
 export const Text = styled.Text`
@@ -21,14 +28,32 @@ export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.primary };
 `;
 
-export const FruitCards = styled.View`
-  background-color: ${({ theme }) => theme.colors.shape };
-  gap: 16px;
-  padding: 16px 12px;
+export const FruitView = styled.View`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 16px 8px;
   border-radius: 8px;
-
+  background-color: ${({ theme }) => theme.colors.shape};
 `
 
-export const FruitCardsInput = styled.TextInput`
+export const TextInput = styled.TextInput<TextInputProps>`
+  
+`
 
+export const Button = styled.TouchableOpacity`
+  background-color: ${({ theme }) => theme.colors.primary};
+  padding: 12px 24px;
+  border-radius: 100px;
+`
+
+export const TextButton = styled.Text`
+text-align: center;
+font-family: ${({ theme }) => theme.fonts.regular};
+color: ${({ theme }) => theme.colors.shape };
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 1.25px;
 `

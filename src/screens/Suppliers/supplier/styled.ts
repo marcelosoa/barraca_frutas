@@ -39,6 +39,16 @@ export const SupplierContentView = styled.View`
   gap: 8px;
 `
 
+export const SupplierViewView = styled.View`
+  display: flex;
+  width: 100%;
+  padding: 8px 0;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+
+`
+
 export const SupplierInfosText = styled.Text`
 font-family: ${({ theme }) => theme.fonts.regular};
 font-size: 18px;
@@ -46,6 +56,8 @@ font-style: normal;
 font-weight: 500;
 line-height: 30px;
 letter-spacing: 0.1px;
+margin-left: 10px;
+
 `
 export const SupplierName = styled.Text`
 font-family: ${({ theme }) => theme.fonts.regular};

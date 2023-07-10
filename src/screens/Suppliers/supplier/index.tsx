@@ -9,7 +9,8 @@ import {
   SupplierInfosText,
   SupplierFruits,
   SupplierText,
-  SupplierFruitsContent
+  SupplierFruitsContent,
+  SupplierViewView
 } from "./styled";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
@@ -41,21 +42,37 @@ export default function SupplierScreen({ navigation }: RouterComponentProps) {
         {suppliers.suppliers.map((supplier) => (
           <SupplierContentView key={supplier.id}>
             <SupplierName>{supplier.name}</SupplierName>
-            <SupplierInfosText>
-              <Ionicons name="person-outline" size={24} />
-              {supplier.cpf}
-            </SupplierInfosText>
-            <SupplierInfosText>
-              <Ionicons name="call-outline" size={24} />
-              {supplier.phone}
-            </SupplierInfosText>
-            <SupplierFruits>
-              <SupplierText>Frutas</SupplierText>
-              <SupplierFruitsContent></SupplierFruitsContent>
-            </SupplierFruits>
+            <SupplierViewView>
+              
+            </SupplierViewView>
           </SupplierContentView>
         ))}
       </SupplierView>
     </Container>
   );
 }
+
+{/* <SupplierView>
+        {suppliers.suppliers.map((supplier) => (
+          <SupplierContentView key={supplier.id}>
+            <SupplierName>{supplier.name}</SupplierName>
+            <SupplierViewView>
+            <SupplierInfosText>
+                <Ionicons name="person-outline" size={24} />
+              {supplier.cpf}
+            </SupplierInfosText>
+            </SupplierViewView>
+            
+            <SupplierViewView>
+            <SupplierInfosText>
+                <Ionicons name="call-outline" size={24} />
+              {supplier.phone}
+            </SupplierInfosText>
+            </SupplierViewView>
+            <SupplierFruits>
+              <SupplierText>Frutas</SupplierText>
+              <SupplierFruitsContent></SupplierFruitsContent>
+            </SupplierFruits>
+          </SupplierContentView>
+        ))}
+      </SupplierView> */}
