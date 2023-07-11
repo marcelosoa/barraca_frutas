@@ -32,8 +32,23 @@ const supplierSlice = createSlice({
         (supplier) => supplier.id !== action.payload
       );
     },
+    addName: (state, action: PayloadAction<string>) => {
+      state.suppliers = state.suppliers.filter(
+        (supplier) => supplier.name !== action.payload
+      )
+    },
+    addCPF: (state, action: PayloadAction<string>) => {
+      state.suppliers = state.suppliers.filter(
+        (supplier) => supplier.cpf !== action.payload
+      )
+    },
+    addPhone: (state, action: PayloadAction<string>) => {
+      state.suppliers = state.suppliers.filter(
+        (supplier) => supplier.phone !== action.payload
+      )
+    }
   },
 });
 
-export const { addSupplier, removeSupplier } = supplierSlice.actions;
+export const { addSupplier, removeSupplier, addName, addCPF, addPhone } = supplierSlice.actions;
 export default supplierSlice.reducer;

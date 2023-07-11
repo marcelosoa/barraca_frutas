@@ -6,7 +6,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import AppRoutes from './src/routes/app.routes';
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
-import { loadState, saveState } from './src/storage/Storage';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,16 +15,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    const loadData = async () => {
-      const persistedState = await loadState();
-      store.subscribe(() => {
-        saveState(store.getState());
-      });
-      store.dispatch({ type: 'LOAD_STATE', payload: persistedState });
-    };
-
     if (fontsLoaded) {
-      loadData();
     }
   }, [fontsLoaded]);
 
