@@ -4,12 +4,12 @@ import { Container, ViewName, InputFormView } from './styled';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import RouterComponent from '../../../components/Router';
-import isValidPhone from '../../../utils/IsValidPhone';
-import useErrors from '../../../utils/hooks/useErros';
+import isValidPhone from '../../../utils/IsValidPhone'
+import useErrors from '../../../utils/hooks/useErros'
 import { StackNavigationProp } from '@react-navigation/stack';
-import { addNumber } from '../../../redux/reducers/suppliersReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteProp, useNavigation } from '@react-navigation/native';
+import { addNumber } from '../../../redux/reducers/suppliersReducer';
 
 type RootStackParamList = {
   Home: undefined;
@@ -27,6 +27,7 @@ type Props = {
 
 export default function RegisterPhoneSupplierScreen({ navigation, route }: Props) { 
   const { cpf, name } = route.params
+  console.log(cpf)
 
   const dispatch = useDispatch()
   const [phoneNumber, setPhoneNumber] = useState('');

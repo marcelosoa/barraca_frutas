@@ -26,7 +26,7 @@ export default function RegisterFruitSupplierScreen({ route }) {
   
   const handleSaveDatas = () => {
     const newSupplier: Supplier = {
-      id: 0,
+      id: '',
       name: name,
       cpf: cpf,
       phone: phone

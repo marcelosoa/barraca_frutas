@@ -20,7 +20,7 @@ import { RouteProp } from '@react-navigation/native';
 
 type RootStackParamList = {
   Home: { name: string };
-  Telefone: { name: string; cpf: string };
+  Telefone: { name: string; cpf: string, phone: string, fruits: string };
 };
 
 type RouterProps = RouteProp<RootStackParamList, 'Home'>;

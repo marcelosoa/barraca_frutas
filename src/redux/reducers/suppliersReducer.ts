@@ -23,32 +23,50 @@ const supplierSlice = createSlice({
     addSupplier: (state, action: PayloadAction<Supplier>) => {
       const newSupplier: Supplier = {
         ...action.payload,
-        id: uuidv4(),
+        id: uuidv4()
       };
       state.suppliers.push(newSupplier);
     },
     removeSupplier: (state, action: PayloadAction<string>) => {
       state.suppliers = state.suppliers.filter(
-        (supplier) => supplier.id !== action.payload
+        supplier => supplier.id !== action.payload
       );
     },
-    addName: (state, action: PayloadAction<string>) => {
-      state.suppliers = state.suppliers.filter(
-        (supplier) => supplier.name !== action.payload
-      )
+    addName: (state, action: PayloadAction<{ id: string, name: string }>) => {
+      state.suppliers = state.suppliers.map(supplier => {
+        if (supplier.id === action.payload.id) {
+          return {
+            ...supplier,
+            name: action.payload.name
+          };
+        }
+        return supplier;
+      });
     },
-    addCPF: (state, action: PayloadAction<string>) => {
-      state.suppliers = state.suppliers.filter(
-        (supplier) => supplier.cpf !== action.payload
-      )
+    addCPF: (state, action: PayloadAction<{ id: string, cpf: string }>) => {
+      state.suppliers = state.suppliers.map(supplier => {
+        if (supplier.id === action.payload.id) {
+          return {
+            ...supplier,
+            cpf: action.payload.cpf
+          };
+        }
+        return supplier;
+      });
     },
-    addPhone: (state, action: PayloadAction<string>) => {
-      state.suppliers = state.suppliers.filter(
-        (supplier) => supplier.phone !== action.payload
-      )
-    }
+    addNumber: (state, action: PayloadAction<{ id: string, phone: string }>) => {
+      state.suppliers = state.suppliers.map(supplier => {
+        if (supplier.id === action.payload.id) {
+          return {
+            ...supplier,
+            phone: action.payload.phone
+          };
+        }
+        return supplier;
+      });
+    },
   },
 });
 
-export const { addSupplier, removeSupplier, addName, addCPF, addPhone } = supplierSlice.actions;
+export const { addSupplier, removeSupplier, addName, addCPF, addNumber } = supplierSlice.actions;
 export default supplierSlice.reducer;

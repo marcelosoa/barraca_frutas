@@ -29,6 +29,7 @@ type RouterComponentProps = {
 
 export default function SuppliersScreen({ navigation }: RouterComponentProps) {
   const suppliers = useSelector((state: RootState) => state.supplier);
+  console.log(suppliers)
 
   return (
     <>
