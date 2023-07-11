@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Container, Text, ViewContent, TextInput, FruitView, Button, TextButton } from "./styled";
+import { Container, Text, ViewContent, TextInput, FruitView, Button, TextButton, ViewForm } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StackNavigationProp } from "@react-navigation/stack";
+import ButtonComponent from "../../components/Button";
 
 type StackParamList = {
   Supplier: undefined
@@ -37,9 +38,10 @@ export default function RegisterFruitScreen({ navigation }: RouterComponentProps
         <Ionicons name="people-outline" size={32} />
         <TextInput placeholder="Fornecedor" />
       </FruitView>
-      <Button onPress={() => navigation.navigate('Success')}>
+      <ButtonComponent label="Cadastrar Fruta"/>
+      {/* <Button onPress={() => navigation.navigate('Success')}>
         <TextButton>Cadastrar Fruta</TextButton>
-      </Button>
+      </Button> */}
     </Container>
   );
 }

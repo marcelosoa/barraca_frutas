@@ -4,7 +4,6 @@ interface TextInputProps {
   placeholder: string
 }
 
-
 export const Container = styled.View`
   padding: 16px;
   display: flex;
@@ -21,6 +20,11 @@ export const ViewContent = styled.View`
   justify-content: space-between;
 `;
 
+export const ViewForm = styled.View`
+  background-color: violet;
+
+`
+
 export const Text = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular };
   font-size: 24px;
@@ -29,12 +33,6 @@ export const Text = styled.Text`
 `;
 
 export const FruitView = styled.View`
-  /* display: flex;
-  flex-direction: row;
-  gap: 16px;
-  padding: 18px 12px;
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.shape}; */
 `
 
 export const TextInput = styled.TextInput<TextInputProps>`
@@ -63,12 +61,4 @@ export const TextButton = styled.Text`
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 1.25px;
-`
-
-export const ContainerFruits = styled.View`
-
-`
-
-export const ContentFruits = styled.View`
-
 `
