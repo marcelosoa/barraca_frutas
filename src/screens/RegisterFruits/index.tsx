@@ -46,8 +46,12 @@ export default function RegisterFruitScreen({ navigation }: RouterComponentProps
 
 const styled = StyleSheet.create({
   card: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 16,
+    padding: 16,
     elevation: 2,
-    backgroundColor: '',
+    backgroundColor: '#FFFFFF',
     borderRadius: 8,
     shadowColor: 'black',
     shadowOffset: {

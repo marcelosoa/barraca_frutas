@@ -29,12 +29,12 @@ export const Text = styled.Text`
 `;
 
 export const FruitView = styled.View`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   gap: 16px;
   padding: 18px 12px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.shape}; */
 `
 
 export const TextInput = styled.TextInput<TextInputProps>`
