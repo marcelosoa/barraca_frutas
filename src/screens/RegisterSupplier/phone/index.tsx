@@ -4,7 +4,7 @@ import { Container, ViewName, InputFormView } from './styled';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import RouterComponent from '../../../components/Router';
-import isValidPhone from '../../../utils/validPhone/IsValidPhone';
+import isValidPhone from '../../../utils/IsValidPhone';
 import useErrors from '../../../utils/hooks/useErros';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { addNumber } from '../../../redux/reducers/suppliersReducer';

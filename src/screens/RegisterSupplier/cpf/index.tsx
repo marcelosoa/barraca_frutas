@@ -9,7 +9,7 @@ import ButtonComponent from '../../../components/Button';
 import RouterComponent from '../../../components/Router';
 // Utils
 import Ionicons from '@expo/vector-icons/Ionicons';
-import isValidCPF from '../../../utils/validCPF/isValidCPF';
+import isValidCPF from '../../../utils/isValidCPF';
 // Hooks
 import useErrors from '../../../utils/hooks/useErros';
 import { useDispatch } from 'react-redux';
