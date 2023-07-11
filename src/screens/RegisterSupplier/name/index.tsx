@@ -8,8 +8,10 @@ import RouterComponent from "../../../components/Router";
 import { useDispatch } from "react-redux";
 import { addName } from '../../../redux/reducers/suppliersReducer'
 import ModalComponent from "../../../components/Modal";
+import { useTheme } from "styled-components";
 
 export default function RegisterNameSupplier() {
+  const theme = useTheme()
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const navigation = useNavigation();
@@ -59,5 +61,3 @@ export default function RegisterNameSupplier() {
     </Container>
   );
 }
-
-

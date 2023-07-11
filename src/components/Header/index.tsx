@@ -1,10 +1,18 @@
 import React from 'react'
-import { View } from './styled'
+import { View, Container, InputFormView } from './styled'
 
-export default function HeaderComponent () {
+interface HeaderComponentProps {
+  children: React.ReactNode
+}
+
+export default function HeaderComponent ({ children }: HeaderComponentProps) {
   return (
-    <View>
-      
-    </View>
+    <>
+    <Container>
+      <View>
+      {children}
+      </View>
+    </Container>
+    </>
   )
 }
