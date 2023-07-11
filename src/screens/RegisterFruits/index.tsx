@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Text, ViewContent, TextInput, FruitView, Button, TextButton } from "./styled";
+import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 type StackParamList = {
@@ -21,19 +21,19 @@ export default function RegisterFruitScreen({ navigation }: RouterComponentProps
         <Text>Cadastrar Fruta</Text>
         <Ionicons name="close" size={32} onPress={() => navigation.navigate('RegisterFruit')}/>
       </ViewContent>
-      <FruitView>
+      <FruitView style={styled.card}>
         <Ionicons name="nutrition-outline" size={32} />
         <TextInput placeholder="Nome da Fruta" />
       </FruitView>
-      <FruitView>
+      <FruitView style={styled.card}>
         <Ionicons name="cash-outline" size={32} />
         <TextInput placeholder="Preço do Kilo" />
       </FruitView>
-      <FruitView>
+      <FruitView style={styled.card}>
         <Ionicons name="server-outline" size={32} />
         <TextInput placeholder="Quantidade no estoque" />
       </FruitView>
-      <FruitView>
+      <FruitView style={styled.card}>
         <Ionicons name="people-outline" size={32} />
         <TextInput placeholder="Fornecedor" />
       </FruitView>
@@ -43,3 +43,18 @@ export default function RegisterFruitScreen({ navigation }: RouterComponentProps
     </Container>
   );
 }
+
+const styled = StyleSheet.create({
+  card: {
+    elevation: 2,
+    backgroundColor: '',
+    borderRadius: 8,
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 6
+  }
+})

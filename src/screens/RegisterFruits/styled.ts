@@ -32,7 +32,7 @@ export const FruitView = styled.View`
   display: flex;
   flex-direction: row;
   gap: 16px;
-  padding: 16px 8px;
+  padding: 18px 12px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.shape};
 `

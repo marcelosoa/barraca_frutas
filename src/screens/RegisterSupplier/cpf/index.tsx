@@ -19,8 +19,8 @@ import { addCPF } from '../../../redux/reducers/suppliersReducer';
 import { RouteProp } from '@react-navigation/native';
 
 type RootStackParamList = {
-  Home: undefined;
-  Telefone: undefined
+  Home: { name: string };
+  Telefone: { name: string; cpf: string };
 };
 
 type RouterProps = RouteProp<RootStackParamList, 'Home'>;
@@ -28,8 +28,8 @@ type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 type Props = {
   route: RouterProps;
-  navigation: HomeScreenNavigationProp
-}
+  navigation: HomeScreenNavigationProp;
+};
 
 export default function RegisterCPFSupplierScreen({ navigation, route }: Props) {
   const { name } = route.params;
@@ -37,7 +37,7 @@ export default function RegisterCPFSupplierScreen({ navigation, route }: Props) 
   const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handleNameChange = (value) => {
+  const handleNameChange = (value: any) => {
     setCPF(value);
     dispatch(addCPF(value));
   };

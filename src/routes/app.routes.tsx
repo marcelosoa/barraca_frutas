@@ -28,11 +28,15 @@ function HomeTabs() {
         tabBarActiveTintColor: theme.colors.primary,
         headerTintColor: theme.colors.primary,
         tabBarStyle: {
-          height: 76,
+          height: 80,
+
         },
         tabBarLabelStyle: {
-          fontSize: 14,
-          marginBottom: 5,
+          fontFamily: theme.fonts.regular,
+          lineHeight: 16,
+          letterSpacing: 0.4,
+          fontSize: 12,
+          marginBottom: 10,
         },
       }}
     >

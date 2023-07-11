@@ -6,10 +6,6 @@ import {
   SupplierView,
   SupplierName,
   SupplierContentView,
-  SupplierInfosText,
-  SupplierFruits,
-  SupplierText,
-  SupplierFruitsContent,
   SupplierViewView
 } from "./styled";
 import { useSelector } from "react-redux";

@@ -48,36 +48,10 @@ export const SupplierViewView = styled.View`
   align-items: center;
 
 `
-
-export const SupplierInfosText = styled.Text`
-font-family: ${({ theme }) => theme.fonts.regular};
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: 30px;
-letter-spacing: 0.1px;
-margin-left: 10px;
-
-`
 export const SupplierName = styled.Text`
 font-family: ${({ theme }) => theme.fonts.regular};
 font-size: 24px;
 font-style: normal;
 font-weight: 400;
 line-height: 30px;
-`
-export const SupplierFruits = styled.View`
-  padding-top: 24px;
-`
-export const SupplierText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.15px;
-`
-export const SupplierFruitsContent = styled.View`
-    background-color: red;
-    height: 100%;
 `
