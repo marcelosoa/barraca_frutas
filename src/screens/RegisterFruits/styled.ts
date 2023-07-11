@@ -9,7 +9,7 @@ export const Container = styled.View`
   padding: 16px;
   display: flex;
   flex: 1;
-  gap: 44px;
+  gap: 24px;
 `;
 
 export const ViewContent = styled.View`
@@ -17,7 +17,7 @@ export const ViewContent = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 48px 0; 
+  padding: 24px 0; 
   justify-content: space-between;
 `;
 

@@ -47,7 +47,7 @@ function HomeTabs() {
       />
       <Tab.Screen
         name="Frutas"
-        component={FruitsScreen}
+        component={NewNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="nutrition-outline" size={45} color={color} />
@@ -70,11 +70,28 @@ export default function AppRoutes() {
         <Stack.Screen name="Nome" component={RegisterNameSupplier} />
         <Stack.Screen name="CPF" component={RegisterCPFSupplierScreen} />
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
-        <Stack.Screen name="FrutasScreen" component={RegisterFruitSupplierScreen} />
-        <Stack.Screen name="RegistrarFrutas" component={RegisterFruitScreen} />
+        <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
         <Stack.Screen name="Supplier" component={SupplierScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
+}
+
+const NewNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="RegisterFruit"
+        component={FruitsScreen}
+        options={{ headerShown: false}}
+      />
+      <Stack.Screen 
+      name="RegistrarFrutas" 
+      component={RegisterFruitScreen}
+      options={{ headerShown: false}}
+      />
+      
+    </Stack.Navigator>
+  )
 }

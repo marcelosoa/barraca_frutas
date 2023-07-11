@@ -10,7 +10,7 @@ export default function RegisterFruitScreen() {
     <Container>
       <ViewContent>
         <Text>Cadastrar Fruta</Text>
-        <Ionicons name="close" size={32} onPress={() => navigation.navigate('Frutas')}/>
+        <Ionicons name="close" size={32} onPress={() => navigation.navigate('RegisterFruit')}/>
       </ViewContent>
       <FruitView>
         <Ionicons name="nutrition-outline" size={32} />
@@ -28,7 +28,7 @@ export default function RegisterFruitScreen() {
         <Ionicons name="people-outline" size={32} />
         <TextInput placeholder="Fornecedor" />
       </FruitView>
-      <Button>
+      <Button onPress={() => navigation.navigate('Success')}>
         <TextButton>Cadastrar Fruta</TextButton>
       </Button>
     </Container>
