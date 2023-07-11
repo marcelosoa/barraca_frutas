@@ -11,7 +11,7 @@ import RouterComponent from '../../../components/Router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import isValidCPF from '../../../utils/validCPF/isValidCPF';
 // Hooks
-import useErrors from '../../../hooks/useErros';
+import useErrors from '../../../utils/hooks/useErros';
 import { useDispatch } from 'react-redux';
 
 // Redux

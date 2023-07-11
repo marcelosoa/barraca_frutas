@@ -80,18 +80,17 @@ export default function AppRoutes() {
 
 const NewNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+      headerShown: false,
+    }}>
       <Stack.Screen 
         name="RegisterFruit"
         component={FruitsScreen}
-        options={{ headerShown: false}}
       />
       <Stack.Screen 
       name="RegistrarFrutas" 
       component={RegisterFruitScreen}
-      options={{ headerShown: false}}
       />
-      
     </Stack.Navigator>
   )
 }

@@ -5,7 +5,7 @@ import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import RouterComponent from '../../../components/Router';
 import isValidPhone from '../../../utils/validPhone/IsValidPhone';
-import useErrors from '../../../hooks/useErros';
+import useErrors from '../../../utils/hooks/useErros';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { addNumber } from '../../../redux/reducers/suppliersReducer';
 import { useDispatch, useSelector } from 'react-redux';
