@@ -2,12 +2,9 @@ import React from 'react'
 import { Container, SearchInput } from './styled'
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from 'react-native'
+import { SearchComponentProps } from '../../interface/InputSearchComponentInterface';
 
-interface SearchProps {
-  label: string
-}
-
-export default function SearchComponent ({ label }: SearchProps) {
+export default function SearchComponent ({ label }: SearchComponentProps) {
   return (
     <Container>
       <Ionicons size={26} name='search'style={styled.inputSearch}/>

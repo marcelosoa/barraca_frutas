@@ -1,18 +1,14 @@
 import React from 'react';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Container, ContainerView, Button, Text } from './styled'
-
-interface Option {
-  id: string;
-  label: string;
-}
+import { CheckBoxComponentProps, Option } from '../../interface/CheckBoxComponentInterface';
 
 interface CheckBoxProps {
   options: Option[];
   onChange?: (selected: Option[]) => void;
 }
 
-export default function CheckBoxComponent({ options = [], onChange }: CheckBoxProps) {
+export default function CheckBoxComponent({ options = [], onChange }: CheckBoxComponentProps) {
   const [selected, setSelected] = React.useState<Option[]>([]);
 
   function handleToggleSelected(option: Option) {

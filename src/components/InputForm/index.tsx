@@ -1,16 +1,8 @@
 import React from 'react';
 import { TextInput, Container, Label, ErrorText } from './styled';
+import { InputFormProps } from '../../interface/InputFormComponentInterface';
 
-interface InputProps {
-  placeholder?: string;
-  label?: string;
-  onChange?: (value: any) => void;
-  limitCaracter?: number;
-  errors?: string;
-  value: string
-}
-
-export default function InputFormComponent({ placeholder, label, onChange, limitCaracter, errors, value = '' }: InputProps) {
+export default function InputFormComponent({ placeholder, label, onChange, limitCaracter, errors, value = '' }: InputFormProps) {
 
   const handleChange = (value: string) => {
     if (onChange) {

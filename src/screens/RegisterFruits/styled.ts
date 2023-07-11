@@ -64,3 +64,11 @@ export const TextButton = styled.Text`
   line-height: 16px;
   letter-spacing: 1.25px;
 `
+
+export const ContainerFruits = styled.View`
+
+`
+
+export const ContentFruits = styled.View`
+
+`

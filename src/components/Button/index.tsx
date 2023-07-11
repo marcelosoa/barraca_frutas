@@ -1,13 +1,9 @@
 import React from 'react'
 import { Button, TextButton } from "./styled";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { ButtonComponentProps } from '../../interface/ButtonComponentInterface';
 
-interface ButtonProps {
-  label: string
-  onPress?: () => void
-}
-
-export default function ButtonComponent ({ label, onPress}: ButtonProps) {
+export default function ButtonComponent ({ label, onPress}: ButtonComponentProps) {
   return (
     <Button onPress={onPress}>
       <TextButton>

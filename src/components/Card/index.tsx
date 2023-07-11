@@ -2,14 +2,9 @@ import React from "react";
 import { Container, Text, View } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
+import { CardComponentProps } from "../../interface/CardComponentInterface";
 
-interface CardProps {
-  cpf: string;
-  name: string;
-  phone: string;
-}
-
-export default function CardComponent({ name, cpf, phone }: CardProps) {
+export default function CardComponent({ name, cpf, phone }: CardComponentProps) {
   return (
     <Container style={styled.inputCard}>
       <Text type="title">{name}</Text>

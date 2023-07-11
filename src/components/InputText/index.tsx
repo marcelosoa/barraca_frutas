@@ -1,13 +1,9 @@
 import React from 'react'
 import { Text, Container } from "./styled";
+import { InputTextComponentProps } from '../../interface/InputTextComponentInterface';
 
-interface InputProps {
-  label: string
-  icon: React.ReactNode
-  prevPage?: string
-}
 
-export default function InputTextComponent({ label, icon, prevPage }: InputProps) {
+export default function InputTextComponent({ label, icon }: InputTextComponentProps) {
   return (
     <Container>
        <>

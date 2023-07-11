@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import { Container, Text, ViewContent, TextInput, FruitView, Button, TextButton } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-export default function RegisterFruitScreen() {
-  const navigation = useNavigation()
+type StackParamList = {
+  Supplier: undefined
+  RegisterFruit: undefined
+  Success: undefined
+};
 
+type RouterComponentProps = {
+  navigation: StackNavigationProp<StackParamList, any>;
+};
+
+export default function RegisterFruitScreen({ navigation }: RouterComponentProps) {
   return (
     <Container>
       <ViewContent>

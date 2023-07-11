@@ -1,31 +1,36 @@
-import { createReducer, PayloadAction } from "@reduxjs/toolkit";
-import { setUserData } from "../slices/suppliersSlice";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from 'uuid';
 
-interface FruitsPropsState {
-  name: string;
-  price: string;
-  quantity: string;
-  suppliers: {};
+interface Fruit {
+  id: string,
+  name: string,
+  price: string,
+  quantity: number,
+  supplier: string[]
 }
 
-const initialState: FruitsPropsState = {
-  name: "",
-  price: "",
-  quantity: "",
-  suppliers: {},
-};
+interface FruitState {
+  fruits: Fruit[]
+}
 
-const suppliersReducer = createReducer(initialState, (builder) => {
-  builder.addCase(
-    setUserData,
-    (state, action: PayloadAction<FruitsPropsState>) => {
-      const { name, price, quantity, suppliers } = action.payload;
-      state.name = name;
-      state.price = price;
-      state.quantity = quantity;
-      state.suppliers = suppliers;
-    }
-  );
-});
+const initialState: FruitState = {
+  fruits: []
+}
 
-export default suppliersReducer;
+const fruitSlice = createSlice({
+  name: 'fruits',
+  initialState,
+  reducers: {
+    addFruit: (state, action: PayloadAction<Fruit>) => {
+      const newFruit: Fruit = {
+        ...action.payload,
+        id: uuidv4()
+      };
+      state.fruits.push(newFruit);
+    },
+  }
+})
+
+export const { addFruit } = fruitSlice.actions;
+
+export default fruitSlice.reducer;
