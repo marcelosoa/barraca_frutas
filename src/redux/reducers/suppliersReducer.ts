@@ -6,7 +6,6 @@ interface Supplier {
   name: string;
   cpf: string;
   phone: string;
-  fruits: string[]
 }
 
 interface SupplierState {
@@ -24,50 +23,32 @@ const supplierSlice = createSlice({
     addSupplier: (state, action: PayloadAction<Supplier>) => {
       const newSupplier: Supplier = {
         ...action.payload,
-        id: uuidv4()
+        id: uuidv4(),
       };
       state.suppliers.push(newSupplier);
     },
     removeSupplier: (state, action: PayloadAction<string>) => {
       state.suppliers = state.suppliers.filter(
-        supplier => supplier.id !== action.payload
+        (supplier) => supplier.id !== action.payload
       );
     },
-    addName: (state, action: PayloadAction<Supplier>) => {
-      state.suppliers = state.suppliers.map(supplier => {
-        if (supplier.id === action.payload.id) {
-          return {
-            ...supplier,
-            name: action.payload.name
-          };
-        }
-        return supplier;
-      });
+    addName: (state, action: PayloadAction<string>) => {
+      state.suppliers = state.suppliers.filter(
+        (supplier) => supplier.name !== action.payload
+      )
     },
-    addCPF: (state, action: PayloadAction<Supplier>) => {
-      state.suppliers = state.suppliers.map(supplier => {
-        if (supplier.id === action.payload.id) {
-          return {
-            ...supplier,
-            cpf: action.payload.cpf
-          };
-        }
-        return supplier;
-      });
+    addCPF: (state, action: PayloadAction<string>) => {
+      state.suppliers = state.suppliers.filter(
+        (supplier) => supplier.cpf !== action.payload
+      )
     },
-    addNumber: (state, action: PayloadAction<Supplier>) => {
-      state.suppliers = state.suppliers.map(supplier => {
-        if (supplier.id === action.payload.id) {
-          return {
-            ...supplier,
-            phone: action.payload.phone
-          };
-        }
-        return supplier;
-      });
-    },
+    addPhone: (state, action: PayloadAction<string>) => {
+      state.suppliers = state.suppliers.filter(
+        (supplier) => supplier.phone !== action.payload
+      )
+    }
   },
 });
 
-export const { addSupplier, removeSupplier, addName, addCPF, addNumber } = supplierSlice.actions;
+export const { addSupplier, removeSupplier, addName, addCPF, addPhone } = supplierSlice.actions;
 export default supplierSlice.reducer;
