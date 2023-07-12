@@ -5,12 +5,6 @@ type TextProps = {
 };
 
 export const Container = styled.View`
-  /* width: 100%;
-  flex-direction: column;
-  display: flex;
-  padding: 16px;
-  border: 1px;
-  border-radius: 8px; */
 `;
 
 export const Text = styled.Text<TextProps>`

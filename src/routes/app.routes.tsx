@@ -42,7 +42,7 @@ function HomeTabs() {
     >
       <Tab.Screen
         name="Fornecedor"
-        component={SuppliersScreen}
+        component={SupplierNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="people-sharp" size={45} color={color} />
@@ -76,7 +76,6 @@ export default function AppRoutes() {
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
         <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
-        <Stack.Screen name="Supplier" component={SupplierScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -94,6 +93,23 @@ const NewNavigator = () => {
       <Stack.Screen 
       name="RegistrarFrutas" 
       component={RegisterFruitScreen}
+      />
+    </Stack.Navigator>
+  )
+}
+
+const SupplierNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={{
+      headerShown: false
+    }}>
+      <Stack.Screen 
+        name="Suppliers"
+        component={SuppliersScreen}
+      />
+      <Stack.Screen
+        name="Supplier"
+        component={SupplierScreen}
       />
     </Stack.Navigator>
   )

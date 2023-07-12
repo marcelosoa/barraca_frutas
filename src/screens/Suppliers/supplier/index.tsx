@@ -36,7 +36,7 @@ export default function SupplierScreen() {
         <Ionicons
           name="close"
           size={32}
-          onPress={() => navigation.navigate("Fornecedor")}
+          onPress={() => navigation.navigate("Suppliers")}
         />
       </ViewContent>
       <SupplierView>
