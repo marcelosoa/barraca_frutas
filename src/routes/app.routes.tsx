@@ -15,6 +15,7 @@ import RegisterFruitScreen from "../screens/RegisterFruits";
 import RegisterSuccessScreen from "../screens/RegisterSupplier/sucess";
 import SuppliersScreen from "../screens/Suppliers";
 import SupplierScreen from "../screens/Suppliers/supplier";
+import SuccessFruitScreen from "../screens/RegisterFruits/success";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -76,6 +77,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
         <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
+        <Stack.Screen name="SuccessFruits" component={SuccessFruitScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

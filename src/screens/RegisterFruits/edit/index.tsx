@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { Container, Text, ViewContent, TextInput, FruitView } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StackNavigationProp } from "@react-navigation/stack";
-import ButtonComponent from "../../components/Button";
 import { useNavigation } from "@react-navigation/native";
-import { propsStack } from "../../interface/routerinterface";
 import { useTheme } from "styled-components";
+import { propsStack } from "../../../interface/routerinterface";
+import ButtonComponent from "../../../components/Button";
 
 export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>()

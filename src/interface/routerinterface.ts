@@ -33,6 +33,7 @@ export type propsNavigationStack = {
     phone: string
   }
   Fornecedor?: {}
+  SuccessFruits?: {}
 
 }
 
