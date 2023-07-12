@@ -27,15 +27,12 @@ const styled = StyleSheet.create({
     flexDirection: "column",
     display: "flex",
     padding: 16,
-    elevation: 2,
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-       height: 5,
-    },
-    shadowOpacity: 0.8,
+    backgroundColor: '#fff',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2},
+    shadowOpacity: 0.15,
     shadowRadius: 6,
+    borderRadius: 8
   },
 });

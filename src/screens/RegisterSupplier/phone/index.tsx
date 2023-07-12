@@ -18,7 +18,7 @@ export default function RegisterPhoneSupplierScreen() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handlePhoneChange = (value: string) => {
+  const handlePhoneChange = (value: any) => {
     setPhoneNumber(value);
     dispatch(addNumber(value));
     removeError('phone');

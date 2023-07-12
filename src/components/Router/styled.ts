@@ -12,8 +12,8 @@ export const View = styled.View`
 
 export const Text = styled.Text<TextProps>`
   font-family: ${({ theme }) => theme.fonts.regular };
-  font-size: 13px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 20px;
   letter-spacing: 0.25px;
   color: ${({ theme }) => theme.text.black};
   ${({ isRed }) => isRed ? css`

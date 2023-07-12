@@ -12,7 +12,7 @@ export const ViewName = styled.View`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding: 24px 0px; 
+  padding: 14px 0px; 
 `
 
 export const InputFormView = styled.View`

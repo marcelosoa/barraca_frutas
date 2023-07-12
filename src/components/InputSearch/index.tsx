@@ -6,8 +6,8 @@ import { SearchComponentProps } from '../../interface/InputSearchComponentInterf
 
 export default function SearchComponent ({ label }: SearchComponentProps) {
   return (
-    <Container>
-      <Ionicons size={26} name='search'style={styled.inputSearch}/>
+    <Container style={styled.inputSearch}>
+      <Ionicons size={26} name='search'/>
       <SearchInput placeholder={label} />
     </Container>
   )
@@ -15,14 +15,11 @@ export default function SearchComponent ({ label }: SearchComponentProps) {
 
 const styled = StyleSheet.create({
   inputSearch: {
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.8,
+    backgroundColor: '#FFFFFF',
+    elevation: 6, // Sombra no Android
+    shadowColor: 'rgba(0, 0, 0, 0.15)',
+    shadowOffset: { width: 0, height: 2 }, 
+    shadowOpacity: 1,
     shadowRadius: 6,
   }
 })

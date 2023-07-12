@@ -26,7 +26,7 @@ export default function RegisterCPFSupplierScreen() {
 
   const handleSubmit = () => {
     if (!isValidCPF(cpf)) {
-      setError({field: 'cpf', message: 'Insira um CPF válido'});
+      setError({ field: 'cpf', message: 'Insira um CPF válido' });
       return;
     }
     navigation.navigate('Telefone', {

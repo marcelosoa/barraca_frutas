@@ -9,23 +9,32 @@ import { useDispatch } from "react-redux";
 import { addName } from '../../../redux/reducers/suppliersReducer'
 import ModalComponent from "../../../components/Modal";
 import { propsStack } from "../../../interface/routerinterface";
+import isValidName from "../../../utils/isValidName";
+import useErrors from "../../../utils/hooks/useErros";
 
 export default function RegisterNameSupplier() {
   const navigation = useNavigation<propsStack>()
   const [isModalVisible, setIsModalVisible] = useState<boolean>()
   const dispatch = useDispatch();
   const [name, setName] = useState('');
+  const { setError, removeError, getErrorMessageByFieldName } = useErrors();
+
   const handleNameChange = (value) => {
     setName(value);
     dispatch(addName(value));
+    removeError('name');
   };
 
   const handleOpenModal = () => {
     setIsModalVisible(true)
   }
 
-  const submit = () => {
-   navigation.navigate('CPF', {
+  const handleSubmitName = () => {
+    if (!isValidName(name)) {
+      setError({ field: 'name', message: 'Insira um nome válido' })
+      return
+    }
+    navigation.navigate('CPF', {
     name: name
    })
   }
@@ -52,7 +61,7 @@ export default function RegisterNameSupplier() {
           value={name}
         />
         <ButtonComponent
-          onPress={submit}
+          onPress={handleSubmitName}
           label="Próximo"
         />
       </InputFormView>
