@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   Text,
@@ -12,17 +12,23 @@ import {
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
+import { fetchSuppliers } from "../../redux/reducers/suppliersReducer";
 
 export default function SuppliersScreen() {
+  const dispatch = useDispatch()
   const navigation = useNavigation<propsStack>();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
   console.log('FORNECEDORES', suppliers)
+
+  useEffect(() => {
+    dispatch(fetchSuppliers())
+  }, [dispatch])
 
   return (
     <>

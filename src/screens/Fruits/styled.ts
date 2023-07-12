@@ -1,12 +1,5 @@
 import styled from 'styled-components/native'
 
-interface FruitCards {
-  name: string,
-  price: string,
-  quantity: number,
-  supplier: string
-}
-
 export const Container = styled.SafeAreaView`
   margin-top: 24px;
   display: flex;
@@ -63,7 +56,7 @@ export const ContainerFruits = styled.ScrollView`
 
 `
 
-export const ContentFruits = styled.View`
+export const ContentFruits = styled.TouchableOpacity`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -71,11 +64,10 @@ export const ContentFruits = styled.View`
 
 `
 
-export const FruitCard = styled.View<FruitCards>`
-  flex-direction: column;
-  display: flex;
-  width: 100%;
-  gap: 2px;
-  background-color: violet;
+export const FruitCard = styled.View`
+  
+`
+
+export const FruitText = styled.Text`
 
 `

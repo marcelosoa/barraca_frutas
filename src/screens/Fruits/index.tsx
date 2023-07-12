@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Modalize } from 'react-native-modalize';
+
 import {
   Container,
   Text,
@@ -9,6 +11,7 @@ import {
   ContainerFruits,
   ContentFruits,
   FruitCard,
+  FruitText,
 } from "./styled";
 import { propsStack } from "../../interface/routerinterface";
 import { useNavigation } from "@react-navigation/native";
@@ -17,13 +20,14 @@ import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import { fetchFruits } from "../../redux/reducers/fruitsReducer";
 import { Fruit } from "../../redux/reducers/fruitsReducer";
+import { useTheme } from "styled-components";
 
 export default function FruitsScreen() {
+  const theme = useTheme();
   const navigation = useNavigation<propsStack>();
-
-  const fruits = useSelector((state: RootState) => state.fruits.fruits);
-  console.log("FRUTAS", fruits);
   const dispatch = useDispatch();
+  const fruits = useSelector((state: RootState) => state.fruits.fruits);
+  console.log(fruits)
 
   useEffect(() => {
     dispatch(fetchFruits());
@@ -31,18 +35,26 @@ export default function FruitsScreen() {
 
   return (
     <>
-      {fruits?.length > 0 ? (
+      {fruits.length > 0 ? (
         <ContainerFruits>
           <SearchComponent label="Pesquisar Frutas" />
           {fruits.map((fruit: Fruit) => (
             <ContentFruits key={fruit.id}>
-              <FruitCard
-                name={fruit.name}
-                price={fruit.price}
-                quantity={fruit.quantity}
-                supplier={fruit.supplier}
-              />
+              <FruitCard key={fruit.id}>
+                <FruitText>
+                  <Ionicons
+                    name="cog-outline"
+                    size={24}
+                    color={theme.colors.primary}
+                  />
+                  {fruit.name}
+                </FruitText>
+                <FruitText>{fruit.price}</FruitText>
+                <FruitText>{fruit.quantity}</FruitText>
+                <FruitText>{fruit.supplier}</FruitText>
+              </FruitCard>
             </ContentFruits>
+            
           ))}
         </ContainerFruits>
       ) : (
