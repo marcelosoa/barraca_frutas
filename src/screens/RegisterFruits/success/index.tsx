@@ -5,15 +5,14 @@ import ButtonComponent from '../../../components/Button'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { propsStack } from '../../../interface/routerinterface'
 
-export default function SuccessFruitScreen () {
+export default function SuccessFruit () {
   const navigation = useNavigation<propsStack>()
-  const params = useRoute()
   return (
     <Container>
     <Image source={require('../../../../assets/images/confirmed.png')} />
     <TextView>
       <Text>Fornecedor Cadastrado</Text>
-      <SmallText>Você cadastrou o fornecedor {params?.params?.name} com sucesso!</SmallText>
+      <SmallText>Você cadastrou a fruta com sucesso!</SmallText>
     </TextView>
     <ButtonComponent
       label="Voltar ao início"
