@@ -32,10 +32,9 @@ type Props = {
   navigation: HomeScreenNavigationProp;
 };
 
-export default function RegisterCPFSupplierScreen({ route }: Props) {
+export default function RegisterCPFSupplierScreen() {
   const navigation = useNavigation<propsStack>()
   const params = useRoute()
-  console.log('Tela cpf: ', params?.params?.name)
   const dispatch = useDispatch();
   const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();

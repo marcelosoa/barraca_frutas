@@ -29,8 +29,6 @@ type Props = {
 export default function RegisterPhoneSupplierScreen() { 
   const navigation = useNavigation<propsStack>()
   const params = useRoute()
-  console.log('Params tela phone', params.params?.name)
-  console.log('Params tela phone', params.params?.cpf)
   const dispatch = useDispatch()
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
