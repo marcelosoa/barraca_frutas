@@ -22,6 +22,7 @@ import { propsStack } from "../../interface/routerinterface";
 export default function SuppliersScreen() {
   const navigation = useNavigation<propsStack>();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
+  console.log('FORNECEDORES', suppliers)
 
   return (
     <>

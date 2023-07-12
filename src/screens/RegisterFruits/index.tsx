@@ -71,7 +71,7 @@ export default function RegisterFruitScreen() {
         label="Cadastrar Fruta"
         onPress={() => {
           dispatch(addFruit(fruitData));
-          navigation.navigate("SuccessFruits");
+          navigation.navigate('SuccessFruit');
         }}
       />
     </Container>

@@ -77,7 +77,7 @@ export default function AppRoutes() {
         <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
         <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
-        <Stack.Screen name="SuccessFruits" component={SuccessFruit} />
+        <Stack.Screen name="SuccessFruit" component={SuccessFruit} />
       </Stack.Navigator>
     </NavigationContainer>
   );

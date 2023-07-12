@@ -16,7 +16,7 @@ export default function SuccessFruit () {
     </TextView>
     <ButtonComponent
       label="Voltar ao início"
-      onPress={() => navigation.navigate('Frutas')}
+      onPress={() => navigation.navigate('Inicio')}
     />
   </Container>
   )
