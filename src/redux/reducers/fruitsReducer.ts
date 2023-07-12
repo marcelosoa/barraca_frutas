@@ -1,36 +1,39 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from 'uuid';
-
-interface Fruit {
-  id: string,
-  name: string,
-  price: string,
-  quantity: number,
-  supplier: string[]
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+export interface Fruit {
+  id: string;
+  name: string;
+  price: string;
+  quantity: number;
+  supplier: string;
 }
 
 interface FruitState {
-  fruits: Fruit[]
+  fruits: Fruit[];
 }
 
 const initialState: FruitState = {
-  fruits: []
-}
+  fruits: [],
+};
 
 const fruitSlice = createSlice({
-  name: 'fruits',
+  name: 'fruit',
   initialState,
   reducers: {
     addFruit: (state, action: PayloadAction<Fruit>) => {
-      const newFruit: Fruit = {
-        ...action.payload,
-        id: uuidv4()
-      };
-      state.fruits.push(newFruit);
+      state.fruits.push(action.payload);
     },
-  }
-})
+    removeFruit: (state, action: PayloadAction<string>) => {
+      state.fruits = state.fruits.filter((fruit) => fruit.id !== action.payload);
+    },
+    updateFruit: (state, action: PayloadAction<Fruit>) => {
+      const index = state.fruits.findIndex((fruit) => fruit.id === action.payload.id);
+      if (index !== -1) {
+        state.fruits[index] = action.payload;
+      }
+    },
+  },
+});
 
-export const { addFruit } = fruitSlice.actions;
+export const { addFruit, removeFruit, updateFruit } = fruitSlice.actions;
 
 export default fruitSlice.reducer;
