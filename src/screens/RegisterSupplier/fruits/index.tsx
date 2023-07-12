@@ -4,26 +4,15 @@ import { Container, ViewName, InputFormView } from './styled';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import BreadCrumbsComponent from '../../../components/Router';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 import { Supplier } from '../../../interface/SupplierInterface';
 import { addSupplier } from '../../../redux/reducers/suppliersReducer';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { propsStack } from '../../../interface/routerinterface';
 
-type StackParamList = {
-  Home: undefined;
-  Cadastro: undefined;
-};
-
-type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
-};
-
 export default function RegisterFruitSupplierScreen() {
   const navigation = useNavigation<propsStack>()
   const params = useRoute()
-  console.log(params)
   const dispatch = useDispatch();
   
   const handleSaveDatas = () => {

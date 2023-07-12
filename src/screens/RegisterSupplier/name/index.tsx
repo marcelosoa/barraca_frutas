@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Container, ViewName, InputFormView } from "./styled";
 import InputFormComponent from "../../../components/InputForm";
