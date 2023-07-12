@@ -15,11 +15,15 @@ export default function SearchComponent ({ label }: SearchComponentProps) {
 
 const styled = StyleSheet.create({
   inputSearch: {
+    elevation: 2,
     backgroundColor: '#FFFFFF',
-    elevation: 6, // Sombra no Android
-    shadowColor: 'rgba(0, 0, 0, 0.15)',
-    shadowOffset: { width: 0, height: 2 }, 
-    shadowOpacity: 1,
-    shadowRadius: 6,
+    borderRadius: 8,
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 6
   }
 })

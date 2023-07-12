@@ -5,10 +5,11 @@ interface TextInputProps {
 }
 
 export const Container = styled.View`
-  padding: 16px;
+  padding: 12px;
   display: flex;
   flex: 1;
   gap: 24px;
+  background-color: ${({ theme }) => theme.colors.background };
 `;
 
 export const ViewContent = styled.View`
@@ -16,14 +17,9 @@ export const ViewContent = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 24px 0; 
+  padding: 30px 0; 
   justify-content: space-between;
 `;
-
-export const ViewForm = styled.View`
-  background-color: violet;
-
-`
 
 export const Text = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular };
@@ -44,21 +40,4 @@ export const TextInput = styled.TextInput<TextInputProps>`
   letter-spacing: 0.5px;
   width: 100%;
   color: ${({ theme }) => theme.colors.light_gray}
-`
-
-export const Button = styled.TouchableOpacity`
-  background-color: ${({ theme }) => theme.colors.primary};
-  padding: 12px 24px;
-  border-radius: 100px;
-`
-
-export const TextButton = styled.Text`
-  text-align: center;
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.shape };
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  letter-spacing: 1.25px;
 `

@@ -16,36 +16,39 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
+import { useNavigation } from "@react-navigation/native";
+import { propsStack } from "../../interface/routerinterface";
 
-type StackParamList = {
-  Nome: undefined;
-  Cadastro: undefined;
-  Supplier: undefined
-};
 
-type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
-};
-
-export default function SuppliersScreen({ navigation }: RouterComponentProps) {
-  const suppliers = useSelector((state: RootState) => state.supplier);
+export default function SuppliersScreen() {
+  const navigation = useNavigation<propsStack>()
+  const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
+  console.log(suppliers)
 
   return (
     <>
-      {suppliers?.suppliers.length > 0 ? (
+      {suppliers?.length > 0 ? (
         <>
           <ContainerSupplier>
             <SearchComponent label="Pesquisar Fornecedor" />
-            <ContentContainer onPress={() => navigation.navigate('Supplier')}>
-            {suppliers.suppliers.map((supplier) => (
-              <CardComponent
-                key={supplier.id}
-                cpf={supplier.cpf}
-                name={supplier.name}
-                phone={supplier.phone}
-              />
+            {suppliers.map((supplier) => (
+              <ContentContainer
+              key={supplier.id}
+              onPress={() => navigation.navigate('Supplier', {
+                id: supplier.id,
+                name: supplier.name,
+                cpf: supplier.cpf,
+                phone: supplier.phone,
+              })}
+            >
+                <CardComponent
+                  key={supplier.id}
+                  cpf={supplier.cpf}
+                  name={supplier.name}
+                  phone={supplier.phone}
+                />
+              </ContentContainer>
             ))}
-            </ContentContainer>
           </ContainerSupplier>
           <NewSupplierButton onPress={() => navigation.navigate('Nome')}>
             <SupplierName>
@@ -67,3 +70,4 @@ export default function SuppliersScreen({ navigation }: RouterComponentProps) {
     </>
   );
 }
+

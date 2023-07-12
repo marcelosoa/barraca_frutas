@@ -22,6 +22,17 @@ export type propsNavigationStack = {
   Success: {
     name: string
   }
+  RegistrarFrutas?: {
+
+  }
+  RegisterFruit?: {}
+  Supplier: {
+    id: string,
+    name: string,
+    cpf: string,
+    phone: string
+  }
+  Fornecedor?: {}
 
 }
 

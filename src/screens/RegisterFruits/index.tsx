@@ -1,29 +1,24 @@
 import React, { useState } from "react";
-import { Container, Text, ViewContent, TextInput, FruitView, Button, TextButton, ViewForm } from "./styled";
+import { Container, Text, ViewContent, TextInput, FruitView } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StackNavigationProp } from "@react-navigation/stack";
 import ButtonComponent from "../../components/Button";
+import { useNavigation } from "@react-navigation/native";
+import { propsStack } from "../../interface/routerinterface";
+import { useTheme } from "styled-components";
 
-type StackParamList = {
-  Supplier: undefined
-  RegisterFruit: undefined
-  Success: undefined
-};
-
-type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
-};
-
-export default function RegisterFruitScreen({ navigation }: RouterComponentProps) {
+export default function RegisterFruitScreen() {
+  const navigation = useNavigation<propsStack>()
+  const theme = useTheme()
   return (
     <Container>
       <ViewContent>
         <Text>Cadastrar Fruta</Text>
-        <Ionicons name="close" size={32} onPress={() => navigation.navigate('RegisterFruit')}/>
+        <Ionicons name="close" size={38} onPress={() => navigation.navigate('RegisterFruit')}/>
       </ViewContent>
       <FruitView style={styled.card}>
-        <Ionicons name="nutrition-outline" size={32} />
+        <Ionicons name="nutrition-outline" size={32} color={theme.text.black}/>
         <TextInput placeholder="Nome da Fruta" />
       </FruitView>
       <FruitView style={styled.card}>

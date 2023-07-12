@@ -20,19 +20,21 @@ export default function CardComponent({ name, cpf, phone }: CardComponentProps) 
   );
 }
 
+
 const styled = StyleSheet.create({
   inputCard: {
     marginTop: 24,
     width: "100%",
     flexDirection: "column",
     display: "flex",
+    gap: 2,
     padding: 16,
-    backgroundColor: '#fff',
-    elevation: 5,
+    backgroundColor: '#FFFFFF',
+    elevation: 1,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2},
     shadowOpacity: 0.15,
-    shadowRadius: 6,
+    shadowRadius: 8,
     borderRadius: 8
   },
 });

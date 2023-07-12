@@ -11,22 +11,13 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
+import { propsStack } from "../../../interface/routerinterface";
 
-type StackParamList = {
-  Nome: undefined;
-  Cadastro: undefined;
-  Supplier: undefined
-  Fornecedor: undefined
-}
-
-type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
-};
-
-
-export default function SupplierScreen({ navigation }: RouterComponentProps) {
-  const suppliers = useSelector((state: RootState) => state.supplier);
+export default function SupplierScreen() {
+  const navigation = useNavigation<propsStack>()
+  const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
+  console.log( 'suppliers tela de supplier', suppliers)
 
   return (
     <Container>
@@ -35,7 +26,7 @@ export default function SupplierScreen({ navigation }: RouterComponentProps) {
         <Ionicons name="close" size={32} onPress={() => navigation.navigate('Fornecedor')} />
       </ViewContent>
       <SupplierView>
-        {suppliers.suppliers.map((supplier) => (
+        {suppliers.map((supplier) => (
           <SupplierContentView key={supplier.id}>
             <SupplierName>{supplier.name}</SupplierName>
             <SupplierViewView>

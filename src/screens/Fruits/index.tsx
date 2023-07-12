@@ -1,19 +1,11 @@
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Container, Text, ViewText, Button, TextButton } from './styled'
-import { StackNavigationProp } from '@react-navigation/stack';
-type StackParamList = {
-  Nome: undefined;
-  Cadastro: undefined;
-  Supplier: undefined
-  Fornecedor: undefined
-}
+import { propsStack } from '../../interface/routerinterface';
+import { useNavigation } from '@react-navigation/native';
 
-type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
-};
-
-export default function FruitsScreen({ navigation }: RouterComponentProps) {
+export default function FruitsScreen() {
+  const navigation = useNavigation<propsStack>()
 
   return (
     <Container>

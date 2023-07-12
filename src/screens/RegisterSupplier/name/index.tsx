@@ -19,7 +19,7 @@ export default function RegisterNameSupplier() {
   const [name, setName] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handleNameChange = (value) => {
+  const handleNameChange = (value: any) => {
     setName(value);
     dispatch(addName(value));
     removeError('name');
@@ -55,6 +55,7 @@ export default function RegisterNameSupplier() {
       <BreadCrumbsComponent />
       <InputFormView>
         <InputFormComponent
+          errors={getErrorMessageByFieldName('name')}
           label="Digite o Nome do colaborador"
           onChange={handleNameChange}
           placeholder="Nome"
