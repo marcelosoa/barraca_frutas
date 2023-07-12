@@ -1,71 +1,56 @@
-import React, { useEffect, useState } from 'react';
-// Style
+import React, { useState } from 'react';
 import { Container, ViewName, InputFormView } from './styled';
-// Props
-import { StackNavigationProp } from '@react-navigation/stack';
-// Components
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
 import BreadCrumbsComponent from '../../../components/Router';
-// Utils
 import Ionicons from '@expo/vector-icons/Ionicons';
 import isValidCPF from '../../../utils/isValidCPF';
-// Hooks
 import useErrors from '../../../utils/hooks/useErros';
 import { useDispatch } from 'react-redux';
-
-// Redux
 import { addCPF } from '../../../redux/reducers/suppliersReducer';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { propsStack } from '../../../interface/routerinterface';
 
-type RootStackParamList = {
-  Home: undefined
-  Telefone: undefined
-};
-
-type RouterProps = RouteProp<RootStackParamList, 'Home'>;
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
-
-type Props = {
-  route: RouterProps;
-  navigation: HomeScreenNavigationProp;
-};
-
 export default function RegisterCPFSupplierScreen() {
-  const navigation = useNavigation<propsStack>()
-  const params = useRoute()
+  const navigation = useNavigation<propsStack>();
+  const params = useRoute();
   const dispatch = useDispatch();
   const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handleNameChange = (value: any) => {
+  const handleCPFChange = (value: string) => {
     setCPF(value);
     dispatch(addCPF(value));
+    removeError('cpf');
+  };
+
+  const handleSubmit = () => {
+    if (!isValidCPF(cpf)) {
+      setError({field: 'cpf', message: 'Insira um CPF válido'});
+      return;
+    }
+    navigation.navigate('Telefone', {
+      name: params?.params?.name,
+      cpf: cpf,
+    });
   };
 
   return (
     <Container>
       <ViewName>
-        <Ionicons name='close' size={32} color={'#930000'} />
+        <Ionicons name='close' size={32} color='#930000' />
       </ViewName>
-      <BreadCrumbsComponent navigation={navigation}/>
+      <BreadCrumbsComponent navigation={navigation} />
       <InputFormView>
         <InputFormComponent
           errors={getErrorMessageByFieldName('cpf')}
           limitCaracter={11}
           label='Digite o CPF do colaborador'
-          onChange={handleNameChange}
+          onChange={handleCPFChange}
           placeholder='000.000.000-00'
           value={cpf}
         />
-        <ButtonComponent 
-          onPress={() => navigation.navigate('Telefone', {
-            name: params?.params?.name,
-            cpf: cpf
-          })} 
-          label='Próximo' 
-        />
+        <ButtonComponent onPress={handleSubmit} label='Próximo' />
       </InputFormView>
     </Container>
   );
