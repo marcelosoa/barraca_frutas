@@ -14,44 +14,43 @@ import { propsStack } from '../../../interface/routerinterface';
 export default function RegisterPhoneSupplierScreen() {
   const navigation = useNavigation<propsStack>();
   const params = useRoute();
-  const dispatch = useDispatch();
+  console.log(params)
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handlePhoneChange = (value: any) => {
-    setPhoneNumber(value);
-    dispatch(addNumber(value));
-    removeError('phone');
-  };
 
-  const handleSubmit = () => {
-    if (!isValidPhone(phoneNumber)) {
-      setError({ field: 'phone', message: 'Insira um número de telefone válido'})
-      return;
-    }
-    navigation.navigate('Frutas', {
-      name: params?.params?.name,
-      cpf: params?.params?.cpf,
-      phone: phoneNumber,
-    });
-  };
+  // const handleSubmit = () => {
+  //   if (!isValidPhone(phoneNumber)) {
+  //     setError({ field: 'phone', message: 'Insira um número de telefone válido'})
+  //     return;
+  //   }
+  //   navigation.navigate('Frutas', {
+  //     name: params?.params?.name,
+  //     cpf: params?.params?.cpf,
+  //     phone: phoneNumber,
+  //   });
+  // };
 
   return (
     <Container>
       <ViewName>
         <Ionicons name='close' size={32} color='#930000' />
       </ViewName>
-      <BreadCrumbsComponent navigation={navigation} />
+      <BreadCrumbsComponent/>
       <InputFormView>
         <InputFormComponent
           errors={getErrorMessageByFieldName('phone')}
           limitCaracter={11}
           label='Digite o número de telefone do colaborador'
           placeholder='(00) 00000-0000'
-          onChange={handlePhoneChange}
+          onChangeText={(phone) => setPhoneNumber(phone)}
           value={phoneNumber}
         />
-        <ButtonComponent onPress={handleSubmit} label='Próximo' />
+        <ButtonComponent onPress={() => navigation.navigate('Frutas', {
+          phone: phoneNumber,
+          cpf: params.params?.cpf,
+          name: params.params?.name
+        })} label='Próximo' />
       </InputFormView>
     </Container>
   );

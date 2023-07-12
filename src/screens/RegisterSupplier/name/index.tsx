@@ -4,39 +4,22 @@ import { Container, ViewName, InputFormView } from "./styled";
 import InputFormComponent from "../../../components/InputForm";
 import ButtonComponent from "../../../components/Button";
 import { useNavigation } from "@react-navigation/native";
-import BreadCrumbsComponent from "../../../components/Router";
 import { useDispatch } from "react-redux";
 import { addName } from '../../../redux/reducers/suppliersReducer'
 import ModalComponent from "../../../components/Modal";
 import { propsStack } from "../../../interface/routerinterface";
 import isValidName from "../../../utils/isValidName";
 import useErrors from "../../../utils/hooks/useErros";
+import BreadCrumbsComponent from "../../../components/Router";
 
 export default function RegisterNameSupplier() {
   const navigation = useNavigation<propsStack>()
   const [isModalVisible, setIsModalVisible] = useState<boolean>()
-  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
 
-  const handleNameChange = (value: any) => {
-    setName(value);
-    dispatch(addName(value));
-    removeError('name');
-  };
-
   const handleOpenModal = () => {
     setIsModalVisible(true)
-  }
-
-  const handleSubmitName = () => {
-    if (!isValidName(name)) {
-      setError({ field: 'name', message: 'Insira um nome válido' })
-      return
-    }
-    navigation.navigate('CPF', {
-    name: name
-   })
   }
 
   return (
@@ -55,14 +38,15 @@ export default function RegisterNameSupplier() {
       <BreadCrumbsComponent />
       <InputFormView>
         <InputFormComponent
-          errors={getErrorMessageByFieldName('name')}
-          label="Digite o Nome do colaborador"
-          onChange={handleNameChange}
-          placeholder="Nome"
-          value={name}
+        label="Digite o nome do colaborador"
+        placeholder="Nome"
+        value={name}
+        onChangeText={(name) => setName(name)}
         />
         <ButtonComponent
-          onPress={handleSubmitName}
+          onPress={() => navigation.navigate('CPF', {
+            name: name
+          })}
           label="Próximo"
         />
       </InputFormView>
