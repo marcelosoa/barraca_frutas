@@ -2,10 +2,9 @@ import styled from 'styled-components/native'
 
 export const Container = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 24px 28px;
+  padding: 24px 18px;
   display: flex;
   flex: 1;
-  gap: 44px;
 `
 export const TextSupplier = styled.Text`
   flex: 1;
@@ -22,7 +21,7 @@ export const ViewContent = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 24px 0; 
+  padding: 16px 0; 
 `
 
 export const SupplierView = styled.View`
@@ -36,6 +35,7 @@ export const SupplierView = styled.View`
 `
 
 export const SupplierContentView = styled.View`
+  width: 100%;
   gap: 8px;
 `
 
@@ -48,10 +48,30 @@ export const SupplierViewView = styled.View`
   align-items: center;
 
 `
+
+export const SupplierTextFruits = styled.Text`
+font-family: ${({ theme }) => theme.fonts.regular};
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px;
+letter-spacing: 0.1px;
+`
 export const SupplierName = styled.Text`
 font-family: ${({ theme }) => theme.fonts.regular};
 font-size: 24px;
 font-style: normal;
 font-weight: 400;
 line-height: 30px;
+`
+
+export const FruitView = styled.View``
+
+export const Fruits = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular };
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.15px;
 `

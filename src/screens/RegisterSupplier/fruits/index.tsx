@@ -14,13 +14,26 @@ export default function RegisterFruitSupplierScreen() {
   const navigation = useNavigation<propsStack>()
   const params = useRoute()
   const dispatch = useDispatch();
+
+  const fruitsTest = [
+    { id: 1, nome: 'banana' },
+    { id: 2, nome: 'maça' },
+    { id: 3, nome: 'ameixa' },
+    { id: 4, nome: 'banana' },
+    { id: 5, nome: 'banana' },
+    { id: 6, nome: 'banana' },
+    { id: 7, nome: 'banana' },
+    { id: 8, nome: 'banana' },
+
+  ]
   
   const handleSaveDatas = () => {
     const newSupplier: Supplier = {
       id: '',
       name: params?.params?.name,
       cpf: params?.params?.cpf,
-      phone: params?.params?.phone
+      phone: params?.params?.phone,
+      fruits: fruitsTest.map((fruit) => fruit.nome)
     };
     dispatch(addSupplier(newSupplier));
     navigation.navigate('Success', {

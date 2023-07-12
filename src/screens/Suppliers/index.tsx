@@ -8,7 +8,7 @@ import {
   SupplierName,
   ContainerSupplier,
   NewSupplierButton,
-  ContentContainer
+  ContentContainer,
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -19,11 +19,9 @@ import CardComponent from "../../components/Card";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
 
-
 export default function SuppliersScreen() {
-  const navigation = useNavigation<propsStack>()
+  const navigation = useNavigation<propsStack>();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
-  console.log(suppliers)
 
   return (
     <>
@@ -33,14 +31,13 @@ export default function SuppliersScreen() {
             <SearchComponent label="Pesquisar Fornecedor" />
             {suppliers.map((supplier) => (
               <ContentContainer
-              key={supplier.id}
-              onPress={() => navigation.navigate('Supplier', {
-                id: supplier.id,
-                name: supplier.name,
-                cpf: supplier.cpf,
-                phone: supplier.phone,
-              })}
-            >
+                key={supplier.id}
+                onPress={() =>
+                  navigation.navigate("Supplier", {
+                    supplierId: supplier.id,
+                  })
+                }
+              >
                 <CardComponent
                   key={supplier.id}
                   cpf={supplier.cpf}
@@ -50,9 +47,9 @@ export default function SuppliersScreen() {
               </ContentContainer>
             ))}
           </ContainerSupplier>
-          <NewSupplierButton onPress={() => navigation.navigate('Nome')}>
+          <NewSupplierButton onPress={() => navigation.navigate("Nome")}>
             <SupplierName>
-              <Ionicons name="add" size={32}/>
+              <Ionicons name="add" size={32} />
             </SupplierName>
           </NewSupplierButton>
         </>
@@ -70,4 +67,3 @@ export default function SuppliersScreen() {
     </>
   );
 }
-

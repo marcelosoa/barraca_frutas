@@ -27,7 +27,7 @@ export type propsNavigationStack = {
   }
   RegisterFruit?: {}
   Supplier: {
-    id: string,
+    supplierId: string
     name: string,
     cpf: string,
     phone: string
