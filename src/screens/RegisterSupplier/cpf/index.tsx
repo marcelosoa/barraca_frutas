@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // Style
 import { Container, ViewName, InputFormView } from './styled';
 // Props
@@ -6,7 +6,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 // Components
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
-import RouterComponent from '../../../components/Router';
+import BreadCrumbsComponent from '../../../components/Router';
 // Utils
 import Ionicons from '@expo/vector-icons/Ionicons';
 import isValidCPF from '../../../utils/isValidCPF';
@@ -16,11 +16,12 @@ import { useDispatch } from 'react-redux';
 
 // Redux
 import { addCPF } from '../../../redux/reducers/suppliersReducer';
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { propsStack } from '../../../interface/routerinterface';
 
 type RootStackParamList = {
-  Home: { name: string };
-  Telefone: { name: string; cpf: string, phone: string, fruits: string };
+  Home: undefined
+  Telefone: undefined
 };
 
 type RouterProps = RouteProp<RootStackParamList, 'Home'>;
@@ -31,8 +32,10 @@ type Props = {
   navigation: HomeScreenNavigationProp;
 };
 
-export default function RegisterCPFSupplierScreen({ navigation, route }: Props) {
-  const { name } = route.params;
+export default function RegisterCPFSupplierScreen({ route }: Props) {
+  const navigation = useNavigation<propsStack>()
+  const params = useRoute()
+  console.log('Tela cpf: ', params?.params?.name)
   const dispatch = useDispatch();
   const [cpf, setCPF] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
@@ -47,7 +50,7 @@ export default function RegisterCPFSupplierScreen({ navigation, route }: Props) 
       <ViewName>
         <Ionicons name='close' size={32} color={'#930000'} />
       </ViewName>
-      <RouterComponent navigation={navigation}/>
+      <BreadCrumbsComponent navigation={navigation}/>
       <InputFormView>
         <InputFormComponent
           errors={getErrorMessageByFieldName('cpf')}
@@ -59,7 +62,7 @@ export default function RegisterCPFSupplierScreen({ navigation, route }: Props) 
         />
         <ButtonComponent 
           onPress={() => navigation.navigate('Telefone', {
-            name: name,
+            name: params?.params?.name,
             cpf: cpf
           })} 
           label='Próximo' 

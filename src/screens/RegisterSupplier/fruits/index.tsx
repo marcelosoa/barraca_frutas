@@ -3,12 +3,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Container, ViewName, InputFormView } from './styled';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
-import RouterComponent from '../../../components/Router';
+import BreadCrumbsComponent from '../../../components/Router';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 import { Supplier } from '../../../interface/SupplierInterface';
 import { addSupplier } from '../../../redux/reducers/suppliersReducer';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { propsStack } from '../../../interface/routerinterface';
 
 type StackParamList = {
   Home: undefined;
@@ -19,20 +20,23 @@ type RouterComponentProps = {
   navigation: StackNavigationProp<StackParamList, any>;
 };
 
-export default function RegisterFruitSupplierScreen({ route }) {
-  const navigation = useNavigation()
+export default function RegisterFruitSupplierScreen() {
+  const navigation = useNavigation<propsStack>()
+  const params = useRoute()
+  console.log(params)
   const dispatch = useDispatch();
-  const { name, cpf, phone } = route.params;
   
   const handleSaveDatas = () => {
     const newSupplier: Supplier = {
       id: '',
-      name: name,
-      cpf: cpf,
-      phone: phone
+      name: params?.params?.name,
+      cpf: params?.params?.cpf,
+      phone: params?.params?.phone
     };
     dispatch(addSupplier(newSupplier));
-    navigation.navigate('Success');
+    navigation.navigate('Success', {
+      name: params?.params?.name,
+    });
   };
 
   return (
@@ -40,7 +44,7 @@ export default function RegisterFruitSupplierScreen({ route }) {
       <ViewName>
         <Ionicons name="close" size={32} color={'#930000'} />
       </ViewName>
-      <RouterComponent navigation={navigation} />
+      <BreadCrumbsComponent navigation={navigation}/>
       <InputFormView>
         <InputFormComponent label="Escolha as frutas que esse fornecedor nos fornece" value="Morae" />
         <ButtonComponent onPress={handleSaveDatas} label="Cadastrar Fornecedor" />

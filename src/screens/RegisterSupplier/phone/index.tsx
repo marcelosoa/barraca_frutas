@@ -3,13 +3,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Container, ViewName, InputFormView } from './styled';
 import InputFormComponent from '../../../components/InputForm';
 import ButtonComponent from '../../../components/Button';
-import RouterComponent from '../../../components/Router';
+import BreadCrumbsComponent from '../../../components/Router';
 import isValidPhone from '../../../utils/IsValidPhone'
 import useErrors from '../../../utils/hooks/useErros'
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useDispatch, useSelector } from 'react-redux';
-import { RouteProp, useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { addNumber } from '../../../redux/reducers/suppliersReducer';
+import { propsStack } from '../../../interface/routerinterface';
 
 type RootStackParamList = {
   Home: undefined;
@@ -25,10 +26,11 @@ type Props = {
 }
 
 
-export default function RegisterPhoneSupplierScreen({ navigation, route }: Props) { 
-  const { cpf, name } = route.params
-  console.log(cpf)
-
+export default function RegisterPhoneSupplierScreen() { 
+  const navigation = useNavigation<propsStack>()
+  const params = useRoute()
+  console.log('Params tela phone', params.params?.name)
+  console.log('Params tela phone', params.params?.cpf)
   const dispatch = useDispatch()
   const [phoneNumber, setPhoneNumber] = useState('');
   const { setError, removeError, getErrorMessageByFieldName } = useErrors();
@@ -43,7 +45,7 @@ export default function RegisterPhoneSupplierScreen({ navigation, route }: Props
       <ViewName>
         <Ionicons name='close' size={32} color={'#930000'} />
       </ViewName>
-      <RouterComponent navigation={navigation}/>
+      <BreadCrumbsComponent navigation={navigation}/>
       <InputFormView>
         <InputFormComponent
           errors={getErrorMessageByFieldName('phone')}
@@ -55,9 +57,9 @@ export default function RegisterPhoneSupplierScreen({ navigation, route }: Props
         />
         <ButtonComponent 
           onPress={() => navigation.navigate('Frutas', {
-            name: name,
-            cpf: cpf,
-            phone: phoneNumber
+            name: params?.params?.name,
+            cpf: params?.params?.cpf,
+            phone:phoneNumber
           })} 
           label='Próximo' 
         />

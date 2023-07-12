@@ -1,8 +1,9 @@
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { View, Text, ButtonText } from './styled'
-import { useNavigationState } from '@react-navigation/native';
+import { useNavigation, useNavigationState } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+
 
 type StackParamList = {
   Home: undefined;
@@ -10,10 +11,10 @@ type StackParamList = {
 };
 
 type RouterComponentProps = {
-  navigation: StackNavigationProp<StackParamList, any>;
+  navigation?: StackNavigationProp<StackParamList, any>;
 };
 
-export default function RouterComponent ({ navigation }: RouterComponentProps) {
+export default function BreadCrumbsComponent ({navigation} : RouterComponentProps) {
   const state = useNavigationState((state) => state);
   const routes = state.routes;
   const index = state.index;
@@ -21,9 +22,10 @@ export default function RouterComponent ({ navigation }: RouterComponentProps) {
 
   const handleRoutePress = (index: number) => {
     if (index !== paths.length - 1) {
-      navigation.navigate(routes[index + 1].name as keyof StackParamList);
+      navigation?.navigate(routes[index + 1].name as keyof StackParamList);
+
     } else {
-      navigation.goBack();
+      navigation?.goBack();
     }
   };
 
