@@ -4,7 +4,7 @@ import { Container, ViewName, Text, InputFormView } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../Button";
 import { Supplier } from "../../interface/SupplierInterface";
-import { addSupplier, searchSupplier } from "../../redux/reducers/suppliersReducer";
+import { addSupplier } from "../../redux/reducers/suppliersReducer";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
 import { useDispatch } from "react-redux";
