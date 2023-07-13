@@ -54,6 +54,7 @@ export const ContainerSupplier = styled.ScrollView`
   padding-bottom: 16px;
   flex-direction: column;
   gap: 8px;
+  position: relative;
 `
 
 export const ContentContainer = styled.TouchableOpacity`
@@ -68,6 +69,9 @@ export const NewSupplierButton = styled.TouchableOpacity `
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
 `
 export const SupplierName = styled.Text`
   background-color: ${({ theme }) => theme.colors.primary };

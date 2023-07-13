@@ -4,5 +4,5 @@ export interface InputFormProps {
   onChangeText?: (value: any) => void;
   limitCaracter?: number;
   errors?: string;
-  value: string
+  value: any
 }

@@ -53,12 +53,12 @@ export default function SuppliersScreen() {
                 />
               </ContentContainer>
             ))}
-            <NewSupplierButton onPress={() => navigation.navigate("Nome")}>
+          </ContainerSupplier>
+          <NewSupplierButton onPress={() => navigation.navigate("Nome")}>
             <SupplierName>
               <Ionicons name="add" size={32} />
             </SupplierName>
           </NewSupplierButton>
-          </ContainerSupplier>
         </>
       ) : (
         <Container>

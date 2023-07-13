@@ -9,12 +9,12 @@ export const Container = styled.SafeAreaView`
   padding: 24px 28px;
   display: flex;
   flex: 1;
-  gap: 44px;
+  gap: 36px;
 `
 
 export const ViewName = styled.View`
-flex-direction: row;
-align-items: center;
+  flex-direction: row;
+  align-items: center;
 
 `
 export const InputFormView = styled.View`
@@ -38,12 +38,3 @@ export const Text = styled.Text<TextProps>`
     color: ${({ theme }) => theme.text.black };
   `}
 `
-
-export const ContainerReturn = styled.View`
-  padding: 24px 28px;
-  display: flex;
-  flex: 1;
-  gap: 44px;
-`
-
-export const ViewReturn = styled.View``
