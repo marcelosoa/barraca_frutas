@@ -30,10 +30,14 @@ export default function App() {
       cpf: data.cpf || "",
       phone: data.phone || "",
       fruits: data.fruits || [],
-      id: ""
+      id: "",
     };
     dispatch(addSupplier(newSupplier));
     navigation.navigate("Success");
+  };
+
+  const handleStepClick = (index: number) => {
+    setStep(index);
   };
 
   const contents = [
@@ -48,7 +52,7 @@ export default function App() {
             onChangeText={(name) => setData({ ...data, name })}
           />
         </InputFormView>
-      )
+      ),
     },
     {
       label: "CPF",
@@ -61,7 +65,7 @@ export default function App() {
             onChangeText={(cpf) => setData({ ...data, cpf })}
           />
         </InputFormView>
-      )
+      ),
     },
     {
       label: "Telefone",
@@ -74,7 +78,7 @@ export default function App() {
             onChangeText={(phone) => setData({ ...data, phone })}
           />
         </InputFormView>
-      )
+      ),
     },
     {
       label: "Fruta",
@@ -89,25 +93,32 @@ export default function App() {
           </InputFormView>
           <ButtonComponent label="Salvar Frutas" onPress={handleSaveData} />
         </>
-      )
-    }
+      ),
+    },
   ];
 
-  const steps = contents.map((content, index) => content.label);
+  const steps = contents.map((content) => content.label);
+  const currentSteps = steps.slice(0, step + 1);
 
   return (
     <Container>
       <ViewName>
         <Ionicons name="close" size={32} />
       </ViewName>
-      {steps.slice(0, step + 1).map((stepLabel, index) => (
-        <Text key={index} style={{ color: "red" }}>
-          {stepLabel} {index < step && ">"}
-        </Text>
+      {currentSteps.map((stepLabel, index) => (
+        <React.Fragment key={index}>
+          <Text
+            isRed={index === step}
+            onPress={() => handleStepClick(index)}
+          >
+            {stepLabel}
+          </Text>
+          {index !== currentSteps.length - 1 && (
+            <Ionicons name="chevron-forward" size={24} />
+          )}
+        </React.Fragment>
       ))}
-
       {contents[step].component}
-
       {step < contents.length - 1 && (
         <ButtonComponent label="Próximo" onPress={() => setStep(step + 1)} />
       )}
