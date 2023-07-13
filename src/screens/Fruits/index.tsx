@@ -43,7 +43,7 @@ export default function FruitsScreen() {
             <SearchComponent label="Pesquisar Frutas" />
             {fruits.map((fruit: Fruit) => (
               <ContentFruits key={fruit.id}>
-                <FruitCard key={fruit.id}>
+                <FruitCard>
                   <FruitText>
                     <Ionicons
                       name="cog-outline"
