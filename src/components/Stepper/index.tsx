@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
 import { useDispatch } from "react-redux";
 import { View } from "react-native";
+import { useTheme } from "styled-components";
 
 interface SupplierData {
   name: string;
@@ -24,6 +25,7 @@ export default function App() {
   const [data, setData] = useState<Partial<SupplierData>>({});
   const [step, setStep] = useState(0);
   const dispatch = useDispatch();
+  const theme = useTheme()
 
   const handleSaveData = () => {
     const newSupplier: Supplier = {
@@ -48,7 +50,7 @@ export default function App() {
         <InputFormView>
           <InputFormComponent
             placeholder="Nome"
-            label="Digite o nome do Fornecedor"
+            label="Digite o nome do colaborador"
             value={data.name || ""}
             onChangeText={(name) => setData({ ...data, name })}
           />
@@ -60,6 +62,7 @@ export default function App() {
       component: (
         <InputFormView>
           <InputFormComponent
+            limitCaracter={11}
             placeholder="000.000.00-00"
             label="Digite o CPF do colaborador"
             value={data.cpf || ""}
@@ -73,6 +76,7 @@ export default function App() {
       component: (
         <InputFormView>
           <InputFormComponent
+            limitCaracter={11}
             placeholder="(00) 00000-0000"
             label="Digite o Telefone do fornecedor"
             value={data.phone || ""}
@@ -104,7 +108,7 @@ export default function App() {
   return (
     <Container>
       <ViewName>
-        <Ionicons name="close" size={32} />
+        <Ionicons name="close" size={36} color={theme.colors.primary_dark}/>
       </ViewName>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         {currentSteps.map((stepLabel, index) => (
@@ -112,12 +116,11 @@ export default function App() {
             <Text
               isRed={index === step}
               onPress={() => handleStepClick(index)}
-              style={{ marginRight: 10 }}
             >
               {stepLabel}
             </Text>
             {index !== currentSteps.length - 1 && (
-              <Ionicons name="chevron-forward" size={24} />
+              <Ionicons name="chevron-forward" size={32} />
             )}
           </React.Fragment>
         ))}
