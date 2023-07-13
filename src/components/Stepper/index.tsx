@@ -1,47 +1,127 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import InputFormComponent from "../InputForm";
+import { Container, ViewName, Text, InputFormView, ContainerReturn, ViewReturn } from "./styled";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import ButtonComponent from "../Button";
+import { Supplier } from "../../interface/SupplierInterface";
+import { addSupplier } from "../../redux/reducers/suppliersReducer";
+import { useNavigation } from "@react-navigation/native";
+import { propsStack } from "../../interface/routerinterface";
+import { useDispatch } from "react-redux";
 
-export function App(props) {
-  const [data, setData] = useState({});
+interface SupplierData {
+  name: string;
+  cpf: string;
+  phone: string;
+  fruits?: string[];
+}
+
+const Data: Partial<SupplierData> = {};
+
+export default function App() {
+  const navigation = useNavigation<propsStack>();
+  const [data, setData] = useState<SupplierData>({});
   const [step, setStep] = useState(0);
+  const dispatch = useDispatch();
+
+  const handleSaveData = () => {
+    const newSupplier: Supplier = {
+      name: data.name,
+      cpf: data.cpf,
+      phone: data.phone,
+      fruits: []
+    };
+    dispatch(addSupplier(newSupplier));
+    navigation.navigate("Success");
+  };
 
   const contents = [
-    <div>
-      Passo 1: Digite seu CPF
-      <input
-        value={data.cpf || ""}
-        onChange={e => setData({
-        ...data,
-        cpf: e.target.value
-      })} />
-    </div>,
-    <div>
-      Passo 2: Digite seu telefone
-      <input
-        value={data.phone || ""}
-        onChange={e => setData({
-        ...data,
-        phone: e.target.value
-      })} />
-    </div>,
-    <div>
-      Passo 3: Sua info
-      CPF: {data.cpf}
-      Telefone: {data.phone}
-    </div>
+    {
+      label: "Nome",
+      component: (
+        <Container>
+          <InputFormView>
+            <InputFormComponent
+              placeholder="Nome"
+              label="Digite o nome do Fornecedor"
+              value={data.name || ""}
+              onChangeText={(name) => setData({ ...data, name })}
+            />
+          </InputFormView>
+        </Container>
+      ),
+    },
+    {
+      label: "CPF",
+      component: (
+        <Container>
+          <InputFormView>
+            <InputFormComponent
+              placeholder="000.000.00-00"
+              label="Digite o CPF do colaborador"
+              value={data.cpf || ""}
+              onChangeText={(cpf) => setData({ ...data, cpf })}
+            />
+          </InputFormView>
+        </Container>
+      ),
+    },
+    {
+      label: "Telefone",
+      component: (
+        <Container>
+          <InputFormView>
+            <InputFormComponent
+              placeholder="(00) 00000-0000"
+              label="Digite o Telefone do fornecedor"
+              value={data.phone || ""}
+              onChangeText={(phone) => setData({ ...data, phone })}
+            />
+          </InputFormView>
+        </Container>
+      ),
+    },
+    {
+      label: "Fruta",
+      component: (
+        <Container>
+          <InputFormView>
+            <InputFormComponent
+              label="Escolha as frutas que esse fornecedor nos fornece"
+              value={data.fruits || ""}
+              onChangeText={(fruits) => setData({ ...data, fruits })}
+            />
+          </InputFormView>
+          <ButtonComponent
+            label="Salvar Frutas"
+            onPress={handleSaveData}
+          />
+        </Container>
+      ),
+    },
   ];
 
   return (
-    <div className='App'>
-      {Array(step + 1).fill(null).map((_, index) => (
-        <span key={index} onClick={() => setStep(index)} >
-          {index + 1}
-          {index < step && <span>{`>`}</span>}
-        </span>
-      ))}
-      <h1>Olá celin</h1>
-      {contents[step]}
+    <ContainerReturn>
+      <ViewReturn>
 
-      {step < 2 && <button onClick={() => setStep(step + 1)}>Proximo</button>}
-    </div>
+      </ViewReturn>
+      {contents.map((content, index) => {
+        const isCurrentStep = index === step;
+        const textStyle = isCurrentStep ? { color: "red" } : null;
+  
+        return (
+          <Text key={index} onPress={() => setStep(index)} style={textStyle}>
+            {content.label} {index < step && ">"}
+          </Text>
+        );
+      })}
+      {contents[step].component}
+  
+      {step < contents.length - 1 && (
+        <ButtonComponent label="Próximo" onPress={() => setStep(step + 1)} />
+      )}
+    </ContainerReturn>
   );
+  
 }
