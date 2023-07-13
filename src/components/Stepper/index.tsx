@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { View } from "react-native";
 import { useTheme } from "styled-components";
 import CheckBoxComponent from "../Checkbox";
+import ModalComponent from "../Modal";
 
 interface SupplierData {
   name: string;
@@ -22,11 +23,19 @@ interface SupplierData {
 const Data: Partial<SupplierData> = {};
 
 export default function App() {
+
+  /**
+   * Stepper para navegação do header
+   */
+
   const navigation = useNavigation<propsStack>();
   const [data, setData] = useState<Partial<SupplierData>>({});
   const [step, setStep] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const dispatch = useDispatch();
   const theme = useTheme();
+
+  // Adicionar dados ao data para armazenar no async storage
   
   const handleSaveData = () => {
     const newSupplier: Supplier = {
@@ -40,9 +49,16 @@ export default function App() {
     navigation.navigate("Success");
   };
 
+  // Function para avançar ao proximo Step como Nome -> CPF -> Telefone -> Frutas
   const handleStepClick = (index: number) => {
     setStep(index);
   };
+
+  // Function para abrir/ Fechar modal
+
+  const handleCloseModal = () => {
+    setIsModalOpen(true)
+  }
 
   const selectedFruits = [
     { id: "1", label: "Banana" },
@@ -57,11 +73,13 @@ export default function App() {
     { id: "10", label: "Melancia" },
   ];
 
+  // Frutas -> Select -> Checkbox component
   const handleFruitsChange = (fruits: any) => {
     const selectedFruitLabels = fruits.map((fruit: any) => fruit.label);
     setData((prevData) => ({ ...prevData, fruits: selectedFruitLabels }));
   };
 
+  // Conteúdo da navegação Nome -> CPF -> Telefone -> Frutas -> Cadastro do Fornecedor
   const contents = [
     {
       label: "Nome",
@@ -128,6 +146,7 @@ export default function App() {
     },
   ];
 
+  // Conteúdo da navegação para retornar a anterior e/ adicionar um chevron/cor vermelha caso avançe Nome > CPF
   const steps = contents.map((content) => content.label);
   const currentSteps = steps.slice(0, step + 1);
 
@@ -135,6 +154,14 @@ export default function App() {
     <Container>
       <ViewName>
         <Ionicons name="close" size={36} color={theme.colors.primary_dark} />
+        {isModalOpen && (
+          <ModalComponent
+            isVisible={isModalOpen}
+            text="CAncelar Cadastro"
+            contentText="Tem certeza que quer cancelar o cadastro do colaborador? Você
+            perderá todas as informações inseridas até aqui"
+          />
+        )}
       </ViewName>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         {currentSteps.map((stepLabel, index) => (
