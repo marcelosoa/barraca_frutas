@@ -1,15 +1,22 @@
 import React from 'react';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Container, ContainerView, Button, Text } from './styled'
 import { CheckBoxComponentProps, Option } from '../../interface/CheckBoxComponentInterface';
 
-interface CheckBoxProps {
-  options: Option[];
-  onChange?: (selected: Option[]) => void;
-}
-
 export default function CheckBoxComponent({ options = [], onChange }: CheckBoxComponentProps) {
   const [selected, setSelected] = React.useState<Option[]>([]);
+
+  function handleToggleAll() {
+    if (selected.length === options.length) {
+      setSelected([]);
+    } else {
+      setSelected(options);
+    }
+
+    if (onChange) {
+      onChange(selected.length !== options.length ? options : []);
+    }
+  }
 
   function handleToggleSelected(option: Option) {
     const isSelected = selected.some((item) => item.id === option.id);
@@ -17,20 +24,34 @@ export default function CheckBoxComponent({ options = [], onChange }: CheckBoxCo
       ? selected.filter((item) => item.id !== option.id)
       : [...selected, option];
     setSelected(updatedSelected);
+
+    if (onChange) {
+      onChange(updatedSelected);
+    }
   }
 
   return (
     <Container>
+      <ContainerView key="selectAll">
+        <Button onPress={handleToggleAll}>
+          <Ionicons
+            name={selected.length === options.length ? 'md-square-sharp' : 'md-square-outline'}
+            size={32}
+            color={selected.length === options.length ? 'red' : 'black'}
+          />
+        </Button>
+        <Text>Todas</Text>
+      </ContainerView>
       {options.map((option) => (
         <ContainerView key={option.id}>
           <Button
             onPress={() => handleToggleSelected(option)}
           >
-            <MaterialCommunityIcons
+            <Ionicons
               name={selected.some((item) => item.id === option.id)
-                ? 'checkbox-marked-outline'
-                : 'checkbox-blank-outline'}
-              size={24}
+                ? 'md-square-sharp'
+                : 'md-square-outline'}
+              size={32}
               color={selected.some((item) => item.id === option.id) ? 'red' : 'black'}
             />
           </Button>

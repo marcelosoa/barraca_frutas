@@ -10,6 +10,7 @@ import { propsStack } from "../../interface/routerinterface";
 import { useDispatch } from "react-redux";
 import { View } from "react-native";
 import { useTheme } from "styled-components";
+import CheckBoxComponent from "../Checkbox";
 
 interface SupplierData {
   name: string;
@@ -25,7 +26,7 @@ export default function App() {
   const [data, setData] = useState<Partial<SupplierData>>({});
   const [step, setStep] = useState(0);
   const dispatch = useDispatch();
-  const theme = useTheme()
+  const theme = useTheme();
 
   const handleSaveData = () => {
     const newSupplier: Supplier = {
@@ -41,6 +42,24 @@ export default function App() {
 
   const handleStepClick = (index: number) => {
     setStep(index);
+  };
+
+  const selectedFruits = [
+    { id: "1", label: "Banana" },
+    { id: "2", label: "Maçã" },
+    { id: "3", label: "Laranja" },
+    { id: "4", label: "Abacaxi" },
+    { id: "5", label: "Morango" },
+    { id: "6", label: "Manga" },
+    { id: "7", label: "Uva" },
+    { id: "8", label: "Pera" },
+    { id: "9", label: "Kiwi" },
+    { id: "10", label: "Melancia" },
+  ];
+
+  const handleFruitsChange = (fruits: any) => {
+    const selectedFruitLabels = fruits.map((fruit: any) => fruit.label);
+    setData((prevData) => ({ ...prevData, fruits: selectedFruitLabels }));
   };
 
   const contents = [
@@ -95,8 +114,15 @@ export default function App() {
               value={data.fruits || ""}
               onChangeText={(fruits) => setData({ ...data, fruits })}
             />
+            <CheckBoxComponent
+              options={selectedFruits}
+              onChange={handleFruitsChange}
+            />
           </InputFormView>
-          <ButtonComponent label="Salvar Frutas" onPress={handleSaveData} />
+          <ButtonComponent
+            label="Cadastrar Fornecedor"
+            onPress={handleSaveData}
+          />
         </>
       ),
     },
@@ -108,15 +134,12 @@ export default function App() {
   return (
     <Container>
       <ViewName>
-        <Ionicons name="close" size={36} color={theme.colors.primary_dark}/>
+        <Ionicons name="close" size={36} color={theme.colors.primary_dark} />
       </ViewName>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         {currentSteps.map((stepLabel, index) => (
           <React.Fragment key={index}>
-            <Text
-              isRed={index === step}
-              onPress={() => handleStepClick(index)}
-            >
+            <Text isRed={index === step} onPress={() => handleStepClick(index)}>
               {stepLabel}
             </Text>
             {index !== currentSteps.length - 1 && (
