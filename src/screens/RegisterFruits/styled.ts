@@ -4,7 +4,7 @@ interface TextInputProps {
   placeholder: string
 }
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   padding: 12px;
   display: flex;
   flex: 1;
@@ -17,7 +17,7 @@ export const ViewContent = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 30px 0; 
+  padding: 28px 0; 
   justify-content: space-between;
 `;
 
@@ -28,7 +28,7 @@ export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.primary };
 `;
 
-export const FruitView = styled.View`
+export const FruitView = styled.KeyboardAvoidingView`
 `
 
 export const TextInput = styled.TextInput<TextInputProps>`

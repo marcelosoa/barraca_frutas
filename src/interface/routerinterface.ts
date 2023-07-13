@@ -20,10 +20,12 @@ export type propsNavigationStack = {
 
   }
   RegisterFruit?: {}
-  Supplier: {
+  Supplier?: {
   }
   Fornecedor?: {}
-  SuccessFruits?: {}
+  SuccessFruit?: {}
+  Suppliers?: {}
+  App?: {}
 
 }
 

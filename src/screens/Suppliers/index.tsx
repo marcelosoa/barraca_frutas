@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Container,
   Text,
@@ -11,39 +11,41 @@ import {
   ContentContainer,
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
-import { fetchSuppliers } from "../../redux/reducers/suppliersReducer";
+import {
+  fetchSuppliers,
+  searchSupplier,
+} from "../../redux/reducers/suppliersReducer";
 
 export default function SuppliersScreen() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState("");
   const navigation = useNavigation<propsStack>();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
-  console.log('FORNECEDORES', suppliers)
 
   useEffect(() => {
-    dispatch(fetchSuppliers())
-  }, [dispatch])
+    dispatch(fetchSuppliers());
+  }, [dispatch]);
 
   return (
     <>
       {suppliers?.length > 0 ? (
         <>
           <ContainerSupplier>
-            <SearchComponent label="Pesquisar Fornecedor" />
+            <SearchComponent
+              value={searchTerm}
+              onChangeText={setSearchTerm}
+              label="Pesquisar Fornecedor"
+            />
             {suppliers.map((supplier) => (
               <ContentContainer
                 key={supplier.id}
-                onPress={() =>
-                  navigation.navigate("Supplier", {
-                    supplierId: supplier.id,
-                  })
-                }
+                onPress={() => navigation.navigate("Supplier")}
               >
                 <CardComponent
                   key={supplier.id}
@@ -65,7 +67,7 @@ export default function SuppliersScreen() {
           <ViewText>
             <Text> Cadastre seu primeiro fornecedor </Text>
           </ViewText>
-          <Button onPress={() => navigation.navigate("Nome")}>
+          <Button onPress={() => navigation.navigate("App")}>
             <Ionicons name="add" size={32} color={"#FFFFFF"} />
             <TextButton>Cadastrar Fornecedor</TextButton>
           </Button>

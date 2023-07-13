@@ -7,7 +7,7 @@ export default function InputFormComponent({ placeholder, label, onChangeText, l
   return (
     <Container>
       <Label>{label}</Label>
-      <TextInput 
+      <TextInput
           maxLength={limitCaracter} 
           placeholder={placeholder} 
           onChangeText={onChangeText} 

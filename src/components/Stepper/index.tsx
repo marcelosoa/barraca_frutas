@@ -4,7 +4,7 @@ import { Container, ViewName, Text, InputFormView } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../Button";
 import { Supplier } from "../../interface/SupplierInterface";
-import { addSupplier } from "../../redux/reducers/suppliersReducer";
+import { addSupplier, searchSupplier } from "../../redux/reducers/suppliersReducer";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
 import { useDispatch } from "react-redux";
@@ -27,7 +27,7 @@ export default function App() {
   const [step, setStep] = useState(0);
   const dispatch = useDispatch();
   const theme = useTheme();
-
+  
   const handleSaveData = () => {
     const newSupplier: Supplier = {
       name: data.name || "",

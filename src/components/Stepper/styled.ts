@@ -5,7 +5,7 @@ interface TextProps {
   isRed?: boolean
 }
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.KeyboardAvoidingView`
   background-color: ${({ theme }) => theme.colors.background };
   padding: 24px 28px;
   display: flex;

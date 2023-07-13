@@ -22,7 +22,7 @@ export default function SupplierScreen() {
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
   const route = useRoute();
   
-  const selectedSupplier = suppliers.find(supplier => supplier.id === route.params?.supplierId);
+  const selectedSupplier = suppliers.find(supplier => supplier.id);
   console.log('FRUTEIRO SELECIONADO', selectedSupplier)
 
   if (!selectedSupplier) {

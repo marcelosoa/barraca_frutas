@@ -7,6 +7,7 @@ interface Supplier {
   name: string;
   cpf: string;
   phone: string;
+  fruits: string[]
 }
 
 interface SupplierState {
@@ -34,38 +35,11 @@ const supplierSlice = createSlice({
         supplier => supplier.id !== action.payload
       );
     },
-    addName: (state, action: PayloadAction<{ id: string, name: string }>) => {
-      state.suppliers = state.suppliers.map(supplier => {
-        if (supplier.id === action.payload.id) {
-          return {
-            ...supplier,
-            name: action.payload.name
-          };
-        }
-        return supplier;
-      });
-    },
-    addCPF: (state, action: PayloadAction<{ id: string, cpf: string }>) => {
-      state.suppliers = state.suppliers.map(supplier => {
-        if (supplier.id === action.payload.id) {
-          return {
-            ...supplier,
-            cpf: action.payload.cpf
-          };
-        }
-        return supplier;
-      });
-    },
-    addNumber: (state, action: PayloadAction<{ id: string, phone: string }>) => {
-      state.suppliers = state.suppliers.map(supplier => {
-        if (supplier.id === action.payload.id) {
-          return {
-            ...supplier,
-            phone: action.payload.phone
-          };
-        }
-        return supplier;
-      });
+    searchSupplier: (state, action: PayloadAction<string>) => {
+      const searchTerm = action.payload.toLowerCase();
+      state.suppliers = state.suppliers.filter(supplier =>
+        supplier.name.toLowerCase().includes(searchTerm)
+      );
     },
     loadSuppliers: (state, action: PayloadAction<Supplier[]>) => {
       state.suppliers = action.payload
@@ -73,7 +47,7 @@ const supplierSlice = createSlice({
   },
 });
 
-export const { addSupplier, removeSupplier, addName, addCPF, addNumber, loadSuppliers } = supplierSlice.actions;
+export const { addSupplier, removeSupplier, loadSuppliers, searchSupplier } = supplierSlice.actions;
 
 export const fetchSuppliers = () => (dispatch: any) => {
   AsyncStorage.getItem('suppliers')

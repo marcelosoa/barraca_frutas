@@ -65,7 +65,13 @@ font-weight: 400;
 line-height: 30px;
 `
 
-export const FruitView = styled.View``
+export const FruitView = styled.View`
+
+`
+
+export const RenderFruits = styled.Text`
+
+`
 
 export const Fruits = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular };
