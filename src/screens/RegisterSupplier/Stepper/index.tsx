@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import InputFormComponent from "../InputForm";
+import InputFormComponent from "../../../components/InputForm";
 import { Container, ViewName, Text, InputFormView } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import ButtonComponent from "../Button";
-import { Supplier } from "../../interface/SupplierInterface";
-import { addSupplier } from "../../redux/reducers/suppliersReducer";
+import ButtonComponent from "../../../components/Button";
+import { Supplier } from "../../../interface/SupplierInterface";
+import { addSupplier } from "../../../redux/reducers/suppliersReducer";
 import { useNavigation } from "@react-navigation/native";
-import { propsStack } from "../../interface/routerinterface";
+import { propsStack } from "../../../interface/routerinterface";
 import { useDispatch } from "react-redux";
 import { View } from "react-native";
 import { useTheme } from "styled-components";
-import CheckBoxComponent from "../Checkbox";
-import ModalComponent from "../Modal";
+import CheckBoxComponent from "../../../components/Checkbox";
+import ModalComponent from "../../../components/Modal";
 
 interface SupplierData {
   name: string;
@@ -153,11 +153,11 @@ export default function App() {
   return (
     <Container>
       <ViewName>
-        <Ionicons name="close" size={36} color={theme.colors.primary_dark} />
+        <Ionicons name="close" size={36} color={theme.colors.primary_dark} onPress={handleCloseModal} />
         {isModalOpen && (
           <ModalComponent
             isVisible={isModalOpen}
-            text="CAncelar Cadastro"
+            text="Cancelar Cadastro"
             contentText="Tem certeza que quer cancelar o cadastro do colaborador? Você
             perderá todas as informações inseridas até aqui"
           />

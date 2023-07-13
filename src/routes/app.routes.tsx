@@ -7,17 +7,12 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 // Screens
 import FruitsScreen from "../screens/Fruits";
-import RegisterCPFSupplierScreen from "../screens/RegisterSupplier/cpf";
-import RegisterPhoneSupplierScreen from "../screens/RegisterSupplier/phone";
-import RegisterNameSupplier from "../screens/RegisterSupplier/name";
-import RegisterFruitSupplierScreen from "../screens/RegisterSupplier/fruits";
 import RegisterFruitScreen from "../screens/RegisterFruits";
 import RegisterSuccessScreen from "../screens/RegisterSupplier/sucess";
 import SuppliersScreen from "../screens/Suppliers";
 import SupplierScreen from "../screens/Suppliers/supplier";
 import SuccessFruit from "../screens/RegisterFruits/success";
-import RegisterSupplierScreen from "../components/Stepper";
-import App from "../components/Stepper";
+import App from "../screens/RegisterSupplier/Stepper";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
