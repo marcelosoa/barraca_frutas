@@ -17,6 +17,7 @@ import SuppliersScreen from "../screens/Suppliers";
 import SupplierScreen from "../screens/Suppliers/supplier";
 import SuccessFruit from "../screens/RegisterFruits/success";
 import RegisterSupplierScreen from "../components/Stepper";
+import App from "../components/Stepper";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -73,6 +74,7 @@ export default function AppRoutes() {
         }}
       >
         <Stack.Screen name="Inicio" component={HomeTabs} />
+        <Stack.Screen name="App" component={App} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
         <Stack.Screen name="SuccessFruit" component={SuccessFruit} />
       </Stack.Navigator>

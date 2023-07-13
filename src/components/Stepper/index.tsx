@@ -8,6 +8,7 @@ import { addSupplier } from "../../redux/reducers/suppliersReducer";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
 import { useDispatch } from "react-redux";
+import { View } from "react-native";
 
 interface SupplierData {
   name: string;
@@ -105,19 +106,22 @@ export default function App() {
       <ViewName>
         <Ionicons name="close" size={32} />
       </ViewName>
-      {currentSteps.map((stepLabel, index) => (
-        <React.Fragment key={index}>
-          <Text
-            isRed={index === step}
-            onPress={() => handleStepClick(index)}
-          >
-            {stepLabel}
-          </Text>
-          {index !== currentSteps.length - 1 && (
-            <Ionicons name="chevron-forward" size={24} />
-          )}
-        </React.Fragment>
-      ))}
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        {currentSteps.map((stepLabel, index) => (
+          <React.Fragment key={index}>
+            <Text
+              isRed={index === step}
+              onPress={() => handleStepClick(index)}
+              style={{ marginRight: 10 }}
+            >
+              {stepLabel}
+            </Text>
+            {index !== currentSteps.length - 1 && (
+              <Ionicons name="chevron-forward" size={24} />
+            )}
+          </React.Fragment>
+        ))}
+      </View>
       {contents[step].component}
       {step < contents.length - 1 && (
         <ButtonComponent label="Próximo" onPress={() => setStep(step + 1)} />
