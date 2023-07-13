@@ -12,6 +12,8 @@ import {
   ContentFruits,
   FruitCard,
   FruitText,
+  NewFruitButton,
+  FruitButtonIcon
 } from "./styled";
 import { propsStack } from "../../interface/routerinterface";
 import { useNavigation } from "@react-navigation/native";
@@ -36,27 +38,33 @@ export default function FruitsScreen() {
   return (
     <>
       {fruits.length > 0 ? (
-        <ContainerFruits>
-          <SearchComponent label="Pesquisar Frutas" />
-          {fruits.map((fruit: Fruit) => (
-            <ContentFruits key={fruit.id}>
-              <FruitCard key={fruit.id}>
-                <FruitText>
-                  <Ionicons
-                    name="cog-outline"
-                    size={24}
-                    color={theme.colors.primary}
-                  />
-                  {fruit.name}
-                </FruitText>
-                <FruitText>{fruit.price}</FruitText>
-                <FruitText>{fruit.quantity}</FruitText>
-                <FruitText>{fruit.supplier}</FruitText>
-              </FruitCard>
-            </ContentFruits>
-            
-          ))}
-        </ContainerFruits>
+        <>
+          <ContainerFruits>
+            <SearchComponent label="Pesquisar Frutas" />
+            {fruits.map((fruit: Fruit) => (
+              <ContentFruits key={fruit.id}>
+                <FruitCard>
+                  <FruitText>
+                    <Ionicons
+                      name="cog-outline"
+                      size={24}
+                      color={theme.colors.primary}
+                    />
+                    {fruit.name}
+                  </FruitText>
+                  <FruitText>{fruit.price}</FruitText>
+                  <FruitText>{fruit.quantity}</FruitText>
+                  <FruitText>{fruit.supplier}</FruitText>
+                </FruitCard>
+              </ContentFruits>
+            ))}
+          </ContainerFruits>
+          <NewFruitButton onPress={() => navigation.navigate('RegistrarFrutas')}>
+            <FruitButtonIcon>
+              <Ionicons name="add" size={32} />
+            </FruitButtonIcon>
+          </NewFruitButton>
+        </>
       ) : (
         <Container>
           <ViewText>

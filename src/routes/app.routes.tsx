@@ -73,10 +73,6 @@ export default function AppRoutes() {
         }}
       >
         <Stack.Screen name="Inicio" component={HomeTabs} />
-        <Stack.Screen name="Nome" component={RegisterSupplierScreen} />
-        <Stack.Screen name="CPF" component={RegisterCPFSupplierScreen} />
-        <Stack.Screen name="Telefone" component={RegisterPhoneSupplierScreen} />
-        <Stack.Screen name="Frutas" component={RegisterFruitSupplierScreen} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
         <Stack.Screen name="SuccessFruit" component={SuccessFruit} />
       </Stack.Navigator>
@@ -89,13 +85,13 @@ const NewNavigator = () => {
     <Stack.Navigator screenOptions={{
       headerShown: false,
     }}>
-      <Stack.Screen 
+      <Stack.Screen
         name="RegisterFruit"
         component={FruitsScreen}
       />
-      <Stack.Screen 
-      name="RegistrarFrutas" 
-      component={RegisterFruitScreen}
+      <Stack.Screen
+        name="RegistrarFrutas"
+        component={RegisterFruitScreen}
       />
     </Stack.Navigator>
   )
@@ -106,7 +102,7 @@ const SupplierNavigator = () => {
     <Stack.Navigator screenOptions={{
       headerShown: false
     }}>
-      <Stack.Screen 
+      <Stack.Screen
         name="Suppliers"
         component={SuppliersScreen}
       />

@@ -71,3 +71,20 @@ export const FruitCard = styled.View`
 export const FruitText = styled.Text`
 
 `
+
+export const NewFruitButton = styled.TouchableOpacity`
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+`
+export const FruitButtonIcon = styled.Text`
+  background-color: ${({ theme }) => theme.colors.primary };
+  color: ${({ theme }) => theme.colors.background };
+  padding: 16px;
+  border-radius: 24px;
+
+`
