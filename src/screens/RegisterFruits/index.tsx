@@ -9,6 +9,7 @@ import { useTheme } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { addFruit } from "../../redux/reducers/fruitsReducer";
 import { RootState } from "../../redux/store";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
@@ -23,6 +24,7 @@ export default function RegisterFruitScreen() {
     price: "",
     quantity: "",
     supplier: "",
+    id: ''
   });
 
   return (
@@ -40,7 +42,7 @@ export default function RegisterFruitScreen() {
         <TextInput 
           placeholder="Nome da Fruta"
           value={fruitData.name}
-          onChangeText={(text) => setFruitData({ ...fruitData, name: text})}
+          onChangeText={(text: string) => setFruitData({ ...fruitData, name: text})}
           />
       </FruitView>
       <FruitView style={styled.card}>
@@ -48,7 +50,7 @@ export default function RegisterFruitScreen() {
         <TextInput 
           placeholder="Preço do Kilo"
           value={fruitData.price}
-          onChangeText={(price) => setFruitData({ ...fruitData, price: price})}
+          onChangeText={(price: string) => setFruitData({ ...fruitData, price: price})}
           />
       </FruitView>
       <FruitView style={styled.card}>
@@ -56,7 +58,7 @@ export default function RegisterFruitScreen() {
         <TextInput 
           placeholder="Quantidade no estoque"
           value={fruitData.quantity}
-          onChangeText={(quantity) => setFruitData({ ...fruitData, quantity: quantity})}
+          onChangeText={(quantity: string) => setFruitData({ ...fruitData, quantity: quantity})}
         />
       </FruitView>
       <FruitView style={styled.card}>
@@ -64,12 +66,13 @@ export default function RegisterFruitScreen() {
         <TextInput 
           placeholder="Fornecedor"
           value={fruitData.supplier}
-          onChangeText={(supplier) => setFruitData({ ...fruitData, supplier: supplier})}
+          onChangeText={(supplier: string) => setFruitData({ ...fruitData, supplier: supplier})}
           />
       </FruitView>
       <ButtonComponent
         label="Cadastrar Fruta"
         onPress={() => {
+          fruitData.id = uuidv4()
           dispatch(addFruit(fruitData));
           navigation.navigate('SuccessFruit');
         }}

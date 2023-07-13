@@ -19,7 +19,6 @@ import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
 import {
   fetchSuppliers,
-  searchSupplier,
 } from "../../redux/reducers/suppliersReducer";
 
 export default function SuppliersScreen() {
@@ -32,6 +31,18 @@ export default function SuppliersScreen() {
     dispatch(fetchSuppliers());
   }, [dispatch]);
 
+  const filteredSuppliers = useMemo(
+    () =>
+      suppliers.filter((supplier) =>
+        supplier.name.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    [suppliers, searchTerm]
+  );
+
+  const handleSearch = (text: string) => {
+    setSearchTerm(text);
+  };
+
   return (
     <>
       {suppliers?.length > 0 ? (
@@ -39,10 +50,10 @@ export default function SuppliersScreen() {
           <ContainerSupplier>
             <SearchComponent
               value={searchTerm}
-              onChangeText={setSearchTerm}
+              onChangeText={handleSearch}
               label="Pesquisar Fornecedor"
             />
-            {suppliers.map((supplier) => (
+            {filteredSuppliers.map((supplier) => (
               <ContentContainer
                 key={supplier.id}
                 onPress={() => navigation.navigate("Supplier")}

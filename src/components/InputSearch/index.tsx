@@ -4,11 +4,14 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from 'react-native'
 import { SearchComponentProps } from '../../interface/InputSearchComponentInterface';
 
-export default function SearchComponent ({ label }: SearchComponentProps) {
+export default function SearchComponent ({ label, onChangeText }: SearchComponentProps) {
   return (
     <Container style={styled.inputSearch}>
       <Ionicons size={26} name='search'/>
-      <SearchInput placeholder={label} />
+      <SearchInput
+        placeholder={label}
+        onChangeText={onChangeText}
+      />
     </Container>
   )
 }

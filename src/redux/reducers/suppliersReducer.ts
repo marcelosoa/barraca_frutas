@@ -35,19 +35,13 @@ const supplierSlice = createSlice({
         supplier => supplier.id !== action.payload
       );
     },
-    searchSupplier: (state, action: PayloadAction<string>) => {
-      const searchTerm = action.payload.toLowerCase();
-      state.suppliers = state.suppliers.filter(supplier =>
-        supplier.name.toLowerCase().includes(searchTerm)
-      );
-    },
     loadSuppliers: (state, action: PayloadAction<Supplier[]>) => {
       state.suppliers = action.payload
     }
   },
 });
 
-export const { addSupplier, removeSupplier, loadSuppliers, searchSupplier } = supplierSlice.actions;
+export const { addSupplier, removeSupplier, loadSuppliers } = supplierSlice.actions;
 
 export const fetchSuppliers = () => (dispatch: any) => {
   AsyncStorage.getItem('suppliers')
