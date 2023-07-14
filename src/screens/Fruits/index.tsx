@@ -9,9 +9,7 @@ import {
   Button,
   TextButton,
   ContainerFruits,
-  ContentFruits,
   FruitCard,
-  FruitText,
   NewFruitButton,
   FruitButtonIcon
 } from "./styled";
@@ -40,9 +38,9 @@ export default function FruitsScreen() {
     setFruitSearch(text)
   }
 
-  const filteredFruits = useMemo(() => 
-    fruits.filter((fruit) => 
-    fruit.name.toLowerCase().includes(searchFruit.toLowerCase())
+  const filteredFruits = useMemo(() =>
+    fruits.filter((fruit) =>
+      fruit.name.toLowerCase().includes(searchFruit.toLowerCase())
     ),
     [fruits, searchFruit]
   )
@@ -52,19 +50,19 @@ export default function FruitsScreen() {
       {fruits.length > 0 ? (
         <>
           <ContainerFruits>
-            <SearchComponent 
-            value={searchFruit}
-            onChangeText={handleSearchFruit}
-            label="Pesquisar Frutas" />
+            <SearchComponent
+              value={searchFruit}
+              onChangeText={handleSearchFruit}
+              label="Pesquisar Frutas" />
             {filteredFruits.map((fruit: Fruit) => (
-                <FruitCard key={fruit.id}>
-                 <CardFruitComponent
+              <FruitCard key={fruit.id}>
+                <CardFruitComponent
                   name={fruit.name}
                   price={fruit.price}
                   quantity={fruit.quantity}
                   supplier={fruit.supplier}
-                 />
-                </FruitCard>
+                />
+              </FruitCard>
             ))}
           </ContainerFruits>
           <NewFruitButton onPress={() => navigation.navigate('RegistrarFrutas')}>

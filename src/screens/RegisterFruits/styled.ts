@@ -17,7 +17,7 @@ export const ViewContent = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 28px 0px;
+  padding: 32px 0px;
   justify-content: space-between;
 `;
 

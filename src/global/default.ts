@@ -11,7 +11,9 @@ export default {
     primary: '#FFF',
     black: '#212324',
     light_gray: '#6C7072',
-    text: '#363A3C'
+    text: '#363A3C',
+    success: '#008C21'
+
 
   },
 

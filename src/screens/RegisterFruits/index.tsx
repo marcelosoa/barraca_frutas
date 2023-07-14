@@ -47,8 +47,8 @@ export default function RegisterFruitScreen() {
         size={32}
         placeholder="Nome da Fruta"
         value={fruitData.name}
-        onChangeText={(name: string) => 
-          setFruitData({ ...fruitData, name: name})
+        onChangeText={(name: string) =>
+          setFruitData({ ...fruitData, name: name })
         }
       />
       <FormGroupComponent
@@ -56,19 +56,21 @@ export default function RegisterFruitScreen() {
         size={32}
         placeholder="Preço do Kilo"
         value={fruitData.price}
-        onChangeText={(price: string) => setFruitData({ ...fruitData, price: price})}
+        onChangeText={(price: string) =>
+          setFruitData({ ...fruitData, price: price })
+        }
       />
       <FormGroupComponent
         name="server-outline"
         size={32}
         placeholder="Quantidade no estoque"
         value={fruitData.quantity}
-        onChangeText={(quantity: string) => 
-          setFruitData({ ...fruitData, quantity: quantity})
+        onChangeText={(quantity: string) =>
+          setFruitData({ ...fruitData, quantity: quantity })
         }
       />
       <FruitView style={styled.cardPicker}>
-        <Ionicons name="people-outline" size={32} style={styled.icon} />
+        <Ionicons name="people-outline" size={32} />
         <Picker
           selectedValue={fruitData.supplier}
           onValueChange={(supplier: string) =>
@@ -76,7 +78,15 @@ export default function RegisterFruitScreen() {
           }
           style={styled.picker}
         >
-          <Picker.Item label="Fornecedor" value="" />
+          <Picker.Item
+            label="Fornecedor"
+            value=""
+            style={{
+              flex: 1,
+              fontSize: 16,
+              color: "#6C7072",
+            }}
+          />
           {suppliers.map((supplier) => (
             <Picker.Item
               key={supplier.id}
@@ -107,8 +117,7 @@ const styled = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FFFFFF",
     borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    padding: 8,
     elevation: 1,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -118,12 +127,9 @@ const styled = StyleSheet.create({
   icon: {
     gap: 16,
   },
-  label: {
-    flex: 1,
-    fontSize: 16,
-  },
   picker: {
     flex: 1,
     backgroundColor: "#FFFFFF",
+    gap: 16,
   },
 });
