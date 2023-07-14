@@ -21,13 +21,13 @@ export const ViewContent = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 16px 0; 
+  padding: 24px 12px; 
 `
 
 export const SupplierView = styled.View`
   display: flex;
   width: 100%;
-  padding: 8px 0;
+  padding: 16px 12px;
   flex-direction: row;
   gap: 8px;
   align-items: center;
