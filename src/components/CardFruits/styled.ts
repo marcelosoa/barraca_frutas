@@ -5,7 +5,7 @@ interface TextProps {
 }
 
 export const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.shape };
   padding: 20px;
   border-radius: 8px;
 `;

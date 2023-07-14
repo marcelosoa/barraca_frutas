@@ -44,7 +44,7 @@ export const TextButton = styled.Text`
 `;
 
 export const ContainerFruits = styled.ScrollView`
-  /* background-color: ${({ theme }) => theme.colors.background}; */
+  background-color: ${({ theme }) => theme.colors.background};
   display: flex;
   flex: 1;
   padding-top: 48px;

@@ -26,7 +26,7 @@ export default function CardFruitComponent({
   const navigation = useNavigation<propsStack>();
 
   const isModalOpen = () => {
-    setIsOpenModal(true);
+    console.log('clicado')
   };
 
   return (
@@ -37,7 +37,7 @@ export default function CardFruitComponent({
           name="cog-outline"
           size={24}
           color={theme.colors.primary}
-          onPress={() => isModalOpen()}
+          onPress={isModalOpen}
         />
       </ContainerCard>
       <PriceContainer>
