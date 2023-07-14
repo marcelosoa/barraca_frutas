@@ -8,7 +8,7 @@ export const Container = styled.KeyboardAvoidingView`
   padding: 12px;
   display: flex;
   flex: 1;
-  gap: 24px;
+  gap: 16px;
   background-color: ${({ theme }) => theme.colors.background };
 `;
 
@@ -17,7 +17,7 @@ export const ViewContent = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 28px 0; 
+  padding: 28px 0px;
   justify-content: space-between;
 `;
 
@@ -40,4 +40,11 @@ export const TextInput = styled.TextInput<TextInputProps>`
   letter-spacing: 0.5px;
   width: 100%;
   color: ${({ theme }) => theme.colors.light_gray}
+`
+
+export const ButtonContainer = styled.View`
+  position: absolute;
+  bottom: 16px;
+  left: 12px;
+  right: 12px;
 `

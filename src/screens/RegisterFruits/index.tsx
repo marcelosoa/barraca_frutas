@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Text, ViewContent, TextInput, FruitView } from "./styled";
+import { Container, Text, ViewContent, TextInput, FruitView, ButtonContainer } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../../components/Button";
@@ -87,30 +87,17 @@ export default function RegisterFruitScreen() {
             inputAndroid: styled.picker,
           }}
         /> */}
-        {/* <Picker
-          selectedValue={fruitData.supplier}
-          onValueChange={(supplier: string) =>
-            setFruitData({ ...fruitData, supplier: supplier })
-          }
-        >
-          <Picker.Item label="Fornecedor" value="" />
-          {suppliers.map((supplier) => (
-            <Picker.Item
-              key={supplier.name}
-              label={supplier.name}
-              value={supplier.name}
-            />
-          ))}
-        </Picker> */}
       </FruitView>
-      <ButtonComponent
-        label="Cadastrar Fruta"
-        onPress={() => {
-          fruitData.id = uuidv4();
-          dispatch(addFruit(fruitData));
-          navigation.navigate("SuccessFruit");
-        }}
-      />
+      <ButtonContainer>
+        <ButtonComponent
+          label="Cadastrar Fruta"
+          onPress={() => {
+            fruitData.id = uuidv4();
+            dispatch(addFruit(fruitData));
+            navigation.navigate("SuccessFruit");
+          }}
+        />
+      </ButtonContainer>
     </Container>
   );
 }
