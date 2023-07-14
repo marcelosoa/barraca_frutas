@@ -148,6 +148,7 @@ export default function App() {
             label="Cadastrar Fornecedor"
             onPress={handleSaveData}
           />
+          
         </>
       ),
     },
@@ -193,7 +194,9 @@ export default function App() {
       </View>
       {contents[step].component}
       {step < contents.length - 1 && (
-        <ButtonComponent label="Próximo" onPress={() => setStep(step + 1)} />
+        <ButtonComponent label="Próximo" onPress={() => setStep(step + 1)}>
+          <Ionicons name="chevron-forward" size={32} color={"#DA0D1E"} />
+        </ButtonComponent>
       )}
     </Container>
   );

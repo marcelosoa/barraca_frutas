@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Container, Text, ViewContent, TextInput, FruitView, ButtonContainer } from "./styled";
+import {
+  Container,
+  Text,
+  ViewContent,
+  TextInput,
+  FruitView,
+  ButtonContainer,
+} from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../../components/Button";
@@ -16,9 +23,7 @@ export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
   const theme = useTheme();
   const dispatch = useDispatch();
-  const [selectSupplier, setSelectedSupplier] = useState();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
-
   const [fruitData, setFruitData] = useState({
     name: "",
     price: "",
@@ -67,26 +72,24 @@ export default function RegisterFruitScreen() {
           }
         />
       </FruitView>
-      <FruitView style={styled.card}>
-        <Ionicons name="people-outline" size={32} />
-        {/* <RNPickerSelect
-          placeholder={{
-            label: "Fornecedor",
-            value: null,
-            color: "#9EA0A4",
-          }}
+      <FruitView style={styled.cardPicker}>
+        <Ionicons name="people-outline" size={32} style={styled.icon} />
+        <Picker
+          selectedValue={fruitData.supplier}
           onValueChange={(supplier: string) =>
             setFruitData({ ...fruitData, supplier: supplier })
           }
-          items={suppliers.map((supplier) => ({
-            label: supplier.name,
-            value: supplier.name,
-          }))}
-          style={{
-            inputIOS: styled.picker,
-            inputAndroid: styled.picker,
-          }}
-        /> */}
+          style={styled.picker}
+        >
+          <Picker.Item label="Fornecedor" value="" />
+          {suppliers.map((supplier) => (
+            <Picker.Item
+              key={supplier.id}
+              label={supplier.name}
+              value={supplier.id}
+            />
+          ))}
+        </Picker>
       </FruitView>
       <ButtonContainer>
         <ButtonComponent
@@ -116,10 +119,29 @@ const styled = StyleSheet.create({
     shadowRadius: 8,
     borderRadius: 8,
   },
-  picker: {
+  cardPicker: {
     display: "flex",
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    elevation: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+  },
+  icon: {
+    gap: 16,
+  },
+  label: {
+    flex: 1,
+    fontSize: 16,
+  },
+  picker: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
   },
 });
