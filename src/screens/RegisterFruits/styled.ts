@@ -4,7 +4,7 @@ interface TextInputProps {
   placeholder: string
 }
 
-export const Container = styled.KeyboardAvoidingView`
+export const Container = styled.SafeAreaView`
   padding: 12px;
   display: flex;
   flex: 1;

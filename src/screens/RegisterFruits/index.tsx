@@ -3,7 +3,6 @@ import {
   Container,
   Text,
   ViewContent,
-  TextInput,
   FruitView,
   ButtonContainer,
 } from "./styled";
@@ -18,6 +17,7 @@ import { addFruit } from "../../redux/reducers/fruitsReducer";
 import { RootState } from "../../redux/store";
 import { v4 as uuidv4 } from "uuid";
 import { Picker } from "@react-native-picker/picker";
+import FormGroupComponent from "../../components/FormGroup";
 
 export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
@@ -42,36 +42,31 @@ export default function RegisterFruitScreen() {
           onPress={() => navigation.navigate("RegisterFruit")}
         />
       </ViewContent>
-      <FruitView style={styled.card}>
-        <Ionicons name="nutrition-outline" size={32} color={theme.text.black} />
-        <TextInput
-          placeholder="Nome da Fruta"
-          value={fruitData.name}
-          onChangeText={(text: string) =>
-            setFruitData({ ...fruitData, name: text })
-          }
-        />
-      </FruitView>
-      <FruitView style={styled.card}>
-        <Ionicons name="cash-outline" size={32} />
-        <TextInput
-          placeholder="Preço do Kilo"
-          value={fruitData.price}
-          onChangeText={(price: string) =>
-            setFruitData({ ...fruitData, price: price })
-          }
-        />
-      </FruitView>
-      <FruitView style={styled.card}>
-        <Ionicons name="server-outline" size={32} />
-        <TextInput
-          placeholder="Quantidade no estoque"
-          value={fruitData.quantity}
-          onChangeText={(quantity: string) =>
-            setFruitData({ ...fruitData, quantity: quantity })
-          }
-        />
-      </FruitView>
+      <FormGroupComponent
+        name="nutrition-outline"
+        size={32}
+        placeholder="Nome da Fruta"
+        value={fruitData.name}
+        onChangeText={(name: string) => 
+          setFruitData({ ...fruitData, name: name})
+        }
+      />
+      <FormGroupComponent
+        name="cash-outline"
+        size={32}
+        placeholder="Preço do Kilo"
+        value={fruitData.price}
+        onChangeText={(price: string) => setFruitData({ ...fruitData, price: price})}
+      />
+      <FormGroupComponent
+        name="server-outline"
+        size={32}
+        placeholder="Quantidade no estoque"
+        value={fruitData.quantity}
+        onChangeText={(quantity: string) => 
+          setFruitData({ ...fruitData, quantity: quantity})
+        }
+      />
       <FruitView style={styled.cardPicker}>
         <Ionicons name="people-outline" size={32} style={styled.icon} />
         <Picker
@@ -86,7 +81,7 @@ export default function RegisterFruitScreen() {
             <Picker.Item
               key={supplier.id}
               label={supplier.name}
-              value={supplier.id}
+              value={supplier.name}
             />
           ))}
         </Picker>
@@ -106,19 +101,6 @@ export default function RegisterFruitScreen() {
 }
 
 const styled = StyleSheet.create({
-  card: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 16,
-    padding: 16,
-    backgroundColor: "#FFFFFF",
-    elevation: 1,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    borderRadius: 8,
-  },
   cardPicker: {
     display: "flex",
     flexDirection: "row",
