@@ -1,6 +1,19 @@
 import styled from 'styled-components/native'
 
 export const Container = styled.SafeAreaView`
+  background-color: ${({ theme }) => theme.colors.background};
+  display: flex;
+  flex: 1;
+  padding-top: 48px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  flex-direction: column;
+  gap: 16px;
+  
+`;
+
+export const ViewText = styled.View`
   margin-top: 24px;
   display: flex;
   align-items: center;
@@ -8,13 +21,7 @@ export const Container = styled.SafeAreaView`
   height: 100%;
   padding: 16px;
   background-color: ${({ theme }) => theme.colors.background};
-`;
-
-export const ViewText = styled.View`
-  width: 100%;
-  margin-bottom: 50px;
 `
-
 
 export const Text = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular };
@@ -43,34 +50,6 @@ export const TextButton = styled.Text`
   color: ${({ theme }) => theme.text.primary};
 `;
 
-export const ContainerFruits = styled.ScrollView`
-  background-color: ${({ theme }) => theme.colors.background};
-  display: flex;
-  flex: 1;
-  padding-top: 48px;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 16px;
-  flex-direction: column;
-  gap: 8px;
-
-`
-
-export const ContentFruits = styled.TouchableOpacity`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 16px;
-
-`
-
-export const FruitCard = styled.View`
-  
-`
-
-export const FruitText = styled.Text`
-
-`
 
 export const NewFruitButton = styled.TouchableOpacity`
   flex-direction: row;
@@ -78,9 +57,10 @@ export const NewFruitButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: flex-end;
   position: absolute;
-  bottom: 16px;
+  bottom: -16px; /* Ajustado para margem superior negativa */
   right: 16px;
-`
+`;
+
 export const FruitButtonIcon = styled.Text`
   background-color: ${({ theme }) => theme.colors.primary };
   color: ${({ theme }) => theme.colors.background };

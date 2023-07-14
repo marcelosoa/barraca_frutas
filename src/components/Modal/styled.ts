@@ -33,3 +33,7 @@ export const ContentModal = styled.Text`
   gap: 16px;
   flex-wrap: wrap;
 `
+
+export const ButtonModal = styled.TouchableOpacity``
+
+export const TextModal = styled.Text``

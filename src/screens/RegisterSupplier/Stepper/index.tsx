@@ -61,16 +61,16 @@ export default function App() {
   }
 
   const selectedFruits = [
-    { id: "1", label: "Banana" },
-    { id: "2", label: "Maçã" },
-    { id: "3", label: "Laranja" },
-    { id: "4", label: "Abacaxi" },
-    { id: "5", label: "Morango" },
-    { id: "6", label: "Manga" },
-    { id: "7", label: "Uva" },
-    { id: "8", label: "Pera" },
-    { id: "9", label: "Kiwi" },
-    { id: "10", label: "Melancia" },
+    { id: 1, label: "Banana" },
+    { id: 2, label: "Maçã" },
+    { id: 3, label: "Laranja" },
+    { id: 4, label: "Abacaxi" },
+    { id: 5, label: "Morango" },
+    { id: 6, label: "Manga" },
+    { id: 7, label: "Uva" },
+    { id: 8, label: "Pera" },
+    { id: 9, label: "Kiwi" },
+    { id: 10, label: "Melancia" },
   ];
 
   // Frutas -> Select -> Checkbox component
