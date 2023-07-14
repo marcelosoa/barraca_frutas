@@ -55,9 +55,16 @@ export default function App() {
   };
 
   // Function para abrir/ Fechar modal
+  const handleOpenModal = () => {
+    setIsModalOpen(true)
+  }
 
   const handleCloseModal = () => {
-    setIsModalOpen(true)
+    setIsModalOpen(false)
+  }
+
+  const handleResetRegister = () => {
+    navigation.navigate('Suppliers')
   }
 
   const selectedFruits = [
@@ -153,9 +160,18 @@ export default function App() {
   return (
     <Container>
       <ViewName>
-        <Ionicons name="close" size={36} color={theme.colors.primary_dark} onPress={handleCloseModal} />
+        <Ionicons 
+          name="close" 
+          size={36} 
+          color={theme.colors.primary_dark} 
+          onPress={handleOpenModal}
+        />
         {isModalOpen && (
           <ModalComponent
+            onPressButton={handleCloseModal}
+            onPressCancelButton={handleResetRegister}
+            labelButton='Não'
+            labelCancelButton="Sim, cancelar"
             isVisible={isModalOpen}
             text="Cancelar Cadastro"
             contentText="Tem certeza que quer cancelar o cadastro do colaborador? Você

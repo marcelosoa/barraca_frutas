@@ -34,6 +34,26 @@ export const ContentModal = styled.Text`
   flex-wrap: wrap;
 `
 
-export const ButtonModal = styled.TouchableOpacity``
+export const ButtonModalContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
 
-export const TextModal = styled.Text``
+export const ButtonModal = styled.TouchableOpacity`
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 100px;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  padding: 12px 24px;
+  margin: 0 24px;
+`
+
+export const TextModal = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+
+`
