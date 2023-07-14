@@ -1,24 +1,40 @@
-import React from 'react';
-import { Container, SmallText, Text, TextView } from './styled';
-import ButtonComponent from '../../../components/Button';
-import { Image } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { propsStack } from '../../../interface/routerinterface';
+import React from "react";
+import {
+  Container,
+  SmallText,
+  Text,
+  TextView,
+  ViewIcon,
+  Image,
+  View
+} from "./styled";
+import ButtonComponent from "../../../components/Button";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { propsStack } from "../../../interface/routerinterface";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function RegisterSuccessScreen() {
-  const navigation = useNavigation<propsStack>()
-  const params = useRoute()
+  const navigation = useNavigation<propsStack>();
   return (
     <Container>
-      <Image source={require('../../../../assets/images/confirmed.png')} />
+      <ViewIcon>
+        <Ionicons
+          name="close"
+          size={32}
+          onPress={() => navigation.navigate("Inicio")}
+        />
+      </ViewIcon>
       <TextView>
-        <Text>Fornecedor Cadastrado</Text>
-        <SmallText>Você cadastrou o fornecedor {params?.params?.name} com sucesso!</SmallText>
+        <Image source={require("../../../../assets/images/confirmed.png")} />
       </TextView>
-      <ButtonComponent
-        label="Voltar ao início"
-        onPress={() => navigation.navigate('Inicio')}
-      />
+      <Text>Fornecedor Cadastrado</Text>
+      <SmallText>Você cadastrou o fornecedor com sucesso!</SmallText>
+      <View>
+        <ButtonComponent
+          label="Voltar ao início"
+          onPress={() => navigation.navigate("Inicio")}
+        />
+      </View>
     </Container>
   );
 }
