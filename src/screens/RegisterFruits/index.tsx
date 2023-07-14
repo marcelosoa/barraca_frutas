@@ -10,14 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFruit } from "../../redux/reducers/fruitsReducer";
 import { RootState } from "../../redux/store";
 import { v4 as uuidv4 } from 'uuid';
+import RNPickerSelect from 'react-native-picker-select';
 
 export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  const fruits = useSelector((state: RootState) => state.fruits)
-  console.log(fruits)
+  const suppliers = useSelector((state: RootState) => state.supplier.suppliers)
 
   const [fruitData, setFruitData] = useState({
     name: "",
@@ -63,10 +63,11 @@ export default function RegisterFruitScreen() {
       </FruitView>
       <FruitView style={styled.card}>
         <Ionicons name="people-outline" size={32} />
-        <TextInput 
-          placeholder="Fornecedor"
-          value={fruitData.supplier}
-          onChangeText={(supplier: string) => setFruitData({ ...fruitData, supplier: supplier})}
+          <RNPickerSelect
+            onValueChange={(supplier: string) => setFruitData({...fruitData, supplier: supplier})}
+            items={suppliers.map((supplier) => (
+              { label: supplier.name, value: supplier.name }
+            ))}
           />
       </FruitView>
       <ButtonComponent
@@ -98,4 +99,7 @@ const styled = StyleSheet.create({
     shadowOpacity: 0.6,
     shadowRadius: 6,
   },
+  picker: {
+    backgroundColor: 'black'
+  }
 });

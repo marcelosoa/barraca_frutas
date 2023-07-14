@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { ScrollView } from "react-native";
+import { Modalize } from 'react-native-modalize';
+
 import {
   Container,
   Text,
   ViewText,
   Button,
   TextButton,
+  ContainerFruits,
+  ContentFruits,
+  FruitCard,
+  FruitText,
   NewFruitButton,
-  FruitButtonIcon,
+  FruitButtonIcon
 } from "./styled";
 import { propsStack } from "../../interface/routerinterface";
 import { useNavigation } from "@react-navigation/native";
@@ -21,46 +26,53 @@ import { useTheme } from "styled-components";
 import CardFruitComponent from "../../components/CardFruits";
 
 export default function FruitsScreen() {
-  const [searchFruit, setFruitSearch] = useState("");
   const theme = useTheme();
   const navigation = useNavigation<propsStack>();
   const dispatch = useDispatch();
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
-  console.log(fruits);
+  const [searchFruit, setFruitSearch] = useState('')
 
   useEffect(() => {
     dispatch(fetchFruits());
   }, [dispatch]);
 
-  const handleSearchFruit = () => {
-    console.log("alalala");
-  };
+  const handleSearchFruit = (text: string) => {
+    setFruitSearch(text)
+  }
+
+  const filteredFruits = useMemo(() => 
+    fruits.filter((fruit) => 
+    fruit.name.toLowerCase().includes(searchFruit.toLowerCase())
+    ),
+    [fruits, searchFruit]
+  )
 
   return (
-    <ScrollView>
+    <>
       {fruits.length > 0 ? (
-        <Container>
-          <SearchComponent
+        <>
+          <ContainerFruits>
+            <SearchComponent 
             value={searchFruit}
             onChangeText={handleSearchFruit}
-            label="Pesquisar Frutas"
-          />
-          {fruits.map((fruit: Fruit) => (
-            <CardFruitComponent
-              name={fruit.name}
-              price={fruit.price}
-              quantity={fruit.quantity}
-              supplier={fruit.supplier}
-            />
-          ))}
-          <NewFruitButton
-            onPress={() => navigation.navigate("RegistrarFrutas")}
-          >
+            label="Pesquisar Frutas" />
+            {filteredFruits.map((fruit: Fruit) => (
+                <FruitCard key={fruit.id}>
+                 <CardFruitComponent
+                  name={fruit.name}
+                  price={fruit.price}
+                  quantity={fruit.quantity}
+                  supplier={fruit.supplier}
+                 />
+                </FruitCard>
+            ))}
+          </ContainerFruits>
+          <NewFruitButton onPress={() => navigation.navigate('RegistrarFrutas')}>
             <FruitButtonIcon>
               <Ionicons name="add" size={32} />
             </FruitButtonIcon>
           </NewFruitButton>
-        </Container>
+        </>
       ) : (
         <Container>
           <ViewText>
@@ -72,6 +84,6 @@ export default function FruitsScreen() {
           </Button>
         </Container>
       )}
-    </ScrollView>
+    </>
   );
 }

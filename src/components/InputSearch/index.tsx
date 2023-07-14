@@ -18,15 +18,12 @@ export default function SearchComponent ({ label, onChangeText }: SearchComponen
 
 const styled = StyleSheet.create({
   inputSearch: {
-    elevation: 2,
     backgroundColor: '#FFFFFF',
-    borderRadius: 8,
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.6,
-    shadowRadius: 6
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2},
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    borderRadius: 8
   }
 })

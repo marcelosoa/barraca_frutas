@@ -20,6 +20,7 @@ import { propsStack } from "../../interface/routerinterface";
 import {
   fetchSuppliers,
 } from "../../redux/reducers/suppliersReducer";
+import { Platform } from "react-native";
 
 export default function SuppliersScreen() {
   const dispatch = useDispatch();
@@ -42,6 +43,8 @@ export default function SuppliersScreen() {
   const handleSearch = (text: string) => {
     setSearchTerm(text);
   };
+
+  const isIOS = Platform.OS === "ios";
 
   return (
     <>
@@ -69,7 +72,7 @@ export default function SuppliersScreen() {
           </ContainerSupplier>
           <NewSupplierButton onPress={() => navigation.navigate("App")}>
             <SupplierName>
-              <Ionicons name="add" size={32} />
+              <Ionicons name={isIOS ? "add-circle" : "add"} size={32} />
             </SupplierName>
           </NewSupplierButton>
         </>
@@ -79,7 +82,11 @@ export default function SuppliersScreen() {
             <Text> Cadastre seu primeiro fornecedor </Text>
           </ViewText>
           <Button onPress={() => navigation.navigate("App")}>
-            <Ionicons name="add" size={32} color={"#FFFFFF"} />
+            <Ionicons
+              name={isIOS ? "add-circle" : "add"}
+              size={32}
+              color={"#FFFFFF"}
+            />
             <TextButton>Cadastrar Fornecedor</TextButton>
           </Button>
         </Container>

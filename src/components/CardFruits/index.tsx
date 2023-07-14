@@ -13,6 +13,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "styled-components";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
+import { StyleSheet } from 'react-native'
 
 export default function CardFruitComponent({
   name,
@@ -29,7 +30,7 @@ export default function CardFruitComponent({
   };
 
   return (
-    <Container>
+    <Container style={styled.inputcard}>
       <ContainerCard>
       <TextName>{name}</TextName>
         <Ionicons
@@ -51,3 +52,21 @@ export default function CardFruitComponent({
     </Container>
   );
 }
+
+const styled = StyleSheet.create({
+  inputcard: {
+    marginTop: 24,
+    width: '100%',
+    flexDirection: 'column',
+    display: 'flex',
+    gap: 2,
+    padding: 16,
+    backgroundColor: '#FFFFFF',
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2},
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    borderRadius: 8
+  }
+})

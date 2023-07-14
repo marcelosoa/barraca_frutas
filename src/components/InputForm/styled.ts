@@ -21,7 +21,7 @@ font-family: ${({ theme }) => theme.fonts.regular};
 font-size: 24px;
 font-style: normal;
 font-weight: 400;
-line-height: 24px;
+line-height: 30px;
 color: ${({ theme }) => theme.colors.light_gray};
 `
 
