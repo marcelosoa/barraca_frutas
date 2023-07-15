@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput, Container, Label, ErrorText } from './styled';
 import { InputFormProps } from '../../interface/InputFormComponentInterface';
 
-export default function InputFormComponent({ placeholder, label, onChangeText, limitCaracter, errors, value = '' }: InputFormProps) {
+export default function InputFormComponent({ placeholder, label, onChangeText, limitCaracter, errors, value = '', keyboardType }: InputFormProps) {
 
   return (
     <Container>
@@ -12,6 +12,9 @@ export default function InputFormComponent({ placeholder, label, onChangeText, l
           placeholder={placeholder} 
           onChangeText={onChangeText} 
           value={value}
+          keyboardType={keyboardType}
+          autoCapitalize='words'
+          textContentType="name"
       />
       {errors && <ErrorText>{errors}</ErrorText>}
     </Container>

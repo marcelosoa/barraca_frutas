@@ -93,6 +93,7 @@ export default function App() {
       component: (
         <InputFormView>
           <InputFormComponent
+            keyboardType="default"
             placeholder="Nome"
             label="Digite o nome do colaborador"
             value={data.name || ""}
@@ -106,6 +107,7 @@ export default function App() {
       component: (
         <InputFormView>
           <InputFormComponent
+            keyboardType="numeric"
             limitCaracter={11}
             placeholder="000.000.00-00"
             label="Digite o CPF do colaborador"
@@ -120,6 +122,7 @@ export default function App() {
       component: (
         <InputFormView>
           <InputFormComponent
+            keyboardType="numeric"
             limitCaracter={11}
             placeholder="(00) 00000-0000"
             label="Digite o Telefone do fornecedor"
