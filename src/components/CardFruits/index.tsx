@@ -20,26 +20,27 @@ export default function CardFruitComponent({
   price,
   quantity,
   supplier,
+  isModalCheck
 }: CardFruitProps) {
   const theme = useTheme();
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const navigation = useNavigation<propsStack>();
 
   const isModalOpen = () => {
-    console.log('clicado')
+    isModalCheck()
   };
 
   return (
     <Container style={styled.inputcard}>
-      <ContainerCard>
-      <TextName>{name}</TextName>
-        <Ionicons
-          name="cog-outline"
-          size={24}
-          color={theme.colors.primary}
-          onPress={isModalOpen}
-        />
-      </ContainerCard>
+        <ContainerCard>
+        <TextName>{name}</TextName>
+          <Ionicons
+            name="cog-outline"
+            size={24}
+            color={theme.colors.primary}
+            onPress={isModalOpen}
+          />
+        </ContainerCard>
       <PriceContainer>
         <Ionicons name="cash-outline" size={24} color={"#008C21"} />
         <Text left={3}>R${price}</Text>

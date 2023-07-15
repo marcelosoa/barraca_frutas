@@ -3,4 +3,5 @@ export interface CardFruitProps {
   price: string
   quantity: number,
   supplier: string
+  isModalCheck: () => void
 }
