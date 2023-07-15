@@ -89,3 +89,23 @@ export const FruitButtonIcon = styled.Text`
   border-radius: 24px;
 
 `
+export const ViewModalize = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding-left: 16px;
+`
+
+export const ButtonInsideModal = styled.TouchableOpacity`
+  padding: 16px 0;
+  gap: 8px;
+  align-items: center;
+`
+
+export const TextButtonModal = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular };
+  font-size: 13px;
+  font-style: normal;
+`

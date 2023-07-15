@@ -7,13 +7,13 @@ import { useTheme } from "styled-components";
 import { propsStack } from "../../../interface/routerinterface";
 import ButtonComponent from "../../../components/Button";
 
-export default function RegisterFruitScreen() {
+export default function EditFruitScreen() {
   const navigation = useNavigation<propsStack>()
   const theme = useTheme()
   return (
     <Container>
       <ViewContent>
-        <Text>Cadastrar Fruta</Text>
+        <Text>Editar Fruta</Text>
         <Ionicons name="close" size={38} onPress={() => navigation.navigate('RegisterFruit')}/>
       </ViewContent>
       <FruitView style={styled.card}>

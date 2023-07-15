@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Modalize } from 'react-native-modalize';
+import { Modalize } from "react-native-modalize";
 
 import {
   Container,
@@ -12,7 +12,9 @@ import {
   FruitCard,
   NewFruitButton,
   FruitButtonIcon,
-  ViewModalize
+  ViewModalize,
+  ButtonInsideModal,
+  TextButtonModal,
 } from "./styled";
 import { propsStack } from "../../interface/routerinterface";
 import { useNavigation } from "@react-navigation/native";
@@ -21,16 +23,14 @@ import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import { fetchFruits } from "../../redux/reducers/fruitsReducer";
 import { Fruit } from "../../redux/reducers/fruitsReducer";
-import { useTheme } from "styled-components";
 import CardFruitComponent from "../../components/CardFruits";
-import { TouchableOpacity, View } from "react-native";
+import { Platform, TouchableOpacity } from "react-native";
 
 export default function FruitsScreen() {
-  const theme = useTheme();
   const navigation = useNavigation<propsStack>();
   const dispatch = useDispatch();
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
-  const [searchFruit, setFruitSearch] = useState('')
+  const [searchFruit, setFruitSearch] = useState("");
   const modalizeRef = useRef<Modalize>(null);
 
   useEffect(() => {
@@ -38,19 +38,24 @@ export default function FruitsScreen() {
   }, [dispatch]);
 
   const handleSearchFruit = (text: string) => {
-    setFruitSearch(text)
-  }
+    setFruitSearch(text);
+  };
 
   const handleModalOpen = () => {
-    modalizeRef.current?.open()
-  }
+    modalizeRef.current?.open();
+  };
 
-  const filteredFruits = useMemo(() =>
-    fruits.filter((fruit) =>
-      fruit.name.toLowerCase().includes(searchFruit.toLowerCase())
-    ),
+  const filteredFruits = useMemo(
+    () =>
+      fruits.filter((fruit) =>
+        fruit.name.toLowerCase().includes(searchFruit.toLowerCase())
+      ),
     [fruits, searchFruit]
-  )
+  );
+
+  const handleEditFruit = () => {
+    navigation.navigate('EditFruit')
+  }
 
   return (
     <>
@@ -60,7 +65,8 @@ export default function FruitsScreen() {
             <SearchComponent
               value={searchFruit}
               onChangeText={handleSearchFruit}
-              label="Pesquisar Frutas" />
+              label="Pesquisar Frutas"
+            />
             {filteredFruits.map((fruit: Fruit) => (
               <FruitCard key={fruit.id}>
                 <CardFruitComponent
@@ -73,18 +79,28 @@ export default function FruitsScreen() {
               </FruitCard>
             ))}
           </ContainerFruits>
-          <Modalize ref={modalizeRef}
-          snapPoint={180}>
-              <ViewModalize>
-                <TouchableOpacity>
-                  <Text>Editar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Text>Excluir</Text>
-                </TouchableOpacity>
-              </ViewModalize>
+          <Modalize
+            ref={modalizeRef}
+            snapPoint={150}
+            modalHeight={210}
+          >
+            <ViewModalize>
+              <ButtonInsideModal>
+                <Ionicons name="pencil-outline" size={24}/>
+                <TextButtonModal
+                onPress={handleEditFruit}
+                >
+                  Editar</TextButtonModal>
+              </ButtonInsideModal>
+              <TouchableOpacity>
+                <Ionicons name="trash-outline" size={24}/>
+                <TextButtonModal>Excluir</TextButtonModal>
+              </TouchableOpacity>
+            </ViewModalize>
           </Modalize>
-          <NewFruitButton onPress={() => navigation.navigate('RegistrarFrutas')}>
+          <NewFruitButton
+            onPress={() => navigation.navigate("RegistrarFrutas")}
+          >
             <FruitButtonIcon>
               <Ionicons name="add" size={32} />
             </FruitButtonIcon>

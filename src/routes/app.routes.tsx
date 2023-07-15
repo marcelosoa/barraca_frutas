@@ -13,6 +13,7 @@ import SuppliersScreen from "../screens/Suppliers";
 import SupplierScreen from "../screens/Suppliers/supplier";
 import SuccessFruit from "../screens/RegisterFruits/success";
 import App from "../screens/RegisterSupplier/Stepper";
+import EditFruitScreen from "../screens/Fruits/edit";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -90,6 +91,10 @@ const NewNavigator = () => {
         name="RegistrarFrutas"
         component={RegisterFruitScreen}
       />
+      <Stack.Screen
+        name="EditFruit"
+        component={EditFruitScreen}
+        />
     </Stack.Navigator>
   )
 }
