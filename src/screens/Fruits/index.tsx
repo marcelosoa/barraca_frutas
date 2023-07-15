@@ -24,7 +24,6 @@ import SearchComponent from "../../components/InputSearch";
 import { fetchFruits } from "../../redux/reducers/fruitsReducer";
 import { Fruit } from "../../redux/reducers/fruitsReducer";
 import CardFruitComponent from "../../components/CardFruits";
-import { Platform, TouchableOpacity } from "react-native";
 
 export default function FruitsScreen() {
   const navigation = useNavigation<propsStack>();
@@ -54,7 +53,12 @@ export default function FruitsScreen() {
   );
 
   const handleEditFruit = () => {
-    navigation.navigate('EditFruit')
+    console.log("alo");
+    navigation.navigate("EditFruit");
+  };
+
+  const handleDeleteFruit = () => {
+    console.log('excluir')
   }
 
   return (
@@ -80,22 +84,25 @@ export default function FruitsScreen() {
             ))}
           </ContainerFruits>
           <Modalize
+            modalStyle={{
+              backgroundColor: '#FFF'
+            }}
             ref={modalizeRef}
             snapPoint={150}
-            modalHeight={210}
+            modalHeight={200}
+            scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
           >
             <ViewModalize>
-              <ButtonInsideModal>
-                <Ionicons name="pencil-outline" size={24}/>
-                <TextButtonModal
-                onPress={handleEditFruit}
-                >
-                  Editar</TextButtonModal>
+              <ButtonInsideModal onPress={handleEditFruit}>
+                <Ionicons name="pencil-outline" size={24} />
+                <TextButtonModal>
+                  Editar Fruta
+                </TextButtonModal>
               </ButtonInsideModal>
-              <TouchableOpacity>
-                <Ionicons name="trash-outline" size={24}/>
-                <TextButtonModal>Excluir</TextButtonModal>
-              </TouchableOpacity>
+              <ButtonInsideModal onPress={handleDeleteFruit}>
+                <Ionicons name="trash-outline" size={24} />
+                <TextButtonModal>Excluir Fruta</TextButtonModal>
+              </ButtonInsideModal>
             </ViewModalize>
           </Modalize>
           <NewFruitButton

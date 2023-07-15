@@ -41,10 +41,12 @@ export default function App() {
   }
 
   return (
-    <Provider store={store}>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <Provider store={store}>
       <ThemeProvider theme={defaultTheme}>
         <AppRoutes />
       </ThemeProvider>
     </Provider>
+  </GestureHandlerRootView>
   );
 }

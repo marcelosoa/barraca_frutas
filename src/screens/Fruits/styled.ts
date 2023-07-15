@@ -100,12 +100,13 @@ export const ViewModalize = styled.View`
 
 export const ButtonInsideModal = styled.TouchableOpacity`
   padding: 16px 0;
-  gap: 8px;
   align-items: center;
+  flex-direction: row;
+  gap: 8px;
 `
 
 export const TextButtonModal = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular };
+  font-family: ${({ theme }) => theme.fonts.medium };
   font-size: 13px;
   font-style: normal;
 `
