@@ -21,18 +21,19 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
-import { fetchFruits } from "../../redux/reducers/fruitsReducer";
+import { fetchFruits, removeFruit } from "../../redux/reducers/fruitsReducer";
 import { Fruit } from "../../redux/reducers/fruitsReducer";
 import CardFruitComponent from "../../components/CardFruits";
+import { Modal, TouchableOpacity, View } from "react-native";
 
 export default function FruitsScreen() {
   const navigation = useNavigation<propsStack>();
   const dispatch = useDispatch();
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
-  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchFruit, setFruitSearch] = useState("");
   const modalizeRef = useRef<Modalize>(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedFruitId, setSelectedFruitId] = useState<string | null>(null);
 
   useEffect(() => {
     dispatch(fetchFruits());
@@ -60,8 +61,22 @@ export default function FruitsScreen() {
   };
 
   const handleDeleteFruit = () => {
-    console.log('excluir')
-  }
+    const fruit = fruits.find((fruit) => fruit?.id)
+    const fruitID = fruit?.id
+    setSelectedFruitId(fruitID);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+  };
+
+  const confirmDeleteFruit = () => {
+    if (selectedFruitId) {
+      dispatch(removeFruit(selectedFruitId));
+      setIsDeleteModalOpen(false);
+    }
+  };
 
   return (
     <>
@@ -87,7 +102,7 @@ export default function FruitsScreen() {
           </ContainerFruits>
           <Modalize
             modalStyle={{
-              backgroundColor: '#F0F4F7'
+              backgroundColor: "#F0F4F7",
             }}
             ref={modalizeRef}
             snapPoint={150}
@@ -97,11 +112,13 @@ export default function FruitsScreen() {
             <ViewModalize>
               <ButtonInsideModal onPress={handleEditFruit}>
                 <Ionicons name="pencil-outline" size={26} />
-                <TextButtonModal>  Editar Fruta </TextButtonModal>
+                <TextButtonModal> Editar Fruta </TextButtonModal>
               </ButtonInsideModal>
-              <ButtonInsideModal onPress={handleDeleteFruit}>
+              <ButtonInsideModal
+                onPress={() => handleDeleteFruit()}
+              >
                 <Ionicons name="trash-outline" size={26} />
-                <TextButtonModal>Excluir Fruta</TextButtonModal>
+                <TextButtonModal> Excluir Fruta</TextButtonModal>
               </ButtonInsideModal>
             </ViewModalize>
           </Modalize>
@@ -124,6 +141,33 @@ export default function FruitsScreen() {
           </Button>
         </Container>
       )}
+      <Modal visible={isDeleteModalOpen} transparent animationType="fade">
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFF",
+              padding: 20,
+              borderRadius: 10,
+            }}
+          >
+            <Text>Excluir Fruta</Text>
+            <Text>Tem certeza que quer excluir essa fruta?</Text>
+            <TouchableOpacity onPress={handleCloseDeleteModal}> 
+              <Text>Não</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={confirmDeleteFruit}> 
+              <Text>Sim, excluir</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </>
   );
 }

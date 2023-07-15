@@ -30,8 +30,10 @@ const fruitSlice = createSlice({
       AsyncStorage.setItem('fruits', JSON.stringify(state.fruits))
     },
     removeFruit: (state, action: PayloadAction<string>) => {
-      state.fruits = state.fruits.filter((fruit) => fruit.id !== action.payload);
-      AsyncStorage.setItem('fruits', JSON.stringify(state.fruits))
+      const fruitId = action.payload;
+      state.fruits = state.fruits.filter((fruit) => fruit.id !== fruitId);
+      AsyncStorage.setItem('fruits', JSON.stringify(state.fruits));
+      AsyncStorage.removeItem(`fruit:${fruitId}`);
     },
     updateFruit: (state, action: PayloadAction<Fruit>) => {
       const index = state.fruits.findIndex((fruit) => fruit.id === action.payload.id);

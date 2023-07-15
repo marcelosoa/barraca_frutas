@@ -26,6 +26,7 @@ export type propsNavigationStack = {
   SuccessFruit?: {}
   Suppliers?: {}
   App?: {}
+  EditFruit?: {}
 
 }
 
