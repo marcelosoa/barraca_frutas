@@ -89,8 +89,9 @@ export default function FruitsScreen() {
             }}
             ref={modalizeRef}
             snapPoint={150}
-            modalHeight={200}
+            // modalHeight={200}
             scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
+            adjustToContentHeight={true}
           >
             <ViewModalize>
               <ButtonInsideModal onPress={handleEditFruit}>

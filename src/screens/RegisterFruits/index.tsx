@@ -21,7 +21,6 @@ import FormGroupComponent from "../../components/FormGroup";
 
 export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
-  const theme = useTheme();
   const dispatch = useDispatch();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
   const [fruitData, setFruitData] = useState({
