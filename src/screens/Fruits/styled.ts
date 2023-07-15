@@ -107,6 +107,6 @@ export const ButtonInsideModal = styled.TouchableOpacity`
 
 export const TextButtonModal = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium };
-  font-size: 13px;
+  font-size: 15px;
   font-style: normal;
 `

@@ -29,6 +29,8 @@ export default function FruitsScreen() {
   const navigation = useNavigation<propsStack>();
   const dispatch = useDispatch();
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
+  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchFruit, setFruitSearch] = useState("");
   const modalizeRef = useRef<Modalize>(null);
 
@@ -85,23 +87,22 @@ export default function FruitsScreen() {
           </ContainerFruits>
           <Modalize
             modalStyle={{
-              backgroundColor: '#FFF'
+              backgroundColor: '#F0F4F7'
             }}
             ref={modalizeRef}
             snapPoint={150}
-            // modalHeight={200}
             scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
             adjustToContentHeight={true}
           >
             <ViewModalize>
               <ButtonInsideModal onPress={handleEditFruit}>
-                <Ionicons name="pencil-outline" size={24} />
+                <Ionicons name="pencil-outline" size={26} />
                 <TextButtonModal>
                   Editar Fruta
                 </TextButtonModal>
               </ButtonInsideModal>
               <ButtonInsideModal onPress={handleDeleteFruit}>
-                <Ionicons name="trash-outline" size={24} />
+                <Ionicons name="trash-outline" size={26} />
                 <TextButtonModal>Excluir Fruta</TextButtonModal>
               </ButtonInsideModal>
             </ViewModalize>
