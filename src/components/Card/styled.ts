@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import { TextInputMask } from "react-native-masked-text";
 
 type TextProps = {
   type: "title" | "text";
@@ -22,9 +23,7 @@ export const Text = styled.Text<TextProps>`
           letter-spacing: 0.15px;
         `
       : css`
-          overflow: hidden;
           color: ${({ theme }) => theme.text.light_gray};
-
           font-family: ${({ theme }) => theme.fonts.medium};
           font-size: 15px;
           font-style: normal;
@@ -36,8 +35,17 @@ export const Text = styled.Text<TextProps>`
 export const View = styled.View`
   display: flex;
   width: 100%;
-  padding: 8px 0;
+  padding: 6px 0;
   flex-direction: row;
-  gap: 8px;
+  gap: 16px;
   align-items: center;
 `;
+
+export const StyledTextInputMask = styled(TextInputMask)`
+  font-family: ${({ theme }) => theme.fonts.regular };
+  color: ${({ theme }) => theme.text.light_gray };
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+`

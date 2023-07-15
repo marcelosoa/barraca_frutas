@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Text, View } from "./styled";
+import { Container, Text, View, StyledTextInputMask } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
 import { CardComponentProps } from "../../interface/CardComponentInterface";
@@ -10,16 +10,28 @@ export default function CardComponent({ name, cpf, phone }: CardComponentProps) 
       <Text type="title">{name}</Text>
       <View>
         <Ionicons name="person-outline" size={32} />
-        <Text type="text">{cpf}</Text>
+        <StyledTextInputMask
+          type={"cpf"}
+          value={cpf}
+          editable={false}
+        />
       </View>
       <View>
         <Ionicons name="call-outline" size={32} />
-        <Text type="text">{phone}</Text>
+        <StyledTextInputMask
+          type={"cel-phone"}
+          options={{
+            maskType: "BRL",
+            withDDD: true,
+            dddMask: "(99)"
+          }}
+          value={phone}
+          editable={false}
+        />
       </View>
     </Container>
   );
 }
-
 
 const styled = StyleSheet.create({
   inputCard: {
@@ -28,13 +40,13 @@ const styled = StyleSheet.create({
     flexDirection: "column",
     display: "flex",
     gap: 2,
-    padding: 16,
-    backgroundColor: '#FFFFFF',
+    padding: 12,
+    backgroundColor: "#FFFFFF",
     elevation: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2},
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     shadowRadius: 8,
-    borderRadius: 8
+    borderRadius: 8,
   },
 });

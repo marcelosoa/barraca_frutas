@@ -17,9 +17,7 @@ import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
-import {
-  fetchSuppliers,
-} from "../../redux/reducers/suppliersReducer";
+import { fetchSuppliers } from "../../redux/reducers/suppliersReducer";
 import { Platform } from "react-native";
 
 export default function SuppliersScreen() {
@@ -59,7 +57,11 @@ export default function SuppliersScreen() {
             {filteredSuppliers.map((supplier) => (
               <ContentContainer
                 key={supplier.id}
-                onPress={() => navigation.navigate("Supplier")}
+                onPress={() =>
+                  navigation.navigate("Supplier", {
+                    supplierId: supplier.id,
+                  })
+                }
               >
                 <CardComponent
                   key={supplier.id}

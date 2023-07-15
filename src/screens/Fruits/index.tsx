@@ -97,9 +97,7 @@ export default function FruitsScreen() {
             <ViewModalize>
               <ButtonInsideModal onPress={handleEditFruit}>
                 <Ionicons name="pencil-outline" size={26} />
-                <TextButtonModal>
-                  Editar Fruta
-                </TextButtonModal>
+                <TextButtonModal>  Editar Fruta </TextButtonModal>
               </ButtonInsideModal>
               <ButtonInsideModal onPress={handleDeleteFruit}>
                 <Ionicons name="trash-outline" size={26} />

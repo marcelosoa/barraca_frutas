@@ -11,7 +11,7 @@ export default function SuccessFruit () {
     <Container>
     <Image source={require('../../../../assets/images/confirmed.png')} />
     <TextView>
-      <Text>Fornecedor Cadastrado</Text>
+      <Text>Fruta Cadastrado</Text>
       <SmallText>Você cadastrou a fruta com sucesso!</SmallText>
     </TextView>
     <ButtonComponent
