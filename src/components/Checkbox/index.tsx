@@ -40,7 +40,7 @@ export default function CheckBoxComponent({ options = [], onChange }: CheckBoxCo
             color={selected.length === options.length ? 'red' : 'black'}
           />
         </Button>
-        <Text>Todas</Text>
+        <Text first={15}>Todas</Text>
       </ContainerView>
       {options.map((option) => (
         <ContainerView key={option.id}>
