@@ -1,4 +1,8 @@
 import React from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 import {
   Container,
   TextSupplier,
@@ -7,53 +11,66 @@ import {
   SupplierName,
   SupplierContentView,
   SupplierViewView,
-  SupplierTextFruits,
   FruitView,
-  Fruits
+  Fruits,
+  StyledInputMask,
+  RenderFruits,
 } from "./styled";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { propsStack } from "../../../interface/routerinterface";
 
 export default function SupplierScreen() {
-  const navigation = useNavigation<propsStack>();
-  const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
+  const navigation = useNavigation();
   const route = useRoute();
-  
-  const selectedSupplier = suppliers.find(supplier => supplier.id);
-  console.log('FRUTEIRO SELECIONADO', selectedSupplier)
+  const { supplierId } = route.params ?? {};
+  const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
+  const selectedSupplier = suppliers.find((supplier) => supplier.id === supplierId);
 
   if (!selectedSupplier) {
     return null;
   }
 
+  const handleGoBack = () => {
+    navigation.navigate("Suppliers");
+  };
+
   return (
     <Container>
       <ViewContent>
         <TextSupplier>Fornecedor</TextSupplier>
-        <Ionicons
-          name="close"
-          size={32}
-          onPress={() => navigation.navigate("Suppliers")}
-        />
+        <Ionicons name="close" size={32} onPress={handleGoBack} />
       </ViewContent>
       <SupplierView>
-        <SupplierContentView key={selectedSupplier.id}>
+        <SupplierContentView>
           <SupplierName>{selectedSupplier.name}</SupplierName>
           <SupplierViewView>
             <Ionicons name="person-outline" size={24} />
-            <SupplierTextFruits>{selectedSupplier.cpf}</SupplierTextFruits>
+            <StyledInputMask
+              type={"cpf"}
+              value={selectedSupplier.cpf}
+              editable={false}
+            />
           </SupplierViewView>
           <SupplierViewView>
             <Ionicons name="call-outline" size={24} />
-            <SupplierTextFruits>{selectedSupplier.phone}</SupplierTextFruits>
+            <StyledInputMask
+              type={"cel-phone"}
+              options={{
+                maskType: "BRL",
+                withDDD: true,
+                dddMask: "(99) ",
+              }}
+              value={selectedSupplier.phone}
+              editable={false}
+            />
           </SupplierViewView>
           <FruitView>
-            <Fruits>
-              Frutas
-            </Fruits>
+            <Fruits type="title">Frutas</Fruits>
+            <RenderFruits>
+              {selectedSupplier.fruits.map((fruit, index) => (
+                <Fruits type="text" key={index}>
+                  {fruit}
+                </Fruits>
+              ))}
+            </RenderFruits>
           </FruitView>
         </SupplierContentView>
       </SupplierView>
