@@ -23,8 +23,7 @@ export const InputFormView = styled.View`
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-start; /* Alinhar os elementos à esquerda */
 `
 
 export const Text = styled.Text<TextProps>`
