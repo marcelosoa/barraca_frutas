@@ -24,7 +24,7 @@ export default function EditFruitScreen() {
     id: "",
     name: "",
     price: "",
-    quantity: 0,
+    quantity: '',
     supplier: "",
   });
 

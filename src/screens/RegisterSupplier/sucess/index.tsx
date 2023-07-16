@@ -6,10 +6,11 @@ import {
   TextView,
   ViewIcon,
   Image,
-  View
+  View,
+  TextButton,
+  StyledButtonComponent
 } from "./styled";
-import ButtonComponent from "../../../components/Button";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from 'react-native'
@@ -29,12 +30,14 @@ export default function RegisterSuccessScreen() {
         <Image source={require("../../../../assets/images/confirmed.png")} />
       </TextView>
       <Text>Fornecedor Cadastrado</Text>
-      <SmallText>Você cadastrou o fornecedor com sucesso!</SmallText>
+      <SmallText>Você cadastrou o fornecedor Lorem Ipsum dolor com sucesso!</SmallText>
       <View>
-        <ButtonComponent
+        <StyledButtonComponent
           label="Voltar ao início"
           onPress={() => navigation.navigate("Inicio")}
-        />
+        >
+          <TextButton>Voltar ao Início</TextButton>
+        </StyledButtonComponent>
       </View>
     </Container>
   );

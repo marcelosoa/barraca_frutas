@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, SmallText, TextView, Text } from './styled'
 import { Image } from 'react-native'
 import ButtonComponent from '../../../components/Button'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { propsStack } from '../../../interface/routerinterface'
 
 export default function SuccessFruit () {

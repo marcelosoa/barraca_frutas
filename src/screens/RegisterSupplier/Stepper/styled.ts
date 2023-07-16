@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native'
+import ButtonComponent from '../../../components/Button'
 
 
 interface TextProps {
@@ -37,4 +38,20 @@ export const Text = styled.Text<TextProps>`
   ` : css`
     color: ${({ theme }) => theme.text.black };
   `}
+`
+
+export const StyledButtonComponent = styled(ButtonComponent)`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: '#FFF';
+  padding: 16px
+`
+
+export const TextButton = styled.Text`
+  color: ${({ theme}) => theme.colors.shape};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 1.25px;
 `
