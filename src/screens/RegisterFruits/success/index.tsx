@@ -2,49 +2,44 @@ import React from "react";
 import {
   Container,
   SmallText,
-  TextView,
   Text,
-  StyledButtonComponent,
+  TextView,
   ViewIcon,
-  ViewText,
-  ViewButton,
+  Image,
+  View,
+  TextButton,
+  StyledButtonComponent
 } from "./styled";
-import { Image } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
-import { TextButton } from "../styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function SuccessFruit() {
+export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
-  const route = useRoute();
-  const fruit = route.params?.fruit;
-  console.log("FRUTA", fruit);
+  const route = useRoute()
+  const fruit = route.params?.fruit
   return (
     <Container>
       <ViewIcon>
         <Ionicons
           name="close"
           size={32}
-          onPress={() => navigation.navigate("RegisterFruit")}
+          onPress={() => navigation.navigate("Inicio")}
         />
       </ViewIcon>
       <TextView>
         <Image source={require("../../../../assets/images/confirmed.png")} />
       </TextView>
-      <ViewText>
-        <Text>Fruta Cadastrado</Text>
-        <SmallText>Você cadastrou a fruta {fruit.name} com sucesso!</SmallText>
-      </ViewText>
-      <ViewButton>
-      <StyledButtonComponent
-        label="Voltar ao início"
-        onPress={() => navigation.navigate("RegisterFruit")}
-      >
-        <TextButton>Voltar ao Inicio</TextButton>
-      </StyledButtonComponent>
-      </ViewButton>
-      
+      <Text>Fruta Cadastrada</Text>
+      <SmallText>Você cadastrou a fruta {fruit.name} com sucesso!</SmallText>
+      <View>
+        <StyledButtonComponent
+          label="Voltar ao início"
+          onPress={() => navigation.navigate("RegisterFruit")}
+        >
+          <TextButton>Voltar ao Início</TextButton>
+        </StyledButtonComponent>
+      </View>
     </Container>
   );
 }

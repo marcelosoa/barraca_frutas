@@ -1,10 +1,15 @@
 import React from 'react';
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Container, ContainerView, Button, Text } from './styled'
+import { Container, ContainerView, Button, Text } from './styled';
 import { CheckBoxComponentProps, Option } from '../../interface/CheckBoxComponentInterface';
 
-export default function CheckBoxComponent({ options = [], onChange }: CheckBoxComponentProps) {
-  const [selected, setSelected] = React.useState<Option[]>([]);
+export default function CheckBoxComponent({ options = [], onChange, value }: CheckBoxComponentProps) {
+  const [selected, setSelected] = React.useState<Option[]>(() => {
+    if (Array.isArray(value)) {
+      return value.map((item) => (typeof item === 'string' ? { id: 0, label: item } : item));
+    }
+    return [];
+  });
 
   function handleToggleAll() {
     if (selected.length === options.length) {

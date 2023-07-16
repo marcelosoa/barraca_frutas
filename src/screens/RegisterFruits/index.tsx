@@ -83,11 +83,17 @@ export default function RegisterFruitScreen() {
       <FruitView style={styled.cardPicker}>
         <Ionicons name="people-outline" size={32} />
         <Picker
-          selectedValue={fruitData.supplier}
+          selectedValue={fruitData.supplier || 'Fornecedor'}
           onValueChange={(supplier: string) =>
             setFruitData({ ...fruitData, supplier: supplier })
           }
           style={styled.picker}
+          itemStyle={{
+            flex: 1,
+            fontSize: 16,
+            fontStyle: 'normal',
+            fontWeight: '500'
+          }}
         >
           <Picker.Item
             label="Fornecedor"

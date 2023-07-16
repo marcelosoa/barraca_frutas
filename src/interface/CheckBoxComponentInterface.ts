@@ -6,4 +6,5 @@ export interface Option {
 export interface CheckBoxComponentProps {
   options: Option[];
   onChange?: (selected: Option[]) => void;
+  value: (Option | string)[] | undefined;
 }

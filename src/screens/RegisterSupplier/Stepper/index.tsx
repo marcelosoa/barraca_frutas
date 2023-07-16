@@ -119,8 +119,22 @@ export default function App() {
             label="Digite o CPF do colaborador"
             value={data.cpf || ""}
             onChangeText={(cpf) => setData({ ...data, cpf })}
-            mask={[/\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, "-", /\d/, /\d/]
-          }
+            mask={[
+              /\d/,
+              /\d/,
+              /\d/,
+              ".",
+              /\d/,
+              /\d/,
+              /\d/,
+              ".",
+              /\d/,
+              /\d/,
+              /\d/,
+              "-",
+              /\d/,
+              /\d/,
+            ]}
           />
         </InputFormView>
       ),
@@ -136,7 +150,23 @@ export default function App() {
             label="Digite o Telefone do fornecedor"
             value={data.phone || ""}
             onChangeText={(phone) => setData({ ...data, phone })}
-            mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+            mask={[
+              "(",
+              /\d/,
+              /\d/,
+              ")",
+              " ",
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              "-",
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+            ]}
           />
         </InputFormView>
       ),
@@ -146,13 +176,15 @@ export default function App() {
       component: (
         <>
           <InputFormView>
-            <InputFormComponent
+            {/* <InputFormComponent
               label="Escolha as frutas que esse fornecedor nos fornece"
               value={data.fruits || ""}
               onChangeText={(fruits) => setData({ ...data, fruits })}
-            />
+            /> */}
+            <Text>Escolha as frutas que esse fornecedor nos fornece</Text>
             <CheckBoxComponent
               options={selectedFruits}
+              value={data.fruits}
               onChange={handleFruitsChange}
             />
           </InputFormView>
