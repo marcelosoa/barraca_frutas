@@ -1,4 +1,6 @@
 import styled from 'styled-components/native'
+import MaskInput from 'react-native-mask-input';
+
 
 export const Container = styled.View`
   display: flex;
@@ -28,3 +30,12 @@ color: ${({ theme }) => theme.colors.light_gray};
 export const ErrorText = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
 `
+
+export const TextInputForm = styled(MaskInput)`
+font-family: ${({ theme }) => theme.fonts.regular};
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 30px;
+color: ${({ theme }) => theme.colors.light_gray};
+` 

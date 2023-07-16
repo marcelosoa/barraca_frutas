@@ -1,6 +1,5 @@
 import { KeyboardTypeOptions } from 'react-native';
-
-export interface InputFormProps {
+export interface InputFormProps{
   placeholder?: string;
   label?: string;
   onChangeText?: (value: any) => void;
@@ -8,4 +7,5 @@ export interface InputFormProps {
   errors?: string;
   value: any;
   keyboardType?: KeyboardTypeOptions;
+  mask?: any
 }

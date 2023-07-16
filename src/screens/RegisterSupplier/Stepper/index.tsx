@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import InputFormComponent from "../../../components/InputForm";
-import { Container, ViewName, Text, InputFormView, StyledButtonComponent, TextButton, TextNextButton } from "./styled";
+import {
+  Container,
+  ViewName,
+  Text,
+  InputFormView,
+  StyledButtonComponent,
+  TextButton,
+  TextNextButton,
+} from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../../../components/Button";
 import { Supplier } from "../../../interface/SupplierInterface";
@@ -23,20 +31,18 @@ interface SupplierData {
 const Data: Partial<SupplierData> = {};
 
 export default function App() {
-
   /**
    * Stepper para navegação do header
    */
-
   const navigation = useNavigation<propsStack>();
   const [data, setData] = useState<Partial<SupplierData>>({});
   const [step, setStep] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const theme = useTheme();
 
   // Adicionar dados ao data para armazenar no async storage
-  
+
   const handleSaveData = () => {
     const newSupplier: Supplier = {
       name: data.name || "",
@@ -56,16 +62,16 @@ export default function App() {
 
   // Function para abrir/ Fechar modal
   const handleOpenModal = () => {
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   const handleResetRegister = () => {
-    navigation.navigate('Suppliers')
-  }
+    navigation.navigate("Suppliers");
+  };
 
   const selectedFruits = [
     { id: 1, label: "Banana" },
@@ -108,11 +114,13 @@ export default function App() {
         <InputFormView>
           <InputFormComponent
             keyboardType="numeric"
-            limitCaracter={11}
+            limitCaracter={14}
             placeholder="000.000.00-00"
             label="Digite o CPF do colaborador"
             value={data.cpf || ""}
             onChangeText={(cpf) => setData({ ...data, cpf })}
+            mask={[/\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, ".", /\d/, /\d/, /\d/, "-", /\d/, /\d/]
+          }
           />
         </InputFormView>
       ),
@@ -123,11 +131,12 @@ export default function App() {
         <InputFormView>
           <InputFormComponent
             keyboardType="numeric"
-            limitCaracter={11}
+            limitCaracter={15}
             placeholder="(00) 00000-0000"
             label="Digite o Telefone do fornecedor"
             value={data.phone || ""}
             onChangeText={(phone) => setData({ ...data, phone })}
+            mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
           />
         </InputFormView>
       ),
@@ -153,7 +162,6 @@ export default function App() {
           >
             <TextButton>Cadastrar Fornecedor</TextButton>
           </StyledButtonComponent>
-          
         </>
       ),
     },
@@ -166,17 +174,17 @@ export default function App() {
   return (
     <Container>
       <ViewName>
-        <Ionicons 
-          name="close" 
-          size={36} 
-          color={theme.colors.primary_dark} 
+        <Ionicons
+          name="close"
+          size={36}
+          color={theme.colors.primary_dark}
           onPress={handleOpenModal}
         />
         {isModalOpen && (
           <ModalComponent
             onPressButton={handleCloseModal}
             onPressCancelButton={handleResetRegister}
-            labelButton='Não'
+            labelButton="Não"
             labelCancelButton="Sim, cancelar"
             isVisible={isModalOpen}
             text="Cancelar Cadastro"
