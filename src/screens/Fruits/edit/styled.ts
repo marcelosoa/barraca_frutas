@@ -29,7 +29,7 @@ export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const FruitView = styled.View``;
+export const FruitView = styled.KeyboardAvoidingView``;
 
 export const TextInput = styled.TextInput<TextInputProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
@@ -40,6 +40,13 @@ export const TextInput = styled.TextInput<TextInputProps>`
   letter-spacing: 0.5px;
   width: 100%;
   color: ${({ theme }) => theme.colors.light_gray};
+`;
+
+export const ButtonContainer = styled.View`
+  position: absolute;
+  bottom: 16px;
+  left: 12px;
+  right: 12px;
 `;
 
 export const StyledButtonComponent = styled(ButtonComponent)`

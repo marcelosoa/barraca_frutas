@@ -13,7 +13,6 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet } from 'react-native'
 
 export default function RegisterSuccessScreen() {
   const navigation = useNavigation<propsStack>();

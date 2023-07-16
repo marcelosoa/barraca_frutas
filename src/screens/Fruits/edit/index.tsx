@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Text, ViewContent, FruitView, TextButton, StyledButtonComponent } from "./styled";
+import { Container, Text, ViewContent, FruitView, TextButton, StyledButtonComponent, ButtonContainer } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -15,7 +15,6 @@ export default function EditFruitScreen() {
   const dispatch = useDispatch();
   const route = useRoute()
   const fruit = route.params?.fruit
-  console.log(fruit?.id)
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
   const [fruitData, setFruitData] = useState<Fruit>({
@@ -103,14 +102,16 @@ export default function EditFruitScreen() {
           ))}
         </Picker>
       </FruitView>
+      <ButtonContainer>
       <StyledButtonComponent
         label="Atualizar Fruta"
         onPress={handleUpdateFruit}
       >
         <TextButton>
-          Editar Fruta
+          Atualizar Fruta
         </TextButton>
       </StyledButtonComponent>
+      </ButtonContainer>
     </Container>
   );
 }

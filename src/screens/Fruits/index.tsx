@@ -23,7 +23,7 @@ import SearchComponent from "../../components/InputSearch";
 import { fetchFruits, removeFruit } from "../../redux/reducers/fruitsReducer";
 import { Fruit } from "../../redux/reducers/fruitsReducer";
 import CardFruitComponent from "../../components/CardFruits";
-import { Modal, TouchableOpacity, View } from "react-native";
+import ModalComponent from "../../components/Modal";
 
 export default function FruitsScreen() {
   const navigation = useNavigation<propsStack>();
@@ -136,7 +136,15 @@ export default function FruitsScreen() {
           </Button>
         </Container>
       )}
-      <Modal visible={isDeleteModalOpen} transparent animationType="fade">
+      <ModalComponent isVisible={isDeleteModalOpen}
+        contentText="Tem certeza que quer excluir essa fruta? Você perderá todas as informações cadastradas sobre ela"
+        labelButton="Não"
+        labelCancelButton="Sim, excluir"
+        onPressButton={handleCloseDeleteModal}
+        onPressCancelButton={() => confirmDeleteFruit(selectedFruit.id)}
+        text="Excluir Fruta"
+      />
+      {/* <Modal visible={isDeleteModalOpen} transparent animationType="fade">
         <View
           style={{
             flex: 1,
@@ -162,7 +170,7 @@ export default function FruitsScreen() {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

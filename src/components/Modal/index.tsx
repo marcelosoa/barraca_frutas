@@ -25,11 +25,11 @@ export default function ModalComponent({
         <ModalText>{text}</ModalText>
         <ContentModal>{contentText}</ContentModal>
         <ButtonModalContainer>
-          <ButtonModal onPress={onPressButton}>
-            <TextModal>{labelButton}</TextModal>
+          <ButtonModal onPress={onPressButton} isPrimary={true}>
+            <TextModal isPrimary={true}>{labelButton}</TextModal>
           </ButtonModal>
-          <ButtonModal onPress={onPressCancelButton}>
-            <TextModal>{labelCancelButton}</TextModal>
+          <ButtonModal onPress={onPressCancelButton} isPrimary={false}>
+            <TextModal isPrimary={false}>{labelCancelButton}</TextModal>
           </ButtonModal>
         </ButtonModalContainer>
       </ViewModal>
