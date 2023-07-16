@@ -23,12 +23,12 @@ export const ViewContent = styled.View`
   width: 100%;
   flex-direction: row;
   align-items: center;
-  padding: 24px 12px;
+  padding: 20px 12px;
 `;
 
 export const SupplierView = styled.View`
   width: 100%;
-  padding: 16px 12px;
+  padding: 2px 12px;
   flex-direction: row;
   gap: 8px;
   align-items: center;
@@ -54,7 +54,6 @@ export const SupplierName = styled.Text`
 
 export const FruitView = styled.View`
   flex-direction: column;
-  margin-top: 16px;
 `;
 
 export const RenderFruits = styled.View`

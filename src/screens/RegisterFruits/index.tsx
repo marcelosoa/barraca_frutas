@@ -83,7 +83,7 @@ export default function RegisterFruitScreen() {
       <FruitView style={styled.cardPicker}>
         <Ionicons name="people-outline" size={32} />
         <Picker
-          selectedValue={fruitData.supplier || 'Fornecedor'}
+          selectedValue={fruitData.supplier}
           onValueChange={(supplier: string) =>
             setFruitData({ ...fruitData, supplier: supplier })
           }
@@ -133,7 +133,7 @@ const styled = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FFFFFF",
     borderRadius: 8,
-    padding: 8,
+    padding: 7,
     elevation: 1,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },

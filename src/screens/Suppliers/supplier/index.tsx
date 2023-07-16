@@ -16,9 +16,10 @@ import {
   StyledInputMask,
   RenderFruits,
 } from "./styled";
+import { propsStack } from "../../../interface/routerinterface";
 
 export default function SupplierScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<propsStack>();
   const route = useRoute();
   const { supplierId } = route.params ?? {};
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
