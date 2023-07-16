@@ -54,8 +54,7 @@ export const ButtonModal = styled.TouchableOpacity<ModalProps>`
 
 export const TextModal = styled.Text<ModalProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme, isPrimary }) =>
-    isPrimary ? theme.colors.secondary : theme.colors.shape};
+  color: ${({ theme, isPrimary }) => isPrimary ? theme.colors.primary : theme.colors.shape};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

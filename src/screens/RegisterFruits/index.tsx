@@ -18,6 +18,7 @@ import { RootState } from "../../redux/store";
 import { v4 as uuidv4 } from "uuid";
 import { Picker } from "@react-native-picker/picker";
 import FormGroupComponent from "../../components/FormGroup";
+import LoaderComponent from "../../components/Loader";
 
 export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
@@ -30,6 +31,17 @@ export default function RegisterFruitScreen() {
     supplier: "",
     id: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleRegisterFruit = () => {
+    setIsLoading(true);
+    fruitData.id = uuidv4();
+    dispatch(addFruit(fruitData));
+    setTimeout(() => {
+      setIsLoading(false);
+      navigation.navigate("SuccessFruit", { fruit: fruitData });
+    }, 2000);
+  };
 
   return (
     <Container>
@@ -98,17 +110,12 @@ export default function RegisterFruitScreen() {
       <ButtonContainer>
         <StyledButtonComponent
           label="Cadastrar Fruta"
-          onPress={() => {
-            fruitData.id = uuidv4();
-            dispatch(addFruit(fruitData));
-            navigation.navigate("SuccessFruit");
-          }}
+          onPress={handleRegisterFruit}
         >
-          <TextButton>
-            Cadastrar Fruta
-          </TextButton>
+          <TextButton>Cadastrar Fruta</TextButton>
         </StyledButtonComponent>
       </ButtonContainer>
+      {isLoading && <LoaderComponent />}
     </Container>
   );
 }

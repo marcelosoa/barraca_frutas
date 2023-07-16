@@ -27,6 +27,7 @@ export type propsNavigationStack = {
   Suppliers?: {}
   App?: {}
   EditFruit?: {}
+  Inicio?: {}
 
 }
 

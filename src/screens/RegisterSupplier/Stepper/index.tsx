@@ -46,7 +46,7 @@ export default function App() {
       id: "",
     };
     dispatch(addSupplier(newSupplier));
-    navigation.navigate("Success");
+    navigation.navigate("Success", { supplier: newSupplier });
   };
 
   // Function para avançar ao proximo Step como Nome -> CPF -> Telefone -> Frutas

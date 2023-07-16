@@ -10,12 +10,14 @@ import {
   TextButton,
   StyledButtonComponent
 } from "./styled";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function RegisterSuccessScreen() {
   const navigation = useNavigation<propsStack>();
+  const route = useRoute()
+  const supplier = route.params?.supplier
   return (
     <Container>
       <ViewIcon>
@@ -29,7 +31,7 @@ export default function RegisterSuccessScreen() {
         <Image source={require("../../../../assets/images/confirmed.png")} />
       </TextView>
       <Text>Fornecedor Cadastrado</Text>
-      <SmallText>Você cadastrou o fornecedor Lorem Ipsum dolor com sucesso!</SmallText>
+      <SmallText>Você cadastrou o fornecedor {supplier.name} com sucesso!</SmallText>
       <View>
         <StyledButtonComponent
           label="Voltar ao início"
