@@ -65,7 +65,7 @@ export const ContentFruits = styled.TouchableOpacity`
 
 `
 
-export const FruitCard = styled.View`
+export const FruitCard = styled.TouchableOpacity`
   
 `
 

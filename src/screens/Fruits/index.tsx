@@ -9,7 +9,6 @@ import {
   Button,
   TextButton,
   ContainerFruits,
-  FruitCard,
   NewFruitButton,
   FruitButtonIcon,
   ViewModalize,
@@ -33,7 +32,7 @@ export default function FruitsScreen() {
   const [searchFruit, setFruitSearch] = useState("");
   const modalizeRef = useRef<Modalize>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [selectedFruitId, setSelectedFruitId] = useState<string | null>(null);
+  const [selectedFruit, setSelectedFruit] = useState<any>(null)
 
   useEffect(() => {
     dispatch(fetchFruits());
@@ -56,26 +55,22 @@ export default function FruitsScreen() {
   );
 
   const handleEditFruit = () => {
-    console.log("alo");
-    navigation.navigate("EditFruit");
+    navigation.navigate("EditFruit", { fruit: selectedFruit });
   };
 
   const handleDeleteFruit = () => {
-    const fruit = fruits.find((fruit) => fruit?.id)
-    const fruitID = fruit?.id
-    setSelectedFruitId(fruitID);
-    setIsDeleteModalOpen(true);
+    setIsDeleteModalOpen(true)
   };
 
   const handleCloseDeleteModal = () => {
     setIsDeleteModalOpen(false);
   };
 
-  const confirmDeleteFruit = () => {
-    if (selectedFruitId) {
-      dispatch(removeFruit(selectedFruitId));
-      setIsDeleteModalOpen(false);
-    }
+  const confirmDeleteFruit = (value: string) => {
+    dispatch(removeFruit(value))
+    
+    setIsDeleteModalOpen(false);
+    console.log(value, 'VALUEEEE: ')
   };
 
   return (
@@ -89,15 +84,15 @@ export default function FruitsScreen() {
               label="Pesquisar Frutas"
             />
             {filteredFruits.map((fruit: Fruit) => (
-              <FruitCard key={fruit.id}>
                 <CardFruitComponent
+                  key={fruit.id}
                   name={fruit.name}
                   price={fruit.price}
                   quantity={fruit.quantity}
                   supplier={fruit.supplier}
                   isModalCheck={handleModalOpen}
+                  onCardPress={() => setSelectedFruit(fruit)}
                 />
-              </FruitCard>
             ))}
           </ContainerFruits>
           <Modalize
@@ -162,7 +157,7 @@ export default function FruitsScreen() {
             <TouchableOpacity onPress={handleCloseDeleteModal}> 
               <Text>Não</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={confirmDeleteFruit}> 
+            <TouchableOpacity onPress={() => confirmDeleteFruit(selectedFruit.id)}> 
               <Text>Sim, excluir</Text>
             </TouchableOpacity>
           </View>

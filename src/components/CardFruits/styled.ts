@@ -4,7 +4,7 @@ interface TextProps {
   left?: number;
 }
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.shape };
   padding: 20px;
   border-radius: 8px;

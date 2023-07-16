@@ -4,4 +4,5 @@ export interface CardFruitProps {
   quantity: number,
   supplier: string
   isModalCheck: () => void
+  onCardPress?: any
 }

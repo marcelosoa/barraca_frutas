@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Text, ViewContent, FruitView } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
 import ButtonComponent from "../../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,9 @@ import { Picker } from "@react-native-picker/picker";
 export default function EditFruitScreen() {
   const navigation = useNavigation<propsStack>();
   const dispatch = useDispatch();
+  const route = useRoute()
+  const fruit = route.params?.fruit
+  console.log(fruit?.id)
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
   const [fruitData, setFruitData] = useState<Fruit>({
@@ -25,24 +28,16 @@ export default function EditFruitScreen() {
     supplier: "",
   });
 
-  useEffect(() => { 
+  useEffect(() => {
+    setFruitData(fruit)
+  }, [fruits])
 
-    // Encontre a fruta correspondente na lista de frutas
-    const fruitId = fruits.find((fruit) => fruit.id === fruit.id)
-
-    if (fruitId) {
-      setFruitData(fruitId);
-    }
-  }, [fruits, navigation]);
-
-  
 
   const handleUpdateFruit = () => {
     const updatedFruit: Fruit = {
       ...fruitData,
-      id: uuidv4(), // Atualize o ID da fruta (opcional)
     };
-    dispatch(updateFruit(updatedFruit)); // Despache a ação para atualizar a fruta
+    dispatch(updateFruit(updatedFruit)); 
     navigation.navigate("SuccessFruit");
   };
 
@@ -78,7 +73,7 @@ export default function EditFruitScreen() {
         name="server-outline"
         size={32}
         placeholder="Quantidade no estoque"
-        value={fruitData.quantity}
+        value={fruitData.quantity.toString()}
         onChangeText={(quantity: string) =>
           setFruitData({ ...fruitData, quantity })
         }
