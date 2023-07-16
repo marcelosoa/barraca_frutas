@@ -1,7 +1,8 @@
 import React from 'react';
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Container, ContainerView, Button, Text } from './styled';
+import { Container, ContainerView, Button, Text, Rectangle } from './styled';
 import { CheckBoxComponentProps, Option } from '../../interface/CheckBoxComponentInterface';
+import { View } from 'react-native';
 
 export default function CheckBoxComponent({ options = [], onChange, value }: CheckBoxComponentProps) {
   const [selected, setSelected] = React.useState<Option[]>(() => {
@@ -37,7 +38,7 @@ export default function CheckBoxComponent({ options = [], onChange, value }: Che
 
   return (
     <Container>
-      <ContainerView key="selectAll">
+      <ContainerView>
         <Button onPress={handleToggleAll}>
           <Ionicons
             name={selected.length === options.length ? 'md-square-sharp' : 'md-square-outline'}
@@ -45,17 +46,16 @@ export default function CheckBoxComponent({ options = [], onChange, value }: Che
             color={selected.length === options.length ? 'red' : 'black'}
           />
         </Button>
-        <Text first={15}>Todas</Text>
+        <Text>Todas</Text>
       </ContainerView>
-      {options.map((option) => (
+      <View style={{
+        marginLeft: 16,
+      }}>
+      {options.map((option, index) => (
         <ContainerView key={option.id}>
-          <Button
-            onPress={() => handleToggleSelected(option)}
-          >
+          <Button onPress={() => handleToggleSelected(option)}>
             <Ionicons
-              name={selected.some((item) => item.id === option.id)
-                ? 'md-square-sharp'
-                : 'md-square-outline'}
+              name={selected.some((item) => item.id === option.id) ? 'md-square-sharp' : 'md-square-outline'}
               size={32}
               color={selected.some((item) => item.id === option.id) ? 'red' : 'black'}
             />
@@ -63,6 +63,8 @@ export default function CheckBoxComponent({ options = [], onChange, value }: Che
           <Text>{option.label}</Text>
         </ContainerView>
       ))}
+      </View>
+      
     </Container>
   );
 }
