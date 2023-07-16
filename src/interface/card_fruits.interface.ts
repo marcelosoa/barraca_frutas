@@ -1,7 +1,7 @@
 export interface CardFruitProps {
   name: string
   price: string
-  quantity: number,
+  quantity: string,
   supplier: string
   isModalCheck: () => void
   onCardPress?: any

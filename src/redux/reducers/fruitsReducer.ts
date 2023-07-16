@@ -5,7 +5,7 @@ export interface Fruit {
   id: string;
   name: string;
   price: string;
-  quantity: number;
+  quantity: string;
   supplier: string;
 }
 
