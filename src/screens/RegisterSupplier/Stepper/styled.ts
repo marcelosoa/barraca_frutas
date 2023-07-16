@@ -24,7 +24,7 @@ export const InputFormView = styled.View`
   display: flex;
   flex-direction: column;
   flex: 1;
-  align-items: flex-start; /* Alinhar os elementos à esquerda */
+  align-items: flex-start;
 `
 
 export const Text = styled.Text<TextProps>`
@@ -54,4 +54,15 @@ export const TextButton = styled.Text`
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 1.25px;
+`
+
+export const TextNextButton = styled.Text`
+  color: ${({ theme}) => theme.colors.light_gray};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+
 `

@@ -5,13 +5,13 @@ import {
   ViewContent,
   FruitView,
   ButtonContainer,
+  StyledButtonComponent,
+  TextButton,
 } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import ButtonComponent from "../../components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
-import { useTheme } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { addFruit } from "../../redux/reducers/fruitsReducer";
 import { RootState } from "../../redux/store";
@@ -83,7 +83,7 @@ export default function RegisterFruitScreen() {
             style={{
               flex: 1,
               fontSize: 16,
-              color: "#6C7072",
+              color: "#000",
             }}
           />
           {suppliers.map((supplier) => (
@@ -96,14 +96,18 @@ export default function RegisterFruitScreen() {
         </Picker>
       </FruitView>
       <ButtonContainer>
-        <ButtonComponent
+        <StyledButtonComponent
           label="Cadastrar Fruta"
           onPress={() => {
             fruitData.id = uuidv4();
             dispatch(addFruit(fruitData));
             navigation.navigate("SuccessFruit");
           }}
-        />
+        >
+          <TextButton>
+            Cadastrar Fruta
+          </TextButton>
+        </StyledButtonComponent>
       </ButtonContainer>
     </Container>
   );
@@ -122,9 +126,6 @@ const styled = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
-  },
-  icon: {
-    gap: 16,
   },
   picker: {
     flex: 1,

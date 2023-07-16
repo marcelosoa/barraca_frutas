@@ -1,11 +1,20 @@
 import styled from 'styled-components/native'
+import ButtonComponent from '../../../components/Button'
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background };
+  padding: 24px 28px;
   display: flex;
   flex: 1;
+  gap: 44px;
+`
+
+export const ViewIcon = styled.View`
+  padding: 28px 0;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-bottom: 44px;
 `
 
 export const Text = styled.Text`
@@ -16,7 +25,9 @@ export const Text = styled.Text`
   margin-top: 60px;
 `
 export const TextView = styled.View`
-
+  align-items: center;
+  justify-content: center;
+  padding-top: 44px;
 `
 
 export const SmallText = styled.Text`
@@ -26,4 +37,15 @@ export const SmallText = styled.Text`
   line-height: 24px;
   letter-spacing: 0.5px;
   margin-top: 16px;
+`
+
+export const StyledButtonComponent = styled(ButtonComponent)`
+  background-color: ${({ theme }) => theme.colors.primary };
+  padding: 16px 10px;
+
+`
+
+export const TextButton = styled.Text`
+  color: ${({ theme }) => theme.colors.shape};
+
 `

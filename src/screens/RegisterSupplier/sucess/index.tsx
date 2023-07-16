@@ -42,8 +42,3 @@ export default function RegisterSuccessScreen() {
     </Container>
   );
 }
-
-const styled = StyleSheet.create({
-  
-
-})

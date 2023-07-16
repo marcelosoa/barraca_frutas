@@ -50,12 +50,11 @@ export const View = styled.View`
 export const TextButton = styled.Text`
 text-align: center;
 color: ${({ theme }) => theme.text.primary};
-/* BUTTON */
 font-family: ${({ theme }) => theme.fonts.regular};
 font-size: 13px;
 font-style: normal;
 font-weight: 500;
-line-height: 16px; /* 123.077% */
+line-height: 16px;
 letter-spacing: 1.25px;
 `
 

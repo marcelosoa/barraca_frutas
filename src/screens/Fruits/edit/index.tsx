@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Container, Text, ViewContent, FruitView } from "./styled";
+import { Container, Text, ViewContent, FruitView, TextButton, StyledButtonComponent } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
-import ButtonComponent from "../../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { Fruit, updateFruit } from "../../../redux/reducers/fruitsReducer";
-import { v4 as uuidv4 } from "uuid";
 import FormGroupComponent from "../../../components/FormGroup";
 import { Picker } from "@react-native-picker/picker";
 
@@ -105,10 +103,14 @@ export default function EditFruitScreen() {
           ))}
         </Picker>
       </FruitView>
-      <ButtonComponent
+      <StyledButtonComponent
         label="Atualizar Fruta"
         onPress={handleUpdateFruit}
-      />
+      >
+        <TextButton>
+          Editar Fruta
+        </TextButton>
+      </StyledButtonComponent>
     </Container>
   );
 }

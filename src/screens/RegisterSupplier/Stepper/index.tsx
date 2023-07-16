@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputFormComponent from "../../../components/InputForm";
-import { Container, ViewName, Text, InputFormView, StyledButtonComponent, TextButton } from "./styled";
+import { Container, ViewName, Text, InputFormView, StyledButtonComponent, TextButton, TextNextButton } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../../../components/Button";
 import { Supplier } from "../../../interface/SupplierInterface";
@@ -200,7 +200,7 @@ export default function App() {
       {contents[step].component}
       {step < contents.length - 1 && (
         <ButtonComponent label="Próximo" onPress={() => setStep(step + 1)}>
-          <TextButton>Próximo</TextButton>
+          <TextNextButton>Próximo</TextNextButton>
           <Ionicons name="chevron-forward" size={32} color={"#DA0D1E"} />
         </ButtonComponent>
       )}
