@@ -8,6 +8,7 @@ import {
   StyledButtonComponent,
   TextButton,
   TextNextButton,
+  TextChekboxStepper,
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../../../components/Button";
@@ -181,7 +182,7 @@ export default function App() {
               value={data.fruits || ""}
               onChangeText={(fruits) => setData({ ...data, fruits })}
             /> */}
-            <Text>Escolha as frutas que esse fornecedor nos fornece</Text>
+            <TextChekboxStepper>Escolha as frutas que esse fornecedor nos fornece</TextChekboxStepper>
             <CheckBoxComponent
               options={selectedFruits}
               value={data.fruits}
