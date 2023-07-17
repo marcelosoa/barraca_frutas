@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 
 interface TextProps {
   left?: number;
+  color?: string;
 }
 
 export const Container = styled.TouchableOpacity`
@@ -26,6 +27,7 @@ export const Text = styled.Text<TextProps>`
   font-size: 13px;
   margin-left: ${({ left }) => (left ? left + "px" : 0)};
   font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ color, theme }) => color ? color : theme.text.text};
 `;
 
 export const PriceContainer = styled.View`

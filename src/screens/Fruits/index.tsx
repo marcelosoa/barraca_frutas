@@ -68,9 +68,7 @@ export default function FruitsScreen() {
 
   const confirmDeleteFruit = (value: string) => {
     dispatch(removeFruit(value))
-    
     setIsDeleteModalOpen(false);
-    console.log(value, 'VALUEEEE: ')
   };
 
   return (

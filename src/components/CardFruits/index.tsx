@@ -39,7 +39,7 @@ export default function CardFruitComponent({
         </ContainerCard>
       <PriceContainer>
         <Ionicons name="cash-outline" size={24} color={"#008C21"} />
-        <Text left={3}>R${price}</Text>
+        <Text left={3} color="#008C21">R${price}</Text>
         <Text left={10}>{quantity} em estoque</Text>
       </PriceContainer>
       <ViewSupplier>

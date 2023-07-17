@@ -35,7 +35,7 @@ export default function EditFruitScreen() {
       ...fruitData,
     };
     dispatch(updateFruit(updatedFruit)); 
-    navigation.navigate("SuccessFruit");
+    navigation.navigate("RegisterFruit");
   };
 
   return (
