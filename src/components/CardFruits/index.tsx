@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardFruitProps } from "../../interface/card_fruits.interface";
 import {
   Container,
   ContainerCard,
-  View,
   Text,
   TextName,
   PriceContainer,
@@ -11,8 +10,6 @@ import {
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "styled-components";
-import { useNavigation } from "@react-navigation/native";
-import { propsStack } from "../../interface/routerinterface";
 import { StyleSheet } from 'react-native'
 
 export default function CardFruitComponent({
@@ -24,9 +21,6 @@ export default function CardFruitComponent({
   onCardPress
 }: CardFruitProps) {
   const theme = useTheme();
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const navigation = useNavigation<propsStack>();
-
   const isModalOpen = () => {
     onCardPress()
     isModalCheck()

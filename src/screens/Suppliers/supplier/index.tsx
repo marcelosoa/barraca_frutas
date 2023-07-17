@@ -67,8 +67,8 @@ export default function SupplierScreen() {
             <Fruits type="title">Frutas</Fruits>
             <RenderFruits>
               {selectedSupplier.fruits.map((fruit, index) => (
-                <Fruits type="text" key={index}>
-                  {fruit}
+                <Fruits type="text" key={index} >
+                 {`\u2022 ${fruit}`}
                 </Fruits>
               ))}
             </RenderFruits>
