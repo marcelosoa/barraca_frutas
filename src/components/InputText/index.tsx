@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, Container } from "./styled";
-import { InputTextComponentProps } from '../../interface/InputTextComponentInterface';
+import { InputTextComponentProps } from '../../interface/input-text-component.interface';
 
 
 export default function InputTextComponent({ label, icon }: InputTextComponentProps) {

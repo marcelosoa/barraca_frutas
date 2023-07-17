@@ -8,7 +8,7 @@ import {
   ButtonModalContainer,
 } from "./styled";
 import Modal from "react-native-modal";
-import { ModalComponentProps } from "../../interface/ModalComponentInterface";
+import { ModalComponentProps } from "../../interface/modal-component.interface";
 
 export default function ModalComponent({
   isVisible,

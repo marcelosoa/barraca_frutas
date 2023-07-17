@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, SearchInput } from './styled'
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from 'react-native'
-import { SearchComponentProps } from '../../interface/InputSearchComponentInterface';
+import { SearchComponentProps } from '../../interface/input-search.interface';
 
 export default function SearchComponent ({ label, onChangeText }: SearchComponentProps) {
   return (

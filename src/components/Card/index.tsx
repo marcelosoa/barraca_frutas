@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Text, View, StyledTextInputMask } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
-import { CardComponentProps } from "../../interface/CardComponentInterface";
+import { CardComponentProps } from "../../interface/card.component.interface";
 
 export default function CardComponent({ name, cpf, phone }: CardComponentProps) {
   return (
