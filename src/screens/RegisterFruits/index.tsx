@@ -32,8 +32,19 @@ export default function RegisterFruitScreen() {
     id: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleRegisterFruit = () => {
+    if (
+      fruitData.name.trim() === "" ||
+      fruitData.price.trim() === "" ||
+      fruitData.quantity.trim() === "" ||
+      fruitData.supplier.trim() === ""
+    ) {
+      setError("Por favor, preencha todos os campos.");
+      return;
+    }
+
     setIsLoading(true);
     fruitData.id = uuidv4();
     dispatch(addFruit(fruitData));
@@ -91,8 +102,8 @@ export default function RegisterFruitScreen() {
           itemStyle={{
             flex: 1,
             fontSize: 16,
-            fontStyle: 'normal',
-            fontWeight: '500'
+            fontStyle: "normal",
+            fontWeight: "500",
           }}
         >
           <Picker.Item
@@ -121,6 +132,7 @@ export default function RegisterFruitScreen() {
           <TextButton>Cadastrar Fruta</TextButton>
         </StyledButtonComponent>
       </ButtonContainer>
+      {error !== "" && <Text style={styled.errorText}>{error}</Text>}
       {isLoading && <LoaderComponent />}
     </Container>
   );
@@ -144,5 +156,10 @@ const styled = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF",
     gap: 16,
+  },
+  errorText: {
+    color: "red",
+    fontSize: 16,
+    marginTop: 10,
   },
 });
