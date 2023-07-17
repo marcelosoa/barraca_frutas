@@ -33,6 +33,9 @@ export default function CardComponent({ name, cpf, phone }: CardComponentProps) 
   );
 }
 
+/**
+ * Utilizado stylesheet junto com o styled-components pois achei desnecessário ter que utilizar alguma lib para implementar shadow ao card já que o Styled-components não tem suporte.
+ */
 const styled = StyleSheet.create({
   inputCard: {
     marginTop: 24,

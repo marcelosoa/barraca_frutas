@@ -142,33 +142,6 @@ export default function FruitsScreen() {
         onPressCancelButton={() => confirmDeleteFruit(selectedFruit.id)}
         text="Excluir Fruta"
       />
-      {/* <Modal visible={isDeleteModalOpen} transparent animationType="fade">
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "#FFF",
-              padding: 20,
-              borderRadius: 10,
-            }}
-          >
-            <Text>Excluir Fruta</Text>
-            <Text>Tem certeza que quer excluir essa fruta?</Text>
-            <TouchableOpacity onPress={handleCloseDeleteModal}> 
-              <Text>Não</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => confirmDeleteFruit(selectedFruit.id)}> 
-              <Text>Sim, excluir</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal> */}
     </>
   );
 }
