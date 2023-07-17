@@ -4,13 +4,15 @@ interface TextProps {
   first?: number;
 }
 
-export const Container = styled.View``;
+export const Container = styled.View`
+
+`;
 
 export const ContainerView = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 8px;
+  margin-top: 4px;
 `;
 
 export const Text = styled.Text<TextProps>`

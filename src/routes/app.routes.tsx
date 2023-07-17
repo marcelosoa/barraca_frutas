@@ -14,6 +14,7 @@ import SupplierScreen from "../screens/Suppliers/supplier";
 import SuccessFruit from "../screens/RegisterFruits/success";
 import App from "../screens/RegisterSupplier/Stepper";
 import EditFruitScreen from "../screens/Fruits/edit";
+import SuccessEditFruitScreen from "../screens/Fruits/edit/success";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -73,6 +74,7 @@ export default function AppRoutes() {
         <Stack.Screen name="App" component={App} />
         <Stack.Screen name="Success" component={RegisterSuccessScreen} />
         <Stack.Screen name="SuccessFruit" component={SuccessFruit} />
+        <Stack.Screen name="SuccessEditFruitScreen" component={SuccessEditFruitScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

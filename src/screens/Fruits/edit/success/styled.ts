@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import ButtonComponent from '../../../components/Button'
+import ButtonComponent from '../../../../components/Button'
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background };
@@ -13,6 +13,7 @@ export const ViewIcon = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  margin-bottom: 44px;
 `
 export const TextView = styled.View`
   align-items: center;
@@ -20,7 +21,8 @@ export const TextView = styled.View`
   padding-top: 44px;
 `
 export const Image = styled.Image`
-
+  width: 169px;
+  height: 200px;
 `
 
 export const Text = styled.Text`
@@ -32,19 +34,17 @@ export const Text = styled.Text`
 
 
 export const SmallText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
+  /* font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.colors.light_gray};
   font-size: 15px;
   line-height: 24px;
-  letter-spacing: 0.5px;
-  font-style: normal;
-  font-weight: 400;
+  letter-spacing: 0.5px; */
 `
 
 export const View = styled.View`
-  flex: 1;
-  /* width: 100%; */
-  padding-top: 66px;
+  /* flex: 1;
+  width: 100%;
+  padding-top: 66px; */
 `
 
 export const TextButton = styled.Text`

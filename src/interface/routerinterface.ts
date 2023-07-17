@@ -28,6 +28,7 @@ export type propsNavigationStack = {
   App?: {}
   EditFruit?: {}
   Inicio?: {}
+  SuccessEditFruitScreen?: {}
 
 }
 

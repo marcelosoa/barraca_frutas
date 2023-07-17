@@ -9,6 +9,7 @@ import { RootState } from "../../../redux/store";
 import { Fruit, updateFruit } from "../../../redux/reducers/fruitsReducer";
 import FormGroupComponent from "../../../components/FormGroup";
 import { Picker } from "@react-native-picker/picker";
+import LoaderComponent from "../../../components/Loader";
 
 export default function EditFruitScreen() {
   const navigation = useNavigation<propsStack>();
@@ -17,6 +18,7 @@ export default function EditFruitScreen() {
   const fruit = route.params?.fruit
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [fruitData, setFruitData] = useState<Fruit>({
     id: "",
     name: "",
@@ -31,11 +33,15 @@ export default function EditFruitScreen() {
 
 
   const handleUpdateFruit = () => {
+    setIsLoading(true);
     const updatedFruit: Fruit = {
       ...fruitData,
     };
-    dispatch(updateFruit(updatedFruit)); 
-    navigation.navigate("RegisterFruit");
+
+    setTimeout(() => {
+      dispatch(updateFruit(updatedFruit)); 
+      navigation.navigate("SuccessEditFruitScreen", { fruit: fruitData });
+    }, 2000);
   };
 
   return (
@@ -103,15 +109,16 @@ export default function EditFruitScreen() {
         </Picker>
       </FruitView>
       <ButtonContainer>
-      <StyledButtonComponent
-        label="Atualizar Fruta"
-        onPress={handleUpdateFruit}
-      >
-        <TextButton>
-          Atualizar Fruta
-        </TextButton>
-      </StyledButtonComponent>
+        <StyledButtonComponent
+          label="Atualizar Fruta"
+          onPress={handleUpdateFruit}
+        >
+          <TextButton>
+            Atualizar Fruta
+          </TextButton>
+        </StyledButtonComponent>
       </ButtonContainer>
+      {isLoading && <LoaderComponent />}
     </Container>
   );
 }
