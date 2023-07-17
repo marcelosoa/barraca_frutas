@@ -10,7 +10,7 @@ export const ContainerView = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-right: 10px;
+  margin-top: 8px;
 `;
 
 export const Text = styled.Text<TextProps>`

@@ -12,7 +12,7 @@ import {
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ButtonComponent from "../../../components/Button";
-import { Supplier } from "../../../interface/SupplierInterface";
+import { Supplier } from "../../../interface/supplier.interface";
 import { addSupplier } from "../../../redux/reducers/suppliersReducer";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Label, ErrorText, TextInputForm } from "./styled";
-import { InputFormProps } from "../../interface/InputFormComponentInterface";
+import { InputFormProps } from "../../interface/inputform-interface";
 
 export default function InputFormComponent({
   placeholder,
