@@ -18,13 +18,15 @@ import CardComponent from "../../components/Card";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
 import { fetchSuppliers } from "../../redux/reducers/suppliersReducer";
-import { Platform } from "react-native";
+import { Platform, View } from "react-native";
+import { useTheme } from "styled-components";
 
 export default function SuppliersScreen() {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const navigation = useNavigation<propsStack>();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);
+  const theme = useTheme()
 
   useEffect(() => {
     dispatch(fetchSuppliers());
@@ -54,23 +56,30 @@ export default function SuppliersScreen() {
               onChangeText={handleSearch}
               label="Pesquisar Fornecedor"
             />
-            {filteredSuppliers.map((supplier) => (
-              <ContentContainer
-                key={supplier.id}
-                onPress={() =>
-                  navigation.navigate("Supplier", {
-                    supplierId: supplier.id,
-                  })
-                }
-              >
-                <CardComponent
+            {filteredSuppliers.length > 0 ? (
+              filteredSuppliers.map((supplier) => (
+                <ContentContainer
                   key={supplier.id}
-                  cpf={supplier.cpf}
-                  name={supplier.name}
-                  phone={supplier.phone}
-                />
-              </ContentContainer>
-            ))}
+                  onPress={() =>
+                    navigation.navigate("Supplier", {
+                      supplierId: supplier.id,
+                    })
+                  }
+                >
+                  <CardComponent
+                    key={supplier.id}
+                    cpf={supplier.cpf}
+                    name={supplier.name}
+                    phone={supplier.phone}
+                  />
+                </ContentContainer>
+              ))
+            ) : (
+              <View style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 16, }}>
+                <Ionicons name="sad-outline" size={48} color={theme.colors.primary}/>
+                <Text>Não foi encontrado nenhum fornecedor com esse nome. Tente novamente.</Text>
+              </View>
+            )}
           </ContainerSupplier>
           <NewSupplierButton onPress={() => navigation.navigate("App")}>
             <SupplierName>

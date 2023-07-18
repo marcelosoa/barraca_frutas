@@ -24,6 +24,8 @@ import { fetchFruits, removeFruit } from "../../redux/reducers/fruitsReducer";
 import { Fruit } from "../../redux/reducers/fruitsReducer";
 import CardFruitComponent from "../../components/CardFruits";
 import ModalComponent from "../../components/Modal";
+import { View } from "react-native";
+import { useTheme } from "styled-components";
 
 export default function FruitsScreen() {
   const navigation = useNavigation<propsStack>();
@@ -32,8 +34,9 @@ export default function FruitsScreen() {
   const [searchFruit, setFruitSearch] = useState("");
   const modalizeRef = useRef<Modalize>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [selectedFruit, setSelectedFruit] = useState<any>(null)
+  const [selectedFruit, setSelectedFruit] = useState<any>(null);
   const [isCardHighlighted, setIsCardHighlighted] = useState(false);
+  const theme = useTheme();
 
   useEffect(() => {
     dispatch(fetchFruits());
@@ -61,7 +64,7 @@ export default function FruitsScreen() {
   };
 
   const handleDeleteFruit = () => {
-    setIsDeleteModalOpen(true)
+    setIsDeleteModalOpen(true);
   };
 
   const handleCloseDeleteModal = () => {
@@ -69,63 +72,39 @@ export default function FruitsScreen() {
   };
 
   const confirmDeleteFruit = (value: string) => {
-    dispatch(removeFruit(value))
+    dispatch(removeFruit(value));
     setIsDeleteModalOpen(false);
   };
 
   return (
     <>
       {fruits.length > 0 ? (
-        <>
-          <ContainerFruits>
-            <SearchComponent
-              value={searchFruit}
-              onChangeText={handleSearchFruit}
-              label="Pesquisar Frutas"
-            />
-            {filteredFruits.map((fruit: Fruit) => (
-                <CardFruitComponent
-                  key={fruit.id}
-                  name={fruit.name}
-                  price={fruit.price}
-                  quantity={fruit.quantity}
-                  supplier={fruit.supplier}
-                  isModalCheck={handleModalOpen}
-                  onCardPress={() => setSelectedFruit(fruit)}
-                  isHighlighted={isCardHighlighted && fruit.id === selectedFruit?.id}
-                />
-            ))}
-          </ContainerFruits>
-          <Modalize
-            modalStyle={{
-              backgroundColor: "#F0F4F7",
-            }}
-            ref={modalizeRef}
-            snapPoint={150}
-            scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
-            adjustToContentHeight={true}
-          >
-            <ViewModalize>
-              <ButtonInsideModal onPress={handleEditFruit}>
-                <Ionicons name="pencil-outline" size={26} />
-                <TextButtonModal> Editar Fruta </TextButtonModal>
-              </ButtonInsideModal>
-              <ButtonInsideModal
-                onPress={() => handleDeleteFruit()}
-              >
-                <Ionicons name="trash-outline" size={26} />
-                <TextButtonModal> Excluir Fruta</TextButtonModal>
-              </ButtonInsideModal>
-            </ViewModalize>
-          </Modalize>
-          <NewFruitButton
-            onPress={() => navigation.navigate("RegistrarFrutas")}
-          >
-            <FruitButtonIcon>
-              <Ionicons name="add" size={32} />
-            </FruitButtonIcon>
-          </NewFruitButton>
-        </>
+        <ContainerFruits>
+          <SearchComponent
+            value={searchFruit}
+            onChangeText={handleSearchFruit}
+            label="Pesquisar Frutas"
+          />
+          {filteredFruits.length > 0 ? (
+            filteredFruits.map((fruit: Fruit) => (
+              <CardFruitComponent
+                key={fruit.id}
+                name={fruit.name}
+                price={fruit.price}
+                quantity={fruit.quantity}
+                supplier={fruit.supplier}
+                isModalCheck={handleModalOpen}
+                onCardPress={() => setSelectedFruit(fruit)}
+                isHighlighted={isCardHighlighted && fruit.id === selectedFruit?.id}
+              />
+            ))
+          ) : (
+            <View style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 16 }}>
+              <Ionicons name="alert-circle-outline" size={48} color={theme.colors.primary} />
+              <Text>Não foi encontrada nenhuma fruta com esse nome.</Text>
+            </View>
+          )}
+        </ContainerFruits>
       ) : (
         <Container>
           <ViewText>
@@ -137,7 +116,33 @@ export default function FruitsScreen() {
           </Button>
         </Container>
       )}
-      <ModalComponent isVisible={isDeleteModalOpen}
+      <Modalize
+        modalStyle={{
+          backgroundColor: "#F0F4F7",
+        }}
+        ref={modalizeRef}
+        snapPoint={150}
+        scrollViewProps={{ keyboardShouldPersistTaps: "handled" }}
+        adjustToContentHeight={true}
+      >
+        <ViewModalize>
+          <ButtonInsideModal onPress={handleEditFruit}>
+            <Ionicons name="pencil-outline" size={26} />
+            <TextButtonModal> Editar Fruta </TextButtonModal>
+          </ButtonInsideModal>
+          <ButtonInsideModal onPress={() => handleDeleteFruit()}>
+            <Ionicons name="trash-outline" size={26} />
+            <TextButtonModal> Excluir Fruta</TextButtonModal>
+          </ButtonInsideModal>
+        </ViewModalize>
+      </Modalize>
+      <NewFruitButton onPress={() => navigation.navigate("RegistrarFrutas")}>
+        <FruitButtonIcon>
+          <Ionicons name="add" size={32} />
+        </FruitButtonIcon>
+      </NewFruitButton>
+      <ModalComponent
+        isVisible={isDeleteModalOpen}
         contentText="Tem certeza que quer excluir essa fruta? Você perderá todas as informações cadastradas sobre ela"
         labelButton="Não"
         labelCancelButton="Sim, excluir"
