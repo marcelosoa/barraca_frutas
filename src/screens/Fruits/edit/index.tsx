@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Text, ViewContent, FruitView, TextButton, StyledButtonComponent, ButtonContainer } from "./styled";
+import { Container, Text, ViewContent, FruitView, TextButton, StyledButtonComponent } from "./styled";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation, useRoute } from "@react-navigation/native";

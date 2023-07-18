@@ -1,6 +1,6 @@
 import React from 'react';
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Container, ContainerView, Button, Text, Rectangle } from './styled';
+import { ContainerView, Button, Text } from './styled';
 import { CheckBoxComponentProps, Option } from '../../interface/checkbox-component.interface';
 import { View } from 'react-native';
 
@@ -37,7 +37,7 @@ export default function CheckBoxComponent({ options = [], onChange, value }: Che
   }
 
   return (
-    <Container>
+    <View style={{marginBottom: 45}}>
       <ContainerView>
         <Button onPress={handleToggleAll}>
           <Ionicons
@@ -64,7 +64,6 @@ export default function CheckBoxComponent({ options = [], onChange, value }: Che
         </ContainerView>
       ))}
       </View>
-      
-    </Container>
+      </View>
   );
 }

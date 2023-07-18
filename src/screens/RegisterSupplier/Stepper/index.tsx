@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputFormComponent from "../../../components/InputForm";
 import {
   Container,
@@ -21,6 +21,7 @@ import { View } from "react-native";
 import { useTheme } from "styled-components";
 import CheckBoxComponent from "../../../components/Checkbox";
 import ModalComponent from "../../../components/Modal";
+import useErrors from "../../../utils/hooks/useErros";
 
 interface SupplierData {
   name: string;
@@ -39,6 +40,12 @@ export default function App() {
   const [data, setData] = useState<Partial<SupplierData>>({});
   const [step, setStep] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [errors, setErrors] = useState<{ [field: string]: string }>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({
+    name: "",
+    cpf: "",
+    phone: "",
+  });
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -57,9 +64,41 @@ export default function App() {
   };
 
   // Function para avançar ao proximo Step como Nome -> CPF -> Telefone -> Frutas
-  const handleStepClick = (index: number) => {
-    setStep(index);
+  const validateFields = () => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (step === 0 && (data.name?.length ?? 0) < 4) {
+      newErrors.name = "Insira um nome válido";
+    } else {
+      newErrors.name = "";
+    }
+
+    if (step === 1 && (data.cpf?.length ?? 0) < 14) {
+      newErrors.cpf = "Insira um CPF válido";
+    } else {
+      newErrors.cpf = "";
+    }
+
+    if (step === 2 && (data.phone?.length ?? 0) < 14) {
+      newErrors.phone = "Insira um número válido";
+    } else {
+      newErrors.phone = "";
+    }
+
+    setErrors(newErrors);
   };
+
+  useEffect(() => {
+    validateFields();
+  }, [data, step]);
+
+  const handleStepClick = (index: number) => {
+    // Etapa pode avançar se a validação estiver correta
+    if (Object.values(errors).every((error) => !error)) {
+      setStep(index);
+    }
+  };
+  
 
   // Function para abrir/ Fechar modal
   const handleOpenModal = () => {
@@ -103,7 +142,7 @@ export default function App() {
             keyboardType="default"
             placeholder="Nome"
             label="Digite o nome do colaborador"
-            value={data.name || ""}
+            value={data.name}
             onChangeText={(name) => setData({ ...data, name })}
           />
         </InputFormView>
@@ -118,7 +157,7 @@ export default function App() {
             limitCaracter={14}
             placeholder="000.000.00-00"
             label="Digite o CPF do colaborador"
-            value={data.cpf || ""}
+            value={data.cpf}
             onChangeText={(cpf) => setData({ ...data, cpf })}
             mask={[
               /\d/,
@@ -149,7 +188,7 @@ export default function App() {
             limitCaracter={15}
             placeholder="(00) 00000-0000"
             label="Digite o Telefone do fornecedor"
-            value={data.phone || ""}
+            value={data.phone}
             onChangeText={(phone) => setData({ ...data, phone })}
             mask={[
               "(",
@@ -182,7 +221,9 @@ export default function App() {
               value={data.fruits || ""}
               onChangeText={(fruits) => setData({ ...data, fruits })}
             /> */}
-            <TextChekboxStepper>Escolha as frutas que esse fornecedor nos fornece</TextChekboxStepper>
+            <TextChekboxStepper>
+              Escolha as frutas que esse fornecedor nos fornece
+            </TextChekboxStepper>
             <CheckBoxComponent
               options={selectedFruits}
               value={data.fruits}
@@ -239,8 +280,18 @@ export default function App() {
         ))}
       </View>
       {contents[step].component}
+
+      {Object.values(errors).map((error, index) => (
+        <Text key={index} style={{ color: "red" }}>
+          {error}
+        </Text>
+      ))}
+
       {step < contents.length - 1 && (
-        <ButtonComponent label="Próximo" onPress={() => setStep(step + 1)}>
+        <ButtonComponent
+          label="Próximo"
+          onPress={() => handleStepClick(step + 1)}
+        >
           <TextNextButton>Próximo</TextNextButton>
           <Ionicons name="chevron-forward" size={32} color={"#DA0D1E"} />
         </ButtonComponent>
