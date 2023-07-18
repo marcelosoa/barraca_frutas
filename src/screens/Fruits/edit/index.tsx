@@ -108,8 +108,7 @@ export default function EditFruitScreen() {
           ))}
         </Picker>
       </FruitView>
-      <ButtonContainer>
-        <StyledButtonComponent
+      <StyledButtonComponent
           label="Atualizar Fruta"
           onPress={handleUpdateFruit}
         >
@@ -117,7 +116,6 @@ export default function EditFruitScreen() {
             Atualizar Fruta
           </TextButton>
         </StyledButtonComponent>
-      </ButtonContainer>
       {isLoading && <LoaderComponent />}
     </Container>
   );

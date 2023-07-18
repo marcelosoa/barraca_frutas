@@ -8,7 +8,7 @@ import {
   StyledButtonComponent,
   TextButton,
 } from "./styled";
-import { StyleSheet } from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../interface/routerinterface";
@@ -55,6 +55,11 @@ export default function RegisterFruitScreen() {
   };
 
   return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
+    >
     <Container>
       <ViewContent>
         <Text>Cadastrar Fruta</Text>
@@ -94,7 +99,7 @@ export default function RegisterFruitScreen() {
       <FruitView style={styled.cardPicker}>
         <Ionicons name="people-outline" size={32} />
         <Picker
-          selectedValue={fruitData.supplier}
+          selectedValue={fruitData.supplier || 'Fornecedor'}
           onValueChange={(supplier: string) =>
             setFruitData({ ...fruitData, supplier: supplier })
           }
@@ -124,17 +129,16 @@ export default function RegisterFruitScreen() {
           ))}
         </Picker>
       </FruitView>
-      <ButtonContainer>
-        <StyledButtonComponent
+      <StyledButtonComponent
           label="Cadastrar Fruta"
           onPress={handleRegisterFruit}
         >
           <TextButton>Cadastrar Fruta</TextButton>
         </StyledButtonComponent>
-      </ButtonContainer>
       {error !== "" && <Text style={styled.errorText}>{error}</Text>}
       {isLoading && <LoaderComponent />}
     </Container>
+    </KeyboardAvoidingView>
   );
 }
 
