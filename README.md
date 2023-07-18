@@ -10,9 +10,6 @@ Nesse projeto você pode rodar:
 ### npx expo start
 ### yarn run android
 
-## Fotos do Projeto
-
-
 
 
 
