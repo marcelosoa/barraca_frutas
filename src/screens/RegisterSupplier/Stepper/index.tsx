@@ -65,12 +65,6 @@ export default function App() {
   const validateFields = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (step === 0 && (data.name?.length ?? 0) < 4) {
-      newErrors.name = "Insira um nome válido";
-    } else {
-      newErrors.name = "";
-    }
-
     if (step === 1 && (data.cpf?.length ?? 0) < 14) {
       newErrors.cpf = "Insira um CPF válido";
     } else {
