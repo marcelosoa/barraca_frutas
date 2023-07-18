@@ -4,7 +4,6 @@ import {
   Text,
   ViewContent,
   FruitView,
-  ButtonContainer,
   StyledButtonComponent,
   TextButton,
 } from "./styled";
@@ -130,7 +129,6 @@ export default function RegisterFruitScreen() {
         </Picker>
       </FruitView>
       <StyledButtonComponent
-          label="Cadastrar Fruta"
           onPress={handleRegisterFruit}
         >
           <TextButton>Cadastrar Fruta</TextButton>

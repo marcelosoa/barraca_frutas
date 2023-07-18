@@ -216,11 +216,6 @@ export default function App() {
       component: (
         <>
           <InputFormView>
-            {/* <InputFormComponent
-              label="Escolha as frutas que esse fornecedor nos fornece"
-              value={data.fruits || ""}
-              onChangeText={(fruits) => setData({ ...data, fruits })}
-            /> */}
             <TextChekboxStepper>
               Escolha as frutas que esse fornecedor nos fornece
             </TextChekboxStepper>
@@ -231,7 +226,6 @@ export default function App() {
             />
           </InputFormView>
           <StyledButtonComponent
-            label="Cadastrar Fornecedor"
             onPress={handleSaveData}
           >
             <TextButton>Cadastrar Fornecedor</TextButton>
@@ -289,7 +283,6 @@ export default function App() {
 
       {step < contents.length - 1 && (
         <ButtonComponent
-          label="Próximo"
           onPress={() => handleStepClick(step + 1)}
         >
           <TextNextButton>Próximo</TextNextButton>

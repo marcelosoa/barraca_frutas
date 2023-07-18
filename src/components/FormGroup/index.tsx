@@ -4,7 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
 
 interface FormGroupProps {
-  name: string
+  name: string | any
   size: number
   placeholder: string
   value?: string | undefined

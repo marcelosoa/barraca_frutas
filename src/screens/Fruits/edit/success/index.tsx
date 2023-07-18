@@ -34,7 +34,6 @@ export default function SuccessEditFruitScreen() {
       <SmallText>Você Editou a fruta {fruit.name} com sucesso!</SmallText>
       <View>
         <StyledButtonComponent
-          label="Voltar ao início"
           onPress={() => navigation.navigate("RegisterFruit")}
         >
           <TextButton>Voltar ao Início</TextButton>
