@@ -5,19 +5,20 @@ import {
   Text,
   TextView,
   ViewIcon,
-  Image,
+  ImageView,
   View,
   TextButton,
-  StyledButtonComponent
+  StyledButtonComponent,
 } from "./styled";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Image } from "react-native";
 
 export default function RegisterSuccessScreen() {
   const navigation = useNavigation<propsStack>();
-  const route = useRoute()
-  const supplier = route.params?.supplier
+  const route = useRoute();
+  const supplier = route.params?.supplier;
   return (
     <Container>
       <ViewIcon>
@@ -27,17 +28,18 @@ export default function RegisterSuccessScreen() {
           onPress={() => navigation.navigate("Inicio")}
         />
       </ViewIcon>
-      <TextView>
+      <ImageView>
         <Image source={require("../../../../assets/images/confirmed.png")} />
+      </ImageView>
+      <TextView>
+        <Text>Fornecedor Cadastrado</Text>
+        <SmallText>Você cadastrou o fornecedor {supplier.name} com sucesso!</SmallText>
       </TextView>
-      <Text>Fornecedor Cadastrado</Text>
-      <SmallText>Você cadastrou o fornecedor {supplier.name} com sucesso!</SmallText>
       <View>
         <StyledButtonComponent
-          label="Voltar ao início"
-          onPress={() => navigation.navigate("Inicio")}
+          onPress={() => navigation.navigate('Inicio')}
         >
-          <TextButton>Voltar ao Início</TextButton>
+          <TextButton>Voltar ao início</TextButton>
         </StyledButtonComponent>
       </View>
     </Container>

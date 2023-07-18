@@ -5,7 +5,7 @@ import {
   Text,
   TextView,
   ViewIcon,
-  Image,
+  ImageView,
   View,
   TextButton,
   StyledButtonComponent
@@ -13,6 +13,7 @@ import {
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { propsStack } from "../../../interface/routerinterface";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Image } from "react-native";
 
 export default function RegisterFruitScreen() {
   const navigation = useNavigation<propsStack>();
@@ -27,19 +28,22 @@ export default function RegisterFruitScreen() {
           onPress={() => navigation.navigate("Inicio")}
         />
       </ViewIcon>
-      <TextView>
+    <ImageView>
         <Image source={require("../../../../assets/images/confirmed.png")} />
-      </TextView>
+    </ImageView>
+    <TextView>
       <Text>Fruta Cadastrada</Text>
-      <SmallText>Você cadastrou a fruta {fruit.name} com sucesso!</SmallText>
-      <View>
-        <StyledButtonComponent
-          label="Voltar ao início"
-          onPress={() => navigation.navigate("RegisterFruit")}
-        >
-          <TextButton>Voltar ao Início</TextButton>
-        </StyledButtonComponent>
-      </View>
+      <SmallText>
+        Você cadastrou a fruta {fruit.name} com sucesso!
+      </SmallText>
+    </TextView>
+    <View>
+      <StyledButtonComponent
+        onPress={() => navigation.navigate("RegisterFruit")}
+      >
+        <TextButton>Voltar ao Início</TextButton>
+      </StyledButtonComponent>
+    </View>
     </Container>
   );
 }
