@@ -5,8 +5,12 @@ interface TextProps {
   color?: string;
 }
 
-export const Container = styled.TouchableOpacity`
-  background-color: ${({ theme }) => theme.colors.shape };
+interface ContainerProps {
+  isHighlighted: boolean
+}
+
+export const Container = styled.View`
+  background-color: ${({ theme, }) => theme.colors.shape };
   padding: 20px;
   border-radius: 8px;
 `;

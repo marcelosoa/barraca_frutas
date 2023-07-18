@@ -54,11 +54,6 @@ export default function RegisterFruitScreen() {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
-    >
     <Container>
       <ViewContent>
         <Text>Cadastrar Fruta</Text>
@@ -136,7 +131,6 @@ export default function RegisterFruitScreen() {
       {error !== "" && <Text style={styled.errorText}>{error}</Text>}
       {isLoading && <LoaderComponent />}
     </Container>
-    </KeyboardAvoidingView>
   );
 }
 

@@ -33,6 +33,7 @@ export default function FruitsScreen() {
   const modalizeRef = useRef<Modalize>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedFruit, setSelectedFruit] = useState<any>(null)
+  const [isCardHighlighted, setIsCardHighlighted] = useState(false);
 
   useEffect(() => {
     dispatch(fetchFruits());
@@ -43,6 +44,7 @@ export default function FruitsScreen() {
   };
 
   const handleModalOpen = () => {
+    setIsCardHighlighted(true);
     modalizeRef.current?.open();
   };
 
@@ -90,6 +92,7 @@ export default function FruitsScreen() {
                   supplier={fruit.supplier}
                   isModalCheck={handleModalOpen}
                   onCardPress={() => setSelectedFruit(fruit)}
+                  isHighlighted={isCardHighlighted && fruit.id === selectedFruit?.id}
                 />
             ))}
           </ContainerFruits>

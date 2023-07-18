@@ -5,4 +5,5 @@ export interface CardFruitProps {
   supplier: string
   isModalCheck: () => void
   onCardPress?: any
+  isHighlighted: boolean
 }
