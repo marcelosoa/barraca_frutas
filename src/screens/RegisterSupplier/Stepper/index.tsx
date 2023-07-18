@@ -21,7 +21,6 @@ import { View } from "react-native";
 import { useTheme } from "styled-components";
 import CheckBoxComponent from "../../../components/Checkbox";
 import ModalComponent from "../../../components/Modal";
-import useErrors from "../../../utils/hooks/useErros";
 
 interface SupplierData {
   name: string;
@@ -40,7 +39,6 @@ export default function App() {
   const [data, setData] = useState<Partial<SupplierData>>({});
   const [step, setStep] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [errors, setErrors] = useState<{ [field: string]: string }>({});
   const [errors, setErrors] = useState<{ [key: string]: string }>({
     name: "",
     cpf: "",
@@ -224,12 +222,12 @@ export default function App() {
               value={data.fruits}
               onChange={handleFruitsChange}
             />
-          </InputFormView>
-          <StyledButtonComponent
+            <StyledButtonComponent
             onPress={handleSaveData}
           >
             <TextButton>Cadastrar Fornecedor</TextButton>
           </StyledButtonComponent>
+          </InputFormView>
         </>
       ),
     },
@@ -280,7 +278,6 @@ export default function App() {
           {error}
         </Text>
       ))}
-
       {step < contents.length - 1 && (
         <ButtonComponent
           onPress={() => handleStepClick(step + 1)}

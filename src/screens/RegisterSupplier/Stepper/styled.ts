@@ -5,7 +5,7 @@ interface TextProps {
   isRed?: boolean;
 }
 
-export const Container = styled.KeyboardAvoidingView`
+export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background};
   padding: 24px 28px;
   display: flex;
@@ -19,7 +19,7 @@ export const ViewName = styled.View`
   align-items: center;
   justify-content: flex-end;
 `;
-export const InputFormView = styled.View`
+export const InputFormView = styled.KeyboardAvoidingView`
   display: flex;
   flex-direction: column;
   flex: 1;
