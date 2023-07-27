@@ -12,7 +12,7 @@ import {
 } from "./styled";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import CardComponent from "../../components/Card";
 import { useNavigation } from "@react-navigation/native";
@@ -22,7 +22,7 @@ import { Platform, View } from "react-native";
 import { useTheme } from "styled-components";
 
 export default function SuppliersScreen() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [searchTerm, setSearchTerm] = useState("");
   const navigation = useNavigation<propsStack>();
   const suppliers = useSelector((state: RootState) => state.supplier.suppliers);

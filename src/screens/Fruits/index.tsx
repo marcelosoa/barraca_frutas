@@ -18,7 +18,7 @@ import {
 import { propsStack } from "../../interface/routerinterface";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import SearchComponent from "../../components/InputSearch";
 import { fetchFruits, removeFruit } from "../../redux/reducers/fruitsReducer";
 import { Fruit } from "../../redux/reducers/fruitsReducer";
@@ -29,7 +29,7 @@ import { useTheme } from "styled-components";
 
 export default function FruitsScreen() {
   const navigation = useNavigation<propsStack>();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const fruits = useSelector((state: RootState) => state.fruits.fruits);
   const [searchFruit, setFruitSearch] = useState("");
   const modalizeRef = useRef<Modalize>(null);

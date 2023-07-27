@@ -13,8 +13,6 @@ export default {
     light_gray: '#6C7072',
     text: '#363A3C',
     success: '#008C21'
-
-
   },
 
   fonts: {

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import InputFormComponent from "../../../components/InputForm";
+import CheckBoxComponent from "../../../components/Checkbox";
+import ModalComponent from "../../../components/Modal";
+
 import {
   Container,
   ViewName,
@@ -19,9 +22,6 @@ import { propsStack } from "../../../interface/routerinterface";
 import { useDispatch } from "react-redux";
 import { View } from "react-native";
 import { useTheme } from "styled-components";
-import CheckBoxComponent from "../../../components/Checkbox";
-import ModalComponent from "../../../components/Modal";
-
 interface SupplierData {
   name: string;
   cpf: string;
